@@ -1,0 +1,19 @@
+{
+  "name": "AnonymousPiwikUsageMeasurement",
+  "version": "0.1.0",
+  "description": "Help making Piwik better by sending anonymized usage data to the creator of Piwik, to your own Piwik instance and/or to any other Piwik instance",
+  "theme": false,
+  "keywords": ["usage",  "tracking",  "measurement",  "piwik"],
+  "license":  "GPL v3+",
+  "homepage":  "http://piwik.org",
+  "require": {
+    "piwik": ">=2.15.0-b14"
+  },
+  "authors": [
+    {
+      "name":  "Piwik",
+      "email":  "hello@piwik.org",
+      "homepage":  "http://piwik.org"
+    }
+  ]
+}
