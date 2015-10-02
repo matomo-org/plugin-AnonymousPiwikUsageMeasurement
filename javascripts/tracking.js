@@ -14,6 +14,7 @@ $(function () {
         return;
     }
 
+    var trackingDomain = 'http://demo.piwik.org';
     var trackers = [];
 
     _paq = {
@@ -24,15 +25,55 @@ $(function () {
 
                 $.each(trackers, function (index, tracker) {
                     // the users piwik might not support a method yet, only execute if it exists
-                    if ($.isString(method) && tracker[method]) {
+                    if (angular.isString(method) && tracker[method]) {
                         tracker[method].apply(tracker, parameterArray);
-                    } else if ($.isFunction(method)) {
+                    } else if (angular.isFunction(method)) {
                         method.apply(tracker, parameterArray);
                     }
                 });
             });
         }
     };
+
+    function makeDemoPiwikUrl(url)
+    {
+        if (0 === url.indexOf('#')) {
+            url = url.substr(1);
+        }
+
+        if (0 === url.indexOf('?')) {
+            url = url.substr(1);
+        }
+
+        return trackingDomain + '/index.php?' + url;
+    }
+
+    function anonymizeReferrer(tracker)
+    {
+        var anonymizedReferrer = trackingDomain + '/anonymized-referrer';
+
+        var referrer = tracker.getReferrerUrl();
+        if (tracker.getReferrerUrl && -1 !== referrer.indexOf(piwik.piwik_url)) {
+            anonymizedReferrer = referrer.replace(piwik.piwik_url, trackingDomain + '/')
+        }
+
+        tracker.setReferrerUrl(anonymizedReferrer);
+    }
+
+    function anonymizeUrl(tracker)
+    {
+        var anonymizedUrl;
+
+        if (location.hash && location.hash.length > 3) {
+            anonymizedUrl = makeDemoPiwikUrl(location.hash);
+        } else if (location.search && location.search.length > 3) {
+            anonymizedUrl = makeDemoPiwikUrl(location.hash);
+        } else {
+            anonymizedUrl = makeDemoPiwikUrl('');
+        }
+
+        tracker.setCustomUrl(anonymizedUrl);
+    }
 
     function createTrackers()
     {
@@ -41,28 +82,24 @@ $(function () {
             if (target.cookieDomain) {
                 tracker.setCookieDomain(target.cookieDomain);
             }
+
+            anonymizeReferrer(tracker);
+            anonymizeUrl(tracker);
+
             trackers.push(tracker);
         });
-    }
 
-    function initTrackers()
-    {
         // we cannot enable link tracking or JS error tracking as it is too likely that custom data is tracked
-
         $.each(piwikUsageTracking.visitorCustomVariables, function (j, customVar) {
             _paq.push(['setCustomVariable', customVar.id, customVar.name, customVar.value]);
         });
 
         _paq.push(['setDocumentTitle', document.title]);
-        _paq.push(['trackPageView']);
-
-        // TODO: change referrer if not from this URL
-        // configReferrerUrl
-        // replace domain urL
     }
 
     createTrackers();
-    initTrackers();
+
+    _paq.push(['trackPageView']);
 
     var $rootScope = angular.element(document).injector().get('$rootScope');
 
