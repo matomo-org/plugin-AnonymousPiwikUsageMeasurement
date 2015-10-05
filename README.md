@@ -15,7 +15,7 @@ Which data is tracked?
 * The used Piwik and PHP version
 * On demo.piwik.org 3 bytes of the IP are anonymised (eg when IP is 192.168.1.1 we track only 192.0.0.0). Original IP is not used to identify your location.
 * Referrer domains are removed and / or replaced with TODO
-*
+* No token_auth will be sent
 
 ## FAQ
 

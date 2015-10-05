@@ -8,7 +8,6 @@
 
 namespace Piwik\Plugins\AnonymousPiwikUsageMeasurement;
 
-use Piwik\Common;
 use Piwik\Version;
 use Piwik\View;
 
@@ -54,7 +53,7 @@ class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
         if ($settings->trackToPiwik->getValue()) {
             $tracking['targets'][] = array(
                 'url' => 'http://demo.piwik.org/piwik.php',
-                'idSite' => 9999,
+                'idSite' => 51,
                 'cookieDomain' => '*.piwik.org'
             );
         }
