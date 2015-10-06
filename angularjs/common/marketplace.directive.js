@@ -15,11 +15,11 @@
  * </div>
  */
 (function () {
-    angular.module('piwikApp').directive('marketplace', piwikWidgetId);
+    angular.module('piwikApp').directive('marketplace', piwikMarketplace);
 
-    piwikWidgetId.$inject = [];
+    piwikMarketplace.$inject = [];
 
-    function piwikWidgetId(){
+    function piwikMarketplace(){
         return {
             restrict: 'C',
             link: function (scope, element, attrs, ngModel) {
@@ -37,6 +37,7 @@
                     var pluginName = $plugin.find('[data-pluginname]').attr('data-pluginname');
 
                     var header = $plugin.find('.panel-heading');
+                    makeContentBlock(header, pluginName, 'Headline', 'popover');
                     makeContentBlock(header, pluginName, 'Headline', 'popover');
 
                     var body = $plugin.find('.panel-body');

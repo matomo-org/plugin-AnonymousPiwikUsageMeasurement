@@ -1,6 +1,7 @@
 var urlAnonymizer = (function () {
 
     var trackingDomain = 'http://demo.piwik.org';
+    var exampleDomain = 'http://example.com';
     var whitelistUrlParams = ['module', 'action', 'idSite', 'idDashboard', 'period', 'date', 'popover', 'idGoal', 'pluginName'];
 
     function makeUrlHierarchical(url)
@@ -15,7 +16,7 @@ var urlAnonymizer = (function () {
 
         var hierarchicalUrl = '';
         if (module) {
-            hierarchicalUrl = trackingDomain + '/' + module + '/' + action + '/';
+            hierarchicalUrl = trackingDomain + '/' + module.toLowerCase() + '/' + action.toLowerCase() + '/';
         }
 
         var searchParams = broadcast.extractKeyValuePairsFromQueryString(search);
@@ -199,6 +200,8 @@ var urlAnonymizer = (function () {
         getCurrentAnonymizedUrl: getCurrentAnonymizedUrl,
         makeUrlHierarchical: makeUrlHierarchical,
         getValueFromHashOrUrl: getValueFromHashOrUrl,
-        getPopoverNameFromUrl: getPopoverNameFromUrl
+        getPopoverNameFromUrl: getPopoverNameFromUrl,
+        trackingDomain: trackingDomain,
+        exampleDomain: exampleDomain
     };
 })();

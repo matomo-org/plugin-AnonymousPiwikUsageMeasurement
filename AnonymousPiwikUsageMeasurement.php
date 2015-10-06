@@ -9,6 +9,7 @@
 namespace Piwik\Plugins\AnonymousPiwikUsageMeasurement;
 
 use Piwik\Common;
+use Piwik\Piwik;
 use Piwik\SettingsPiwik;
 use Piwik\Version;
 use Piwik\View;
@@ -32,8 +33,11 @@ class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
         $jsFiles[] = 'js/piwik.js';
         $jsFiles[] = 'plugins/AnonymousPiwikUsageMeasurement/javascripts/url.js';
         $jsFiles[] = 'plugins/AnonymousPiwikUsageMeasurement/javascripts/tracking.js';
-        $jsFiles[] = 'plugins/AnonymousPiwikUsageMeasurement/angularjs/common/widget-id.directive.js';
+        $jsFiles[] = 'plugins/AnonymousPiwikUsageMeasurement/angularjs/common/dashboard.directive.js';
         $jsFiles[] = 'plugins/AnonymousPiwikUsageMeasurement/angularjs/common/marketplace.directive.js';
+        $jsFiles[] = 'plugins/AnonymousPiwikUsageMeasurement/angularjs/common/segment.directive.js';
+        $jsFiles[] = 'plugins/AnonymousPiwikUsageMeasurement/angularjs/common/emailreports.directive.js';
+        $jsFiles[] = 'plugins/AnonymousPiwikUsageMeasurement/angularjs/common/multisites.directive.js';
     }
 
     public function addPiwikTracking(&$out)
@@ -42,6 +46,15 @@ class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
 
         if (!$settings->userTrackingEnabled->getValue()) {
             return;
+        }
+
+        if (Piwik::hasUserSuperUserAccess()) {
+            $role = 'superuser';
+        } elseif (Piwik::isUserIsAnonymous()) {
+            $role = 'anonymous';
+        } else {
+            // I do not check between view/admin as it could trigger slow DB queries to fetch sites with access
+            $role = 'user';
         }
 
         $tracking = array(
@@ -56,6 +69,11 @@ class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
                     'id' => 2,
                     'name' => 'PHP Version',
                     'value' => phpversion(),
+                ),
+                array(
+                    'id' => 3,
+                    'name' => 'Role',
+                    'value' => $role,
                 )
             )
         );

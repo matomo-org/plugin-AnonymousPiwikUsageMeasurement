@@ -28,10 +28,36 @@
                     return;
                 }
 
-                $widget.find('#close,#minimise,#maximise,#refresh').click(function () {
+                $widget.on('click', '#close,#minimise,#maximise,#refresh', function () {
                     var category = 'Dashboard';
                     var name     = 'Widget';
                     var action   = $(this).attr('id');
+                    _paq.push(['trackEvent', category, action, name]);
+                });
+            }
+        };
+    }
+})();
+
+/**
+ * Usage:
+ * <div data-action="createDashboard">
+ */
+(function () {
+    angular.module('piwikApp').directive('action', piwikDataAction);
+
+    piwikDataAction.$inject = [];
+
+    function piwikDataAction(){
+
+        return {
+            restrict: 'A',
+            link: function (scope, element, attrs, ngModel) {
+
+                element.click(function () {
+                    var category = 'Dashboard';
+                    var name     = 'WidgetSelector';
+                    var action   = $(this).attr('data-action');
                     _paq.push(['trackEvent', category, action, name]);
                 });
             }
