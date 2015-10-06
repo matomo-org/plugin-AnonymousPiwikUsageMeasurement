@@ -12,12 +12,19 @@ use Piwik\API\Request;
 use Piwik\Common;
 use Piwik\Settings\SystemSetting;
 use Exception;
+use Piwik\Settings\UserSetting;
 
 /**
  * Defines Settings for AnonymousPiwikUsageMeasurement.
  */
 class Settings extends \Piwik\Plugin\Settings
 {
+    /** @var SystemSetting */
+    public $canUserOptOut;
+
+    /** @var UserSetting */
+    public $userTrackingEnabled;
+
     /** @var SystemSetting */
     public $trackToPiwik;
 
@@ -32,14 +39,41 @@ class Settings extends \Piwik\Plugin\Settings
 
     protected function init()
     {
-        $this->setIntroduction('Configure up to three Piwik instances that will be used to track usage of this Piwik. The same data will be tracked to all enabled instances, this allows you to see which data is sent to Piwik (if enabled) and how your Piwik is used.');
+        // $this->setIntroduction('Configure up to three Piwik instances that will be used to track usage of this Piwik. The same data will be tracked to all enabled instances, this allows you to see which data is sent to Piwik (if enabled) and how your Piwik is used.');
 
+        $this->createLetUsersOptOutSetting();
         $this->createTrackToPiwikSetting();
 
         $this->createTrackToOwnPiwikSetting();
 
         $this->createTrackToCustomSiteUrlSetting();
         $this->createTrackToCustomSiteIdSetting();
+
+        $this->createUsersOptOutSetting();
+    }
+
+    private function createLetUsersOptOutSetting()
+    {
+        $this->canUserOptOut = new SystemSetting('canUserOptOut', 'Let users disable anonymous tracking');
+        $this->canUserOptOut->type  = static::TYPE_BOOL;
+        $this->canUserOptOut->uiControlType = static::CONTROL_CHECKBOX;
+        $this->canUserOptOut->description   = 'If enabled, users can opt out in plugin settings';
+        $this->canUserOptOut->defaultValue  = true;
+        $this->canUserOptOut->readableByCurrentUser = true;
+
+        $this->addSetting($this->canUserOptOut);
+    }
+
+    private function createUsersOptOutSetting()
+    {
+        $this->userTrackingEnabled = new UserSetting('userTrackingEnabled', 'Piwik usage tracking enabled');
+        $this->userTrackingEnabled->type  = static::TYPE_BOOL;
+        $this->userTrackingEnabled->uiControlType = static::CONTROL_CHECKBOX;
+        $this->userTrackingEnabled->defaultValue  = true;
+
+        if ($this->canUserOptOut->getValue()) {
+            $this->addSetting($this->userTrackingEnabled);
+        }
     }
 
     private function createTrackToPiwikSetting()

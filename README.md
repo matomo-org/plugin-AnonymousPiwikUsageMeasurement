@@ -16,6 +16,7 @@ Which data is tracked?
 * On demo.piwik.org 3 bytes of the IP are anonymised (eg when IP is 192.168.1.1 we track only 192.0.0.0). Original IP is not used to identify your location.
 * Referrer domains are removed and / or replaced with TODO
 * No token_auth will be sent
+* Installed plugin names might be tracked. If you use custom plugins and the name of the plugin or a controller action or a report name contains private data, you should not install this plugin.
 
 ## FAQ
 
