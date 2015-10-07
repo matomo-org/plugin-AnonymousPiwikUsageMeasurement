@@ -26,7 +26,7 @@
                 element.on('click', '[target=_blank]', function () {
                     // append ID to not have only one link in report, this way we know the position of the clicked outlink
                     var id = $(this).parents('tr').first().prevAll().size() + 1;
-                    var sourceUrl = urlAnonymizer.exampleDomain + '/multisites/outlink' + id;
+                    var sourceUrl = piwikUsageTracking.exampleDomain + '/multisites/outlink' + id;
                     var linkType = 'link';
 
                     _paq.push(['trackLink', sourceUrl, linkType]);

@@ -33,7 +33,7 @@
                     }
                     id = id % 20; // avoid tracking large ids to make sure nobody can identify a specific Piwik instance based on that
 
-                    var sourceUrl = urlAnonymizer.trackingDomain + '/scheduledreports/emailreport' + id + '.' + format;
+                    var sourceUrl = piwikUsageTracking.trackingDomain + '/scheduledreports/emailreport' + id + '.' + format;
                     var linkType = 'download';
 
                     _paq.push(['trackLink', sourceUrl, linkType]);

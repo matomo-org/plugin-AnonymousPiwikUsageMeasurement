@@ -1,7 +1,7 @@
 var urlAnonymizer = (function () {
 
-    var trackingDomain = 'http://demo.piwik.org';
-    var exampleDomain = 'http://example.com';
+    var trackingDomain = piwikUsageTracking.trackingDomain;
+    var exampleDomain  = piwikUsageTracking.exampleDomain;
     var whitelistUrlParams = ['module', 'action', 'idSite', 'idDashboard', 'period', 'date', 'popover', 'idGoal', 'pluginName'];
 
     function makeUrlHierarchical(url)
@@ -200,8 +200,6 @@ var urlAnonymizer = (function () {
         getCurrentAnonymizedUrl: getCurrentAnonymizedUrl,
         makeUrlHierarchical: makeUrlHierarchical,
         getValueFromHashOrUrl: getValueFromHashOrUrl,
-        getPopoverNameFromUrl: getPopoverNameFromUrl,
-        trackingDomain: trackingDomain,
-        exampleDomain: exampleDomain
+        getPopoverNameFromUrl: getPopoverNameFromUrl
     };
 })();

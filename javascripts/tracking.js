@@ -6,7 +6,7 @@
  */
 
 if ('undefined' === (typeof piwikUsageTracking) || !piwikUsageTracking) {
-    piwikUsageTracking = {targets: [], visitorCustomVariables: []};
+    piwikUsageTracking = {targets: [], visitorCustomVariables: [], trackingDomain: '', exampleDomain: ''};
 }
 
 piwikUsageTracking.trackers = [];

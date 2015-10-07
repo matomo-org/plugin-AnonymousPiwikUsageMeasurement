@@ -8,14 +8,16 @@
 
 namespace Piwik\Plugins\AnonymousPiwikUsageMeasurement;
 
-use Piwik\Common;
-use Piwik\Piwik;
-use Piwik\SettingsPiwik;
-use Piwik\Version;
+use Piwik\Container\StaticContainer;
+use Piwik\Date;
+use Piwik\Log;
+use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\Events;
 use Piwik\View;
 
 class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
 {
+    const TRACKING_DOMAIN = 'http://demo.piwik.org';
+    const EXAMPLE_DOMAIN = 'http://example.com';
 
     /**
      * @see Piwik\Plugin::registerEvents
@@ -24,8 +26,34 @@ class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
     {
         return array(
             'AssetManager.getJavaScriptFiles' => 'getJsFiles',
-            'Template.jsGlobalVariables' => 'addPiwikTracking',
+            'Template.jsGlobalVariables' => 'addPiwikClientTracking',
+            'API.Request.dispatch' => 'trackApiCall',
         );
+    }
+
+    public function install()
+    {
+        $dao = new Events();
+        $dao->install();
+    }
+
+    public function uninstall()
+    {
+        $dao = new Events();
+        $dao->uninstall();
+    }
+
+    public function trackApiCall(&$finalParameters, $pluginName, $methodName)
+    {
+        $eventTracker = StaticContainer::get('Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\Events');
+
+        $now = Date::now()->getDatetime();
+        $category = 'API';
+        $name = $pluginName;
+        $action = $methodName;
+        $value = 1;
+
+        $eventTracker->pushEvent($now, $category, $name, $action, $value);
     }
 
     public function getJsFiles(&$jsFiles)
@@ -40,7 +68,7 @@ class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
         $jsFiles[] = 'plugins/AnonymousPiwikUsageMeasurement/angularjs/common/multisites.directive.js';
     }
 
-    public function addPiwikTracking(&$out)
+    public function addPiwikClientTracking(&$out)
     {
         $settings = new Settings();
 
@@ -48,68 +76,17 @@ class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
             return;
         }
 
-        if (Piwik::hasUserSuperUserAccess()) {
-            $role = 'superuser';
-        } elseif (Piwik::isUserIsAnonymous()) {
-            $role = 'anonymous';
-        } else {
-            // I do not check between view/admin as it could trigger slow DB queries to fetch sites with access
-            $role = 'user';
-        }
+        $targets = StaticContainer::get('Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\Targets');
+        $customVars = StaticContainer::get('Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\CustomVariables');
 
-        $tracking = array(
-            'targets' => array(),
-            'visitorCustomVariables' => array(
-                array(
-                    'id' => 1,
-                    'name' => 'Piwik Version',
-                    'value' => Version::VERSION,
-                ),
-                array(
-                    'id' => 2,
-                    'name' => 'PHP Version',
-                    'value' => phpversion(),
-                ),
-                array(
-                    'id' => 3,
-                    'name' => 'Role',
-                    'value' => $role,
-                )
-            )
+        $config = array(
+            'targets' => $targets->getTargets(),
+            'visitorCustomVariables' => $customVars->getClientVisitCustomVariables(),
+            'trackingDomain' => self::TRACKING_DOMAIN,
+            'exampleDomain' => self::EXAMPLE_DOMAIN
         );
 
-        if ($settings->trackToPiwik->getValue()) {
-            $tracking['targets'][] = array(
-                'url' => 'http://demo.piwik.org/piwik.php',
-                'idSite' => 51,
-                'cookieDomain' => '*.piwik.org'
-            );
-        }
-
-        $ownSiteId = $settings->ownPiwikSiteId->getValue();
-        if ($ownSiteId) {
-            $piwikUrl = SettingsPiwik::getPiwikUrl();
-            if (!Common::stringEndsWith($piwikUrl, '/')) {
-                $piwikUrl .= '/';
-            }
-            $tracking['targets'][] = array(
-                'url' => $piwikUrl . 'piwik.php',
-                'idSite' => (int) $ownSiteId,
-                'cookieDomain' => ''
-            );
-        }
-
-        $customUrl = $settings->customPiwikSiteUrl->getValue();
-        $customSiteId = $settings->customPiwikSiteId->getValue();
-        if ($customUrl && $customSiteId) {
-            $tracking['targets'][] = array(
-                'url' => $customUrl,
-                'idSite' => (int) $customSiteId,
-                'cookieDomain' => ''
-            );
-        }
-
-        $out .= "\nvar piwikUsageTracking = " . json_encode($tracking) . ";\n";
+        $out .= "\nvar piwikUsageTracking = " . json_encode($config) . ";\n";
     }
 
 }
