@@ -57,7 +57,7 @@ class Settings extends \Piwik\Plugin\Settings
         $this->canUserOptOut = new SystemSetting('canUserOptOut', 'Let users disable anonymous tracking');
         $this->canUserOptOut->type  = static::TYPE_BOOL;
         $this->canUserOptOut->uiControlType = static::CONTROL_CHECKBOX;
-        $this->canUserOptOut->description   = 'If enabled, users can opt out in plugin settings';
+        $this->canUserOptOut->description   = 'If enabled, logged in users can opt out in plugin settings.';
         $this->canUserOptOut->defaultValue  = true;
         $this->canUserOptOut->readableByCurrentUser = true;
 
