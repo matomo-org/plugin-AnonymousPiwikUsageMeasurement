@@ -11,6 +11,7 @@ namespace Piwik\Plugins\AnonymousPiwikUsageMeasurement;
 use Piwik\Container\StaticContainer;
 use Piwik\Date;
 use Piwik\Log;
+use Piwik\Piwik;
 use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\Events;
 use Piwik\View;
 
@@ -72,7 +73,9 @@ class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
     {
         $settings = new Settings();
 
-        if (!$settings->userTrackingEnabled->getValue()) {
+        if (!Piwik::isUserIsAnonymous() && !$settings->userTrackingEnabled->getValue()) {
+            // an anonymous user is currently always tracked, an anonymous user would not have permission to read
+            // this user setting and it would result in an exception
             return;
         }
 
