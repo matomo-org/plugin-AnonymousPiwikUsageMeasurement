@@ -9,7 +9,6 @@
 namespace Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker;
 
 use Piwik\Common;
-use Piwik\Plugins\AnonymousPiwikUsageMeasurement\AnonymousPiwikUsageMeasurement;
 use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Settings;
 use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker;
 use Piwik\SettingsPiwik;

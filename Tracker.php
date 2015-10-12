@@ -43,4 +43,5 @@ class Tracker extends \PiwikTracker
 
         return parent::getBaseUrl();
     }
+
 }

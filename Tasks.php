@@ -8,13 +8,38 @@
 
 namespace Piwik\Plugins\AnonymousPiwikUsageMeasurement;
 
-use Piwik\Container\StaticContainer;
+use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\CustomVariables;
+use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\Events;
+use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\Trackers;
 
 class Tasks extends \Piwik\Plugin\Tasks
 {
+    /**
+     * @var Trackers
+     */
+    private $trackers;
+
+    /**
+     * @var CustomVariables
+     */
+    private $customVars;
+
+    /**
+     * @var Events
+     */
+    private $events;
+
+    public function __construct(Trackers $trackers, CustomVariables $customVars, Events $events)
+    {
+        $this->trackers = $trackers;
+        $this->customVars = $customVars;
+        $this->events = $events;
+    }
+
     public function schedule()
     {
-        $this->daily('sendSystemReport');
+        $scheduledTime = $this->daily('sendSystemReport');
+        $scheduledTime->setHour(rand(1, 23)); // make sure not all Piwik instances send data to piwik.org at same time
     }
 
     /**
@@ -25,9 +50,9 @@ class Tasks extends \Piwik\Plugin\Tasks
      */
     public function sendSystemReport()
     {
-        $trackers   = $this->makeTrackers();
-        $customVars = $this->getServerVisitCustomVariables();
-        $events     = $this->getEventsToTrack();
+        $trackers   = $this->trackers->makeTrackers();
+        $customVars = $this->customVars->getServerVisitCustomVariables();
+        $events     = $this->events->popAll();
 
         foreach ($trackers as $tracker) {
             $tracker->enableBulkTracking();
@@ -45,44 +70,5 @@ class Tasks extends \Piwik\Plugin\Tasks
 
             $tracker->doBulkTrack();
         }
-    }
-
-    private function getTargets()
-    {
-        $targets = StaticContainer::get('Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\Targets');
-        return $targets->getTargets();
-    }
-
-    private function getServerVisitCustomVariables()
-    {
-        $customVars = StaticContainer::get('Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\CustomVariables');
-        return $customVars->getServerVisitCustomVariables();
-    }
-
-    private function getEventsToTrack()
-    {
-        $events = StaticContainer::get('Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\Events');
-
-        return $events->popAll();
-    }
-
-    /**
-     * @return Tracker[]
-     */
-    private function makeTrackers()
-    {
-        $targets = $this->getTargets();
-        $trackers = array();
-
-        foreach ($targets as $target) {
-            $tracker = new Tracker($target['idSite'], $target['url']);
-            $tracker->setBaseApiUrl($target['url']);
-            $tracker->setRequestTimeout($seconds = 15);
-            $tracker->setAnonymousUrl();
-            $tracker->setUrlReferrer('');
-            $trackers[] = $tracker;
-        }
-
-        return $trackers;
     }
 }

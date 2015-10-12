@@ -13,6 +13,7 @@ use Piwik\Common;
 use Piwik\Settings\SystemSetting;
 use Exception;
 use Piwik\Settings\UserSetting;
+use Piwik\UrlHelper;
 
 /**
  * Defines Settings for AnonymousPiwikUsageMeasurement.
@@ -57,7 +58,7 @@ class Settings extends \Piwik\Plugin\Settings
         $this->canUserOptOut = new SystemSetting('canUserOptOut', 'Let users disable anonymous tracking');
         $this->canUserOptOut->type  = static::TYPE_BOOL;
         $this->canUserOptOut->uiControlType = static::CONTROL_CHECKBOX;
-        $this->canUserOptOut->description   = 'If enabled, logged in users can opt out in plugin settings.';
+        $this->canUserOptOut->description   = 'If enabled, logged in users can opt out in plugin settings. Anonymous users cannot opt out.';
         $this->canUserOptOut->defaultValue  = true;
         $this->canUserOptOut->readableByCurrentUser = true;
 
@@ -95,10 +96,31 @@ class Settings extends \Piwik\Plugin\Settings
         // ideally we would use a SELECT control and let user choose an existing site but this would make performance slow
         // since we'd always have to get all site ids in each request
         $this->ownPiwikSiteId->uiControlType = static::CONTROL_TEXT;
+        $this->ownPiwikSiteId->type = static::TYPE_INT;
         $this->ownPiwikSiteId->introduction  = 'Send anonymize usage data to this Piwik';
         $this->ownPiwikSiteId->description   = 'If specified, anonymized usage data will be sent to the specified site in this Piwik.';
         $this->ownPiwikSiteId->defaultValue  = 0;
         $this->ownPiwikSiteId->readableByCurrentUser = true;
+        $this->ownPiwikSiteId->validate = function ($idSite) {
+            if (empty($idSite)) {
+                return;
+            }
+
+            if (!is_numeric($idSite)) {
+                throw new Exception("Site Id '$idSite' should be a number");
+            }
+
+            $idSite = (int) $idSite;
+            try {
+                $siteExists = Request::processRequest('SitesManager.getSiteFromId', array('idSite' => $idSite));
+            } catch (Exception $e) {
+                $siteExists = false;
+            }
+
+            if (!$siteExists) {
+                throw new Exception("The specified idSite '$idSite' does not exist");
+            }
+        };
 
         $this->addSetting($this->ownPiwikSiteId);
     }
@@ -111,12 +133,13 @@ class Settings extends \Piwik\Plugin\Settings
         $this->customPiwikSiteUrl->uiControlAttributes = array('placeHolder' => 'eg. http://example.com/piwik');
         $this->customPiwikSiteUrl->introduction  = 'Send anonymize usage data to a custom Piwik';
         $this->customPiwikSiteUrl->description   = '';
+        $this->customPiwikSiteUrl->defaultValue  = '';
         $this->customPiwikSiteUrl->validate = function ($value, $setting) {
             if (empty($value)) {
                 return;
             }
 
-            if (parse_url($value) === false) {
+            if (!UrlHelper::isLookLikeUrl($value)) {
                 throw new Exception("URL '$value' seems to be not a valid URL");
             }
 
@@ -124,7 +147,7 @@ class Settings extends \Piwik\Plugin\Settings
         };
         $this->customPiwikSiteUrl->transform = function ($value) {
             if (empty($value)) {
-                return $value;
+                return '';
             }
 
             if (!Common::stringEndsWith($value, '/piwik.php')) {
@@ -148,6 +171,7 @@ class Settings extends \Piwik\Plugin\Settings
         $this->customPiwikSiteId->uiControlType = static::CONTROL_TEXT;
         $this->customPiwikSiteId->uiControlAttributes = array('placeHolder' => 'eg. "2"');
         $this->customPiwikSiteId->description = 'If a URL and Site Id is specified, usage data will be sent to the custom Piwik instance.';
+        $this->customPiwikSiteId->defaultValue = 0;
         $this->customPiwikSiteId->validate = function ($idSite) {
             if (empty($idSite)) {
                 return;
@@ -155,13 +179,6 @@ class Settings extends \Piwik\Plugin\Settings
 
             if (!is_numeric($idSite)) {
                 throw new Exception("Site Id '$idSite' should be a number");
-            }
-
-            $idSite = (int) $idSite;
-            $siteExists = Request::processRequest('SitesManager.getSiteFromId', array('idSite' => $idSite));
-
-            if (!$siteExists) {
-                throw new Exception("The specified idSite '$idSite' does not exist");
             }
         };
 

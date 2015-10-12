@@ -78,7 +78,7 @@ piwikUsageTracking.createTrackersIfNeeded = function ()
 
     function anonymizeUrl(tracker)
     {
-        var url = urlAnonymizer.getCurrentAnonymizedUrl();
+        var url = urlAnonymizer.getAnonymizedUrl(location);
         url = urlAnonymizer.makeUrlHierarchical(url);
         tracker.setCustomUrl(url);
     }

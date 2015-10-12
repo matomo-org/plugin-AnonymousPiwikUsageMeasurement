@@ -14,7 +14,7 @@ var urlAnonymizer = (function () {
 
         var search = getSearchFromUrl(url);
 
-        var hierarchicalUrl = '';
+        var hierarchicalUrl = trackingDomain + '/';
         if (module) {
             hierarchicalUrl = trackingDomain + '/' + module.toLowerCase() + '/' + action.toLowerCase() + '/';
         }
@@ -103,7 +103,7 @@ var urlAnonymizer = (function () {
         return url;
     }
 
-    function getCurrentAnonymizedUrl()
+    function getAnonymizedUrl(location)
     {
         var anonymizedUrl;
 
@@ -161,13 +161,16 @@ var urlAnonymizer = (function () {
 
     function getValueFromHashOrUrl(param, url)
     {
-        var value = broadcast.getValueFromHash(param, url);
-        if (!value && !broadcast.getValueFromHash('module', url)) {
+        if (broadcast.getValueFromHash('module', url)) {
+            return broadcast.getValueFromHash(param, url);
             // fallback to Url only if there is no url in hash specified. Otherwise we'd return wrong value,
             // eg action doesn't have to be specified in hash, using the one from Url would be wrong if there is a module
             // specified in hash
-            value = broadcast.getValueFromUrl(param, url);
-        } else if (!value) {
+        }
+
+        var value = broadcast.getValueFromUrl(param, url);
+
+        if (!value) {
             // we make sure to work with strings
             value = '';
         }
@@ -183,7 +186,7 @@ var urlAnonymizer = (function () {
             popover = decodeURIComponent(popover.replace(/\$/g, '%'));
 
             if (0 === popover.indexOf('RowAction:')) {
-                popover = popover.split(':', 2).join(':').length;
+                popover = popover.split(':', 2).join(':');
                 // use max first two parts as a URL includes a ":" as well eg "RowAction:Transitions:url:http://"
                 // to be safe we use only "RowAction:Transitions" in this case.
                 return popover;
@@ -197,7 +200,7 @@ var urlAnonymizer = (function () {
     }
 
     return {
-        getCurrentAnonymizedUrl: getCurrentAnonymizedUrl,
+        getAnonymizedUrl: getAnonymizedUrl,
         makeUrlHierarchical: makeUrlHierarchical,
         getValueFromHashOrUrl: getValueFromHashOrUrl,
         getPopoverNameFromUrl: getPopoverNameFromUrl

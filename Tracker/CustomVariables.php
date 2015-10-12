@@ -29,12 +29,12 @@ class CustomVariables
             array(
                 'id' => 1,
                 'name' => 'Piwik Version',
-                'value' => Version::VERSION,
+                'value' => StaticContainer::get('AnonymousPiwikUsageMeasurement.piwikVersion'),
             ),
             array(
                 'id' => 2,
                 'name' => 'PHP Version',
-                'value' => phpversion(),
+                'value' => StaticContainer::get('AnonymousPiwikUsageMeasurement.phpVersion'),
             ),
             array(
                 'id' => 3,
@@ -65,19 +65,19 @@ class CustomVariables
     public function getClientVisitCustomVariables()
     {
         if (Piwik::hasUserSuperUserAccess()) {
-            $role = 'superuser';
+            $access = 'superuser';
         } elseif (Piwik::isUserIsAnonymous()) {
-            $role = 'anonymous';
+            $access = 'anonymous';
         } else {
             // I do not check between view/admin as it could trigger slow DB queries to fetch sites with access
-            $role = 'user';
+            $access = 'user';
         }
 
         return array(
             array(
                 'id' => 1,
-                'name' => 'Role',
-                'value' => $role,
+                'name' => 'Access',
+                'value' => $access,
             )
         );
     }

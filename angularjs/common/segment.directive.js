@@ -32,8 +32,8 @@
 
                     return function () {
                         _paq.push(['trackEvent', category, action, name]);
-                    }
-                };
+                    };
+                }
 
                 element.on('click', '[data-idsegment]', trackEvent('Select a segment'));
                 element.on('mousedown', '.add_new_segment', trackEvent('Add new segment'));
