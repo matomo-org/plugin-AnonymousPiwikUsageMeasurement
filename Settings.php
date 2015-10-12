@@ -40,8 +40,6 @@ class Settings extends \Piwik\Plugin\Settings
 
     protected function init()
     {
-        // $this->setIntroduction('Configure up to three Piwik instances that will be used to track usage of this Piwik. The same data will be tracked to all enabled instances, this allows you to see which data is sent to Piwik (if enabled) and how your Piwik is used.');
-
         $this->createLetUsersOptOutSetting();
         $this->createTrackToPiwikSetting();
 
@@ -58,7 +56,7 @@ class Settings extends \Piwik\Plugin\Settings
         $this->canUserOptOut = new SystemSetting('canUserOptOut', 'Let users disable anonymous tracking');
         $this->canUserOptOut->type  = static::TYPE_BOOL;
         $this->canUserOptOut->uiControlType = static::CONTROL_CHECKBOX;
-        $this->canUserOptOut->description   = 'If enabled, logged in users can opt out in plugin settings. Anonymous users cannot opt out.';
+        $this->canUserOptOut->description   = 'If enabled, logged in users can opt out in their plugin settings. Anonymous users cannot opt out.';
         $this->canUserOptOut->defaultValue  = true;
         $this->canUserOptOut->readableByCurrentUser = true;
 
@@ -70,9 +68,11 @@ class Settings extends \Piwik\Plugin\Settings
         $this->userTrackingEnabled = new UserSetting('userTrackingEnabled', 'Piwik usage tracking enabled');
         $this->userTrackingEnabled->type  = static::TYPE_BOOL;
         $this->userTrackingEnabled->uiControlType = static::CONTROL_CHECKBOX;
-        $this->userTrackingEnabled->defaultValue  = true;
+        $this->userTrackingEnabled->defaultValue = true;
+        $this->userTrackingEnabled->description = 'If enabled, anonymous usage data will be tracked. For example which pages are viewed and which reports are used most often. For more information contact your system administrator.';
 
         if ($this->canUserOptOut->getValue()) {
+            // we show this setting only when a user can actually opt out
             $this->addSetting($this->userTrackingEnabled);
         }
     }
@@ -83,7 +83,7 @@ class Settings extends \Piwik\Plugin\Settings
         $this->trackToPiwik->type  = static::TYPE_BOOL;
         $this->trackToPiwik->uiControlType = static::CONTROL_CHECKBOX;
         $this->trackToPiwik->introduction  = 'Send anonmyized usage data to the creator of Piwik';
-        $this->trackToPiwik->description   = 'If enabled, anonymized usage data will be sent to demo.piwik.org and the tracked data can be viewed there. The collected data is used to improve Piwik. Thank you for making Piwik better!';
+        $this->trackToPiwik->description   = 'If enabled, anonymized usage data will be sent to demo.piwik.org and the tracked data can be viewed there (the data is public). The collected data is used to improve Piwik. Thank you for making Piwik better!';
         $this->trackToPiwik->defaultValue  = true;
         $this->trackToPiwik->readableByCurrentUser = true;
 

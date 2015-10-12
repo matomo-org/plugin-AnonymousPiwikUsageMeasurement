@@ -29,35 +29,14 @@ class TasksTest extends SystemTestCase
         parent::setUp();
 
         $self = $this;
-        Piwik::addAction('API.Request.dispatch.end', function (&$return, $params) use ($self) {
-            // we make sure processed result is the same independent on the Piwik include path
-            TasksTest::replacePiwikAndPhpVersion($return, $params);
-        });
-    }
-
-    private static function replacePiwikPath($path)
-    {
-        return str_replace(PIWIK_INCLUDE_PATH, '/home/test/dir', $path);
-    }
-
-    public static function replacePiwikAndPhpVersion(&$return, $params)
-    {
-        if ($params['module'] === 'AutoLogImporter') {
-            if ($params['action'] === 'getFilesThatCanBeImported') {
-                foreach ($return as &$value) {
-                    $value = self::replacePiwikPath($value);
-                }
-            } elseif ($params['action'] === 'getFilesHavingInvalidHash') {
-                foreach ($return as &$row) {
-                    if (!empty($row['file'])) {
-                        $row['file'] = self::replacePiwikPath($row['file']);
-                    }
-                    if (!empty($row['verify_file'])) {
-                        $row['verify_file'] = self::replacePiwikPath($row['verify_file']);
-                    }
-                }
+        Piwik::addAction('API.Live.getLastVisitsDetails.end', function (&$return, $params) use ($self) {
+            // we make sure processed result is the same at any time
+            foreach ($return as &$value) {
+                $value->setColumn('visit_last_action_time', '2015-10-12 17:31:45');
+                $value->setColumn('visit_first_action_time', '2015-10-12 17:31:45');
+                $value->setColumn('visitor_localtime', '17:31:45');
             }
-        }
+        });
     }
 
     /**

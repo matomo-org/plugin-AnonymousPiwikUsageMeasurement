@@ -1,8 +1,14 @@
 var urlAnonymizer = (function () {
 
-    var trackingDomain = piwikUsageTracking.trackingDomain;
-    var exampleDomain  = piwikUsageTracking.exampleDomain;
     var whitelistUrlParams = ['module', 'action', 'idSite', 'idDashboard', 'period', 'date', 'popover', 'idGoal', 'pluginName'];
+
+    function getTrackingDomain()
+    {
+        if ('undefined' !== (typeof piwikUsageTracking)
+            && piwikUsageTracking && piwikUsageTracking.trackingDomain) {
+            return piwikUsageTracking.trackingDomain;
+        }
+    }
 
     function makeUrlHierarchical(url)
     {
@@ -14,9 +20,9 @@ var urlAnonymizer = (function () {
 
         var search = getSearchFromUrl(url);
 
-        var hierarchicalUrl = trackingDomain + '/';
+        var hierarchicalUrl = getTrackingDomain() + '/';
         if (module) {
-            hierarchicalUrl = trackingDomain + '/' + module.toLowerCase() + '/' + action.toLowerCase() + '/';
+            hierarchicalUrl += module.toLowerCase() + '/' + action.toLowerCase() + '/';
         }
 
         var searchParams = broadcast.extractKeyValuePairsFromQueryString(search);
@@ -156,7 +162,7 @@ var urlAnonymizer = (function () {
             url = url.substr(1);
         }
 
-        return trackingDomain + '/index.php?' + url;
+        return getTrackingDomain() + '/index.php?' + url;
     }
 
     function getValueFromHashOrUrl(param, url)

@@ -58,7 +58,7 @@ class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
 
     public function getJsFiles(&$jsFiles)
     {
-        $jsFiles[] = 'js/piwik.js';
+        $jsFiles[] = 'piwik.js';
         $jsFiles[] = 'plugins/AnonymousPiwikUsageMeasurement/javascripts/url.js';
         $jsFiles[] = 'plugins/AnonymousPiwikUsageMeasurement/javascripts/tracking.js';
         $jsFiles[] = 'plugins/AnonymousPiwikUsageMeasurement/angularjs/common/dashboard.directive.js';

@@ -17,6 +17,7 @@ piwikUsageTracking.createTrackersIfNeeded = function ()
         return;
     }
 
+    piwikUsageTracking.trackers = [];
     piwikUsageTracking.initialized = true;
 
     if (!piwikUsageTracking.targets || !piwikUsageTracking.targets.length) {
@@ -24,6 +25,11 @@ piwikUsageTracking.createTrackersIfNeeded = function ()
     }
 
     $.each(piwikUsageTracking.targets, function (index, target) {
+        if ('undefined' === (typeof Piwik)) {
+            // blocked by ad blocker
+            return;
+        }
+
         var tracker = Piwik.getTracker(target.url, target.idSite);
 
         if (target.cookieDomain) {

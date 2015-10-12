@@ -12,7 +12,6 @@ use Piwik\API\Request;
 use Piwik\Container\StaticContainer;
 use Piwik\Db;
 use Piwik\Piwik;
-use Piwik\Version;
 
 class CustomVariables
 {
