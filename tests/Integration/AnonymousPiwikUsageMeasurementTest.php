@@ -59,7 +59,7 @@ class AnonymousPiwikUsageMeasurementTest extends IntegrationTestCase
             )
         );
 
-        $this->assertSame($expected, $pushedEvents);
+        $this->assertEquals($expected, $pushedEvents);
     }
 
     public function test_shouldNotAddTrackingCalls_IfDisabledByUser()

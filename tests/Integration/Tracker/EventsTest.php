@@ -39,7 +39,7 @@ class EventsTest extends IntegrationTestCase
     public function test_pushEvent_ShouldAddEventToListOfExistingEvents()
     {
         $this->pushEvent('2014-01-01 00:01:02');
-        $this->assertSame(array(array(
+        $this->assertEquals(array(array(
             'creation_date' => '2014-01-01 00:01:02',
             'event_category' => 'Category',
             'event_name' => 'myName',
@@ -53,7 +53,7 @@ class EventsTest extends IntegrationTestCase
         $this->pushEvent('2014-01-01 00:01:02');
         $this->pushEvent('2014-01-01 00:01:03');
         $this->pushEvent('2014-01-01 00:01:04');
-        $this->assertSame(array(array(
+        $this->assertEquals(array(array(
             'creation_date' => '2014-01-01 00:01:02',
             'event_category' => 'Category',
             'event_name' => 'myName',
