@@ -72,21 +72,27 @@ class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
     {
         $settings = StaticContainer::get('Piwik\Plugins\AnonymousPiwikUsageMeasurement\Settings');
 
-        if (!Piwik::isUserIsAnonymous() && !$settings->userTrackingEnabled->getValue()) {
-            // an anonymous user is currently always tracked, an anonymous user would not have permission to read
-            // this user setting and it would result in an exception
-            return;
-        }
-
-        $targets = StaticContainer::get('Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\Targets');
-        $customVars = StaticContainer::get('Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\CustomVariables');
-
         $config = array(
-            'targets' => $targets->getTargets(),
-            'visitorCustomVariables' => $customVars->getClientVisitCustomVariables(),
+            'targets' => array(),
+            'visitorCustomVariables' => array(),
             'trackingDomain' => self::TRACKING_DOMAIN,
             'exampleDomain' => self::EXAMPLE_DOMAIN
         );
+
+        if (Piwik::isUserIsAnonymous()
+            || !$settings->userTrackingEnabled->isReadableByCurrentUser()
+            || $settings->userTrackingEnabled->getValue()) {
+            // an anonymous user is currently always tracked, an anonymous user would not have permission to read
+            // this user setting. The `isUserIsAnonymous()` check is not needed but there to improve performance
+            // in case user is anonymous. Then we avoid checking whether user has access to any sites which can be slow
+            // a user not having any view permission is also always tracked so far as such a user is not allowed to read
+            // this setting
+            $targets = StaticContainer::get('Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\Targets');
+            $customVars = StaticContainer::get('Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\CustomVariables');
+
+            $config['targets'] = $targets->getTargets();
+            $config['visitorCustomVariables'] = $customVars->getClientVisitCustomVariables();
+        }
 
         $out .= "\nvar piwikUsageTracking = " . json_encode($config) . ";\n";
     }

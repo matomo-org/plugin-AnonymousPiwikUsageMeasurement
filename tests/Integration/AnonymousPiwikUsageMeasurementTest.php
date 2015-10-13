@@ -62,7 +62,7 @@ class AnonymousPiwikUsageMeasurementTest extends IntegrationTestCase
         $this->assertEquals($expected, $pushedEvents);
     }
 
-    public function test_shouldNotAddTrackingCalls_IfDisabledByUser()
+    public function test_shouldNotAddTargetsOrCustomVariables_IfDisabledByUser()
     {
         $settings = $this->makePluginSettings();
         $settings->userTrackingEnabled->setValue(false);
@@ -70,18 +70,17 @@ class AnonymousPiwikUsageMeasurementTest extends IntegrationTestCase
         $out = '';
         Piwik::postEvent('Template.jsGlobalVariables', array(&$out));
 
-        $this->assertNotContains("piwikUsageTracking", $out);
+        $this->assertContains('var piwikUsageTracking = {"targets":[],"visitorCustomVariables":[],', $out);
     }
 
-    public function test_shouldAddTrackingCalls_IfEnabledByUser()
+    public function test_shouldAddTrackingCallsWithTargetsAndCustomVariables_IfEnabledByUser()
     {
         $settings = $this->makePluginSettings();
         $settings->userTrackingEnabled->setValue(true);
 
         $out = '';
         Piwik::postEvent('Template.jsGlobalVariables', array(&$out));
-        $this->assertContains('var piwikUsageTracking = {"targets"', $out);
-        $this->assertContains('"trackingDomain":"http:\/\/demo.piwik.org","exampleDomain":"http:\/\/example.com"', $out);
+        $this->assertContains('var piwikUsageTracking = {"targets":[{"url":"http:\/\/demo.piwik.org\/piwik.php","idSite":51,"cookieDomain":"*.piwik.org"}],"visitorCustomVariables":[{"id":1,"name":"Access","value":"superuser"}],"trackingDomain":"http:\/\/demo.piwik.org","exampleDomain":"http:\/\/example.com"}', $out);
     }
 
     public function test_shouldAlwaysAddTrackingCallAndNotFail_IfUserIsAnonmyous()
@@ -91,7 +90,7 @@ class AnonymousPiwikUsageMeasurementTest extends IntegrationTestCase
 
         $out = '';
         Piwik::postEvent('Template.jsGlobalVariables', array(&$out));
-        $this->assertContains('var piwikUsageTracking', $out);
+        $this->assertContains('var piwikUsageTracking = {"targets":[{"url"', $out);
         $this->assertContains('{"id":1,"name":"Access","value":"anonymous"}', $out);
     }
 
