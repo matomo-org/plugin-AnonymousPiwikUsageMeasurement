@@ -12,7 +12,7 @@ Track usage of your Piwik into up to three Piwiks:
 
 * The pages that are viewed
 * Visitor software and devices data like browser, resolution, ...
-* On demo.piwik.org 3 bytes of the IP are anonymised (eg when IP is 192.168.1.1 we track only 192.0.0.0). Original IP is not used to identify your location.
+* On demo.piwik.org 2 bytes of the IP are anonymised (eg when IP is 192.168.1.1 we track only 192.168.0.0). Original IP is not used to identify your location.
 * Referrer is removed and not tracked
 * No `token_auth` will be sent
 * If you have developed a custom Piwik plugin that contains eg the name of your business in any of the following names we recommend to not install this plugin as it might be tracked:

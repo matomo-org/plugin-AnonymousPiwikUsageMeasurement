@@ -107,13 +107,23 @@ piwikUsageTracking.createTrackersIfNeeded = function ()
 
     $(function () {
         var $rootScope = angular.element(document).injector().get('$rootScope');
+        var timeStart;
 
-        $rootScope.$on('$locationChangeSuccess', function (event, newUrl, oldUrl) {
-            if (newUrl === oldUrl) {
-                return;
+        $(broadcast).on('locationChangeSuccess', function () {
+            if (timeStart) {
+                var timeEnd = new Date().getTime();
+                var timeTaken = timeEnd - timeStart;
+                _paq.push(['setGenerationTimeMs', timeTaken]);
+                timeStart = null;
+            } else {
+                _paq.push(['setGenerationTimeMs', 0]);
             }
 
             trackPageView();
+        });
+
+        $rootScope.$on('$locationChangeSuccess', function (event, newUrl, oldUrl) {
+            timeStart = new Date().getTime();
         });
     });
 };
