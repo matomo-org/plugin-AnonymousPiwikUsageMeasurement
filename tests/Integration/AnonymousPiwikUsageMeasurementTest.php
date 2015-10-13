@@ -86,6 +86,7 @@ class AnonymousPiwikUsageMeasurementTest extends IntegrationTestCase
 
     public function test_shouldAlwaysAddTrackingCallAndNotFail_IfUserIsAnonmyous()
     {
+        $this->makePluginSettings();
         FakeAccess::clearAccess($superUser = false, array(), array(), $login = 'anonymous');
 
         $out = '';
