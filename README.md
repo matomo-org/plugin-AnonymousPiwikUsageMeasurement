@@ -37,11 +37,11 @@ Track usage of your Piwik into up to three Piwiks:
 __When should I not install this plugin?__
 
 Do not install this plugin if you have any custom plugins installed whose URL or plugin name could identify you. Eg if a controller action or a report
-contains the name of your business, this information might be sent to piwik.org and can be viewed by visitors of [http://demo-anonymous.piwik.org]() .
+contains the name of your business, this information might be sent to piwik.org and can be viewed by visitors of [http://demo-anonymous.piwik.org](http://demo-anonymous.piwik.org) .
 
 __Who has access to the tracked data at demo-anonymous.piwik.org?__
 
-The data will be made public and therefore can be seen by anyone on [http://demo.piwik.org](http://demo-anonymous.piwik.org).
+The data will be made public and therefore can be seen by anyone on [http://demo-anonymous.piwik.org](http://demo-anonymous.piwik.org).
 This is to assure the tracked data is anonymous (transparency) and to showcase how Piwik can be used to track an application.
 
 ## Changelog
