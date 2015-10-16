@@ -9,7 +9,7 @@
 namespace Piwik\Plugins\AnonymousPiwikUsageMeasurement;
 
 use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\CustomVariables;
-use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\Events;
+use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\Profiles;
 use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\Trackers;
 
 class Tasks extends \Piwik\Plugin\Tasks
@@ -25,15 +25,15 @@ class Tasks extends \Piwik\Plugin\Tasks
     private $customVars;
 
     /**
-     * @var Events
+     * @var Profiles
      */
-    private $events;
+    private $profiles;
 
-    public function __construct(Trackers $trackers, CustomVariables $customVars, Events $events)
+    public function __construct(Trackers $trackers, CustomVariables $customVars, Profiles $profiles)
     {
         $this->trackers = $trackers;
         $this->customVars = $customVars;
-        $this->events = $events;
+        $this->profiles = $profiles;
     }
 
     public function schedule()
@@ -52,7 +52,7 @@ class Tasks extends \Piwik\Plugin\Tasks
     {
         $trackers   = $this->trackers->makeTrackers();
         $customVars = $this->customVars->getServerVisitCustomVariables();
-        $events     = $this->events->popAll();
+        $profiles   = $this->profiles->popAll();
 
         foreach ($trackers as $tracker) {
             $tracker->enableBulkTracking();
@@ -64,8 +64,13 @@ class Tasks extends \Piwik\Plugin\Tasks
             $tracker->setAnonymousUrl('/system-report');
             $tracker->doTrackPageView('System-Report');
 
-            foreach ($events as $event) {
-                $tracker->doTrackEvent($event['event_category'], $event['event_action'], $event['event_name'], $event['event_value']);
+            foreach ($profiles as $profile) {
+                $tracker->doTrackEvent($profile['category'], $profile['action'], $profile['name'], $profile['count']);
+
+                if ($profile['count'] > 0) {
+                    $wallTimeAvg = round($profile['wall_time'] / $profile['count'], 1);
+                    $tracker->doTrackEvent($profile['category'] . ' Wall Time', $profile['action'], $profile['name'], $wallTimeAvg);
+                }
             }
 
             $tracker->doBulkTrack();

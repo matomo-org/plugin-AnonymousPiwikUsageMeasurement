@@ -8,11 +8,12 @@
 namespace Piwik\Plugins\AnonymousPiwikUsageMeasurement\tests\Fixtures;
 
 use Piwik\API\Request;
+use Piwik\Date;
 use Piwik\Tests\Framework\Fixture;
 use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Settings;
 use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tasks;
+use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\Profiles;
 use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\CustomVariables;
-use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\Events;
 use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\Targets;
 use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\Trackers;
 
@@ -38,7 +39,7 @@ class SendSystemReportTaskFixture extends Fixture
         $trackers = new Trackers($targets);
         $customVars = new CustomVariables();
 
-        $task = new Tasks($trackers, $customVars, new Events());
+        $task = new Tasks($trackers, $customVars, new Profiles());
         $task->sendSystemReport();
     }
 
@@ -61,6 +62,11 @@ class SendSystemReportTaskFixture extends Fixture
         Request::processRequest('API.getSettings');
         Request::processRequest('UsersManager.getUsers');
         Request::processRequest('API.getPiwikVersion');
+        Request::processRequest('VisitsSummary.get', array('idSite' => 1, 'period' => 'year', 'date' => 'today'));
+
+        $date = Date::factory('today')->toString();
+        Request::processRequest('CoreAdminHome.invalidateArchivedReports', array('idSites' => '1', 'period' => 'year', 'dates' => $date, 'cascadeDown' => '1'));
+
     }
 
 }

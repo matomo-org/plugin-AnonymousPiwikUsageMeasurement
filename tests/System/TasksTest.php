@@ -8,6 +8,7 @@
 
 namespace Piwik\Plugins\AnonymousPiwikUsageMeasurement\tests\System;
 
+use Piwik\DataTable;
 use Piwik\Piwik;
 use Piwik\Plugins\AnonymousPiwikUsageMeasurement\tests\Fixtures\SendSystemReportTaskFixture;
 use Piwik\Tests\Framework\TestCase\SystemTestCase;
@@ -29,12 +30,29 @@ class TasksTest extends SystemTestCase
         parent::setUp();
 
         $self = $this;
-        Piwik::addAction('API.Live.getLastVisitsDetails.end', function (&$return, $params) use ($self) {
+        Piwik::addAction('API.Request.dispatch.end', function (&$return, $extra) use ($self) {
+            if ($extra['module'] !== 'Events') {
+                return;
+            }
+
+            /** @var DataTable $return*/
+
             // we make sure processed result is the same at any time
             foreach ($return as &$value) {
-                $value->setColumn('visit_last_action_time', '2015-10-12 17:31:45');
-                $value->setColumn('visit_first_action_time', '2015-10-12 17:31:45');
-                $value->setColumn('visitor_localtime', '17:31:45');
+                $value->setColumn('sum_event_value', '2');
+                $value->setColumn('max_event_value', '2');
+                $value->setColumn('sum_daily_nb_uniq_visitors', '2');
+                $value->setColumn('avg_event_value', '2');
+
+                if ($value->isSubtableLoaded()) {
+                    $subtable = $value->getSubtable();
+                    foreach ($subtable->getRows() as $row) {
+                        $row->setColumn('sum_event_value', '2');
+                        $row->setColumn('max_event_value', '2');
+                        $row->setColumn('sum_daily_nb_uniq_visitors', '2');
+                        $row->setColumn('avg_event_value', '2');
+                    }
+                }
             }
         });
     }
@@ -56,7 +74,6 @@ class TasksTest extends SystemTestCase
             'Events',
             'Referrers.getReferrerType',
             'CustomVariables',
-            'Live.getLastVisitsDetails'
         );
 
         $apiToTest   = array();

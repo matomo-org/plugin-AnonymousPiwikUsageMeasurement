@@ -12,7 +12,7 @@ use Piwik\API\Request;
 use Piwik\Container\StaticContainer;
 use Piwik\Piwik;
 use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Settings;
-use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\Events;
+use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\Profiles;
 use Piwik\Tests\Framework\Mock\FakeAccess;
 use Piwik\Tests\Framework\TestCase\IntegrationTestCase;
 
@@ -30,36 +30,39 @@ class AnonymousPiwikUsageMeasurementTest extends IntegrationTestCase
         Request::processRequest('UsersManager.getUsers');
         Request::processRequest('API.getPiwikVersion');
 
-        $events = new Events();
-        $pushedEvents = $events->popAll();
+        $profiles = new Profiles();
+        $pushedProfiles = $profiles->popAll();
 
-        foreach ($pushedEvents as &$pushedEvent) {
-            $this->assertNotEmpty($pushedEvent['creation_date']);
-            unset($pushedEvent['creation_date']);
+        foreach ($pushedProfiles as &$pushedProfile) {
+            $this->assertNotEmpty($pushedProfile['creation_date']);
+            unset($pushedProfile['creation_date']);
+
+            $this->assertGreaterThanOrEqual(1, $pushedProfile['wall_time']);
+            unset($pushedProfile['wall_time']);
         }
 
         $expected = array(
             array (
-                'event_category' => 'API',
-                'event_name' => 'API',
-                'event_action' => 'getPiwikVersion',
-                'event_value' => '2',
+                'category' => 'API',
+                'name' => 'API',
+                'action' => 'getPiwikVersion',
+                'count' => '2',
             ),
             array (
-                'event_category' => 'API',
-                'event_name' => 'API',
-                'event_action' => 'getSettings',
-                'event_value' => '1',
+                'category' => 'API',
+                'name' => 'API',
+                'action' => 'getSettings',
+                'count' => '1',
             ),
             array (
-                'event_category' => 'API',
-                'event_name' => 'UsersManager',
-                'event_action' => 'getUsers',
-                'event_value' => '1',
+                'category' => 'API',
+                'name' => 'UsersManager',
+                'action' => 'getUsers',
+                'count' => '1',
             )
         );
 
-        $this->assertEquals($expected, $pushedEvents);
+        $this->assertEquals($expected, $pushedProfiles);
     }
 
     public function test_shouldNotAddTargetsOrCustomVariables_IfDisabledByUser()

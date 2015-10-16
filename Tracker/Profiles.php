@@ -12,14 +12,14 @@ use Piwik\Common;
 use Piwik\Db;
 use Piwik\DbHelper;
 
-class Events
+class Profiles
 {
     /**
      * @var Db
      */
     private $db;
 
-    private $tableName = 'usage_measurement_events';
+    private $tableName = 'usage_measurement_profiles';
     private $tableNamePrefixed;
 
     public function __construct()
@@ -30,19 +30,19 @@ class Events
 
     public function popAll()
     {
-        $events = $this->db->fetchAll('SELECT * FROM ' . $this->tableNamePrefixed);
+        $profiles = $this->db->fetchAll('SELECT * FROM ' . $this->tableNamePrefixed);
         $this->db->query('DELETE FROM ' . $this->tableNamePrefixed);
 
-        return $events;
+        return $profiles;
     }
 
-    public function pushEvent($creationDate, $category, $name, $action, $value)
+    public function pushProfile($creationDate, $category, $name, $action, $count, $wallTimeInMs)
     {
         $sql  = 'INSERT INTO `' . $this->tableNamePrefixed .
-                '` (creation_date, event_category, event_name, event_action, event_value) ' .
-                ' VALUES (?, ?, ?, ?, ?) ' .
-                ' ON DUPLICATE KEY UPDATE event_value = event_value + ?';
-        $bind = array($creationDate, $category, $name, $action, $value, $value);
+                '` (creation_date, `category`, `name`, `action`, `count`, `wall_time`) ' .
+                ' VALUES (?, ?, ?, ?, ?, ?) ' .
+                ' ON DUPLICATE KEY UPDATE `count` = `count` + ?, `wall_time` = `wall_time` + ?';
+        $bind = array($creationDate, $category, $name, $action, $count, $wallTimeInMs, $count, $wallTimeInMs);
 
         $this->db->query($sql, $bind);
     }
@@ -50,11 +50,12 @@ class Events
     public function install()
     {
         $table = "`creation_date` datetime NOT NULL ,
-                  `event_category` VARCHAR(200) NOT NULL ,
-                  `event_name` VARCHAR(200) NOT NULL ,
-                  `event_action` VARCHAR(200) NOT NULL,
-                  `event_value` TINYINT UNSIGNED NOT NULL DEFAULT 1 ,
-                  PRIMARY KEY(event_category, event_name, event_action)";
+                  `category` VARCHAR(200) NOT NULL ,
+                  `name` VARCHAR(200) NOT NULL ,
+                  `action` VARCHAR(200) NOT NULL,
+                  `count` INT UNSIGNED NOT NULL DEFAULT 0 ,
+                  `wall_time` BIGINT UNSIGNED NOT NULL DEFAULT 0 ,
+                  PRIMARY KEY(`category`, `name`, `action`)";
 
         DbHelper::createTable($this->tableName, $table);
     }

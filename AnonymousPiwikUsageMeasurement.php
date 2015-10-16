@@ -11,13 +11,15 @@ namespace Piwik\Plugins\AnonymousPiwikUsageMeasurement;
 use Piwik\Container\StaticContainer;
 use Piwik\Date;
 use Piwik\Piwik;
-use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\Events;
+use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\Profiles;
 use Piwik\View;
 
 class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
 {
     const TRACKING_DOMAIN = 'http://demo-anonymous.piwik.org';
     const EXAMPLE_DOMAIN = 'http://example.com';
+
+    private $profilingStack = array();
 
     /**
      * @see Piwik\Plugin::registerEvents
@@ -27,33 +29,63 @@ class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
         return array(
             'AssetManager.getJavaScriptFiles' => 'getJsFiles',
             'Template.jsGlobalVariables' => 'addPiwikClientTracking',
-            'API.Request.dispatch' => 'trackApiCall',
+            'API.Request.dispatch' => 'logStartTimeOfApiCall',
+            'API.Request.dispatch.end' => 'trackApiCall',
         );
     }
 
     public function install()
     {
-        $dao = new Events();
+        $dao = new Profiles();
         $dao->install();
     }
 
     public function uninstall()
     {
-        $dao = new Events();
+        $dao = new Profiles();
         $dao->uninstall();
     }
 
-    public function trackApiCall(&$finalParameters, $pluginName, $methodName)
+    public function logStartTimeOfApiCall(&$finalParameters, $pluginName, $methodName)
     {
-        $eventTracker = StaticContainer::get('Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\Events');
+        // API methods can call other API methods...
+        $this->profilingStack[] = array(
+            'method' => $pluginName . '.' . $methodName,
+            'time' => microtime(true)
+        );
+    }
+
+    public function trackApiCall(&$return, $endHookParams)
+    {
+        $endTime = microtime(true);
+
+        $name = $endHookParams['module'];
+        $action = $endHookParams['action'];
+        $neededTimeInMs = 0;
+
+        do {
+            $call = array_pop($this->profilingStack);
+            $method = $name . '.' . $action;
+
+            // we need to make sure the call was actually for this method to not send wrong data.
+            if ($method === $call['method']) {
+
+                $neededTimeInMs = ceil(($endTime - $call['time']) * 1000);
+                break;
+            }
+
+        } while (!empty($this->profilingStack));
+
+        if (empty($neededTimeInMs)) {
+            return;
+        }
+
+        $profiles = StaticContainer::get('Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\Profiles');
 
         $now = Date::now()->getDatetime();
         $category = 'API';
-        $name = $pluginName;
-        $action = $methodName;
-        $value = 1;
 
-        $eventTracker->pushEvent($now, $category, $name, $action, $value);
+        $profiles->pushProfile($now, $category, $name, $action, $count = 1, (int) $neededTimeInMs);
     }
 
     public function getJsFiles(&$jsFiles)

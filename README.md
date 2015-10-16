@@ -46,6 +46,7 @@ This is to assure the tracked data is anonymous (transparency) and to showcase h
 
 ## Changelog
 
+* 0.1.1 Track average API executime time
 * 0.1.0 Initial release
 
 ## Support
