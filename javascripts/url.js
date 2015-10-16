@@ -22,7 +22,7 @@ var urlAnonymizer = (function () {
 
         var hierarchicalUrl = getTrackingDomain() + '/';
         if (module) {
-            hierarchicalUrl += module.toLowerCase() + '/' + action.toLowerCase() + '/';
+            hierarchicalUrl += module + '/' + action + '/';
         }
 
         var searchParams = broadcast.extractKeyValuePairsFromQueryString(search);

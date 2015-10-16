@@ -26,7 +26,7 @@
 
             it('should make an url hierarchical', function() {
                 var url = urlAnonymizer.makeUrlHierarchical(anonymousDomain + '/index.php?module=CoreHome&action=myAction&idSite=3&date=today&period=day')
-                expect(url).to.eql(trackingDomain + '/corehome/myaction/?idSite=3&date=today&period=day');
+                expect(url).to.eql(trackingDomain + '/CoreHome/myAction/?idSite=3&date=today&period=day');
             });
 
             it('should not make an url hierarchical if no module is given', function() {
@@ -36,7 +36,7 @@
 
             it('should use a default action when making url hierarchical', function() {
                 var url = urlAnonymizer.makeUrlHierarchical(anonymousDomain + '/index.php?module=CoreHome&idSite=3&date=today&period=day')
-                expect(url).to.eql(trackingDomain + '/corehome/default/?idSite=3&date=today&period=day');
+                expect(url).to.eql(trackingDomain + '/CoreHome/default/?idSite=3&date=today&period=day');
             });
         });
 

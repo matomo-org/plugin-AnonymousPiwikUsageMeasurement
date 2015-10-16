@@ -63,7 +63,7 @@
                 for (var i = 0; i < piwikUsageTracking.trackers.length; i++) {
                     var tracker = piwikUsageTracking.trackers[i];
                     var request = tracker.getRequest('');
-                    expect(request).to.contain('&url=http%3A%2F%2Fdemo-anonymous.piwik.org%2F%3F');
+                    expect(request).to.contain('&url=http%3A%2F%2Fdemo.piwik.org%2F%3F');
                     expect(request).to.contain('&_cvar=%7B%221%22%3A%5B%22Access%22%2C%22user%22%5D%7D');
                     expect(request).to.not.contain('urlref=');
                 }
