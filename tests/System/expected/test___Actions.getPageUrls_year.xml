@@ -16,7 +16,7 @@
 		<avg_time_on_page>0</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<url>http://demo.piwik.org/system-report</url>
-		<segment>pageUrl==http%3A%2F%2Fdemo.piwik.org%2Fsystem-report</segment>
+		<url>http://demo-anonymous.piwik.org/system-report</url>
+		<segment>pageUrl==http%3A%2F%2Fdemo-anonymous.piwik.org%2Fsystem-report</segment>
 	</row>
 </result>

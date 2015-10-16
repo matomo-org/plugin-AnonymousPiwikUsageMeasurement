@@ -80,7 +80,7 @@ class AnonymousPiwikUsageMeasurementTest extends IntegrationTestCase
 
         $out = '';
         Piwik::postEvent('Template.jsGlobalVariables', array(&$out));
-        $this->assertContains('var piwikUsageTracking = {"targets":[{"url":"http:\/\/demo.piwik.org\/piwik.php","idSite":51,"cookieDomain":"*.piwik.org"}],"visitorCustomVariables":[{"id":1,"name":"Access","value":"superuser"}],"trackingDomain":"http:\/\/demo.piwik.org","exampleDomain":"http:\/\/example.com"}', $out);
+        $this->assertContains('var piwikUsageTracking = {"targets":[{"url":"http:\/\/demo-anonymous.piwik.org\/piwik.php","idSite":1}],"visitorCustomVariables":[{"id":1,"name":"Access","value":"superuser"}],"trackingDomain":"http:\/\/demo-anonymous.piwik.org","exampleDomain":"http:\/\/example.com"}', $out);
     }
 
     public function test_shouldAlwaysAddTrackingCallAndNotFail_IfUserIsAnonmyous()

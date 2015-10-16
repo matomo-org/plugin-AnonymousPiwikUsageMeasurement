@@ -124,7 +124,7 @@ var urlAnonymizer = (function () {
         var blacklistedParams = getBlacklistedUrlParams(anonymizedUrl);
         blacklistedParams.push('token_auth');
 
-        // make sure to anonymize nonce, otherwise one could look for nonce token on demo.piwik.org and test it
+        // make sure to anonymize nonce, otherwise one could look for nonce token on demo-anonymous.piwik.org and test it
         // on several instances
         blacklistedParams.push('nonce');
 
@@ -140,7 +140,7 @@ var urlAnonymizer = (function () {
 
         var popoverName = getPopoverNameFromUrl(anonymizedUrl);
         if (popoverName) {
-            // anonymize visitor ids etc. Otherwise one could check if your own visitor id is present in demo.piwik.org
+            // anonymize visitor ids etc. Otherwise one could check if your own visitor id is present in demo-anonymous.piwik.org
             // and identify specific piwik instances and see which Piwik and PHP version they use, whether they use
             // this plugin and what they do with their piwik. Also a transition or row evolution could include a URL
             // etc

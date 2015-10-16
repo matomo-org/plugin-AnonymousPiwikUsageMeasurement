@@ -32,10 +32,6 @@ piwikUsageTracking.createTrackersIfNeeded = function ()
 
         var tracker = Piwik.getTracker(target.url, target.idSite);
 
-        if (target.cookieDomain) {
-            tracker.setCookieDomain(target.cookieDomain);
-        }
-
         // we could do those calls later via `paq.push` but I want to make sure those methods are called and anonymized
         // eg if there was a typo in `setDocumentTitle` we would not notice the method is not executed otherwise and
         // it would result in a not anonymized title

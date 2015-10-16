@@ -111,7 +111,7 @@ class TargetsTest extends IntegrationTestCase
 
     private function getPiwikOrgTarget()
     {
-        return $this->getCustomPiwikTarget('http://demo.piwik.org/piwik.php', 51, '*.piwik.org');
+        return $this->getCustomPiwikTarget('http://demo-anonymous.piwik.org/piwik.php', 1);
     }
 
     private function getOwnPiwikTarget()
@@ -119,12 +119,11 @@ class TargetsTest extends IntegrationTestCase
         return $this->getCustomPiwikTarget(Fixture::getRootUrl() . 'tests/PHPUnit/proxy/piwik.php', $this->idSite);
     }
 
-    private function getCustomPiwikTarget($url, $idSite, $cookieDomain = '')
+    private function getCustomPiwikTarget($url, $idSite)
     {
         return array(
             'url' => $url,
             'idSite' => $idSite,
-            'cookieDomain' => $cookieDomain
         );
     }
 

@@ -8,7 +8,7 @@
 		<actionDetails>
 			<row>
 				<type>action</type>
-				<url>http://demo.piwik.org/system-report</url>
+				<url>http://demo-anonymous.piwik.org/system-report</url>
 				<pageTitle>System-Report</pageTitle>
 				<pageIdAction>2</pageIdAction>
 				
@@ -20,7 +20,7 @@
 			</row>
 			<row>
 				<type>event</type>
-				<url>http://demo.piwik.org/system-report</url>
+				<url>http://demo-anonymous.piwik.org/system-report</url>
 				<pageIdAction>2</pageIdAction>
 				
 				<pageId>2</pageId>
@@ -35,7 +35,7 @@
 			</row>
 			<row>
 				<type>event</type>
-				<url>http://demo.piwik.org/system-report</url>
+				<url>http://demo-anonymous.piwik.org/system-report</url>
 				<pageIdAction>2</pageIdAction>
 				
 				<pageId>3</pageId>
@@ -50,7 +50,7 @@
 			</row>
 			<row>
 				<type>event</type>
-				<url>http://demo.piwik.org/system-report</url>
+				<url>http://demo-anonymous.piwik.org/system-report</url>
 				<pageIdAction>2</pageIdAction>
 				
 				<pageId>4</pageId>
@@ -65,7 +65,7 @@
 			</row>
 			<row>
 				<type>event</type>
-				<url>http://demo.piwik.org/system-report</url>
+				<url>http://demo-anonymous.piwik.org/system-report</url>
 				<pageIdAction>2</pageIdAction>
 				
 				<pageId>5</pageId>
@@ -80,7 +80,7 @@
 			</row>
 			<row>
 				<type>event</type>
-				<url>http://demo.piwik.org/system-report</url>
+				<url>http://demo-anonymous.piwik.org/system-report</url>
 				<pageIdAction>2</pageIdAction>
 				
 				<pageId>6</pageId>

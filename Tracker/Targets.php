@@ -34,9 +34,8 @@ class Targets
 
         if ($this->settings->trackToPiwik->getValue()) {
             $targets[] = array(
-                'url' => 'http://demo.piwik.org/piwik.php',
-                'idSite' => 51,
-                'cookieDomain' => '*.piwik.org'
+                'url' => 'http://demo-anonymous.piwik.org/piwik.php',
+                'idSite' => 1,
             );
         }
 
@@ -49,7 +48,6 @@ class Targets
             $targets[] = array(
                 'url' => $piwikUrl . 'piwik.php',
                 'idSite' => (int) $ownSiteId,
-                'cookieDomain' => ''
             );
         }
 
@@ -59,7 +57,6 @@ class Targets
             $targets[] = array(
                 'url' => $customUrl,
                 'idSite' => (int) $customSiteId,
-                'cookieDomain' => ''
             );
         }
 

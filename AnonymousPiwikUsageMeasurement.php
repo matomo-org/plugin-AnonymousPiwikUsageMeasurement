@@ -16,7 +16,7 @@ use Piwik\View;
 
 class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
 {
-    const TRACKING_DOMAIN = 'http://demo.piwik.org';
+    const TRACKING_DOMAIN = 'http://demo-anonymous.piwik.org';
     const EXAMPLE_DOMAIN = 'http://example.com';
 
     /**
