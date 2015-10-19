@@ -1,79 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <result>
 	<row>
-		<label>API</label>
-		<nb_visits>4</nb_visits>
-		<nb_events>4</nb_events>
-		<nb_events_with_value>4</nb_events_with_value>
-		<sum_event_value>2</sum_event_value>
-		<min_event_value>0</min_event_value>
-		<max_event_value>2</max_event_value>
-		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
-		<avg_event_value>2</avg_event_value>
-		<segment>eventName==API</segment>
-		<subtable>
-			<row>
-				<label>getPiwikVersion</label>
-				<nb_visits>2</nb_visits>
-				<nb_events>2</nb_events>
-				<nb_events_with_value>2</nb_events_with_value>
-				<sum_event_value>2</sum_event_value>
-				<min_event_value>0</min_event_value>
-				<max_event_value>2</max_event_value>
-				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
-				<avg_event_value>2</avg_event_value>
-			</row>
-			<row>
-				<label>getSettings</label>
-				<nb_visits>2</nb_visits>
-				<nb_events>2</nb_events>
-				<nb_events_with_value>2</nb_events_with_value>
-				<sum_event_value>2</sum_event_value>
-				<min_event_value>0</min_event_value>
-				<max_event_value>2</max_event_value>
-				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
-				<avg_event_value>2</avg_event_value>
-			</row>
-		</subtable>
-	</row>
-	<row>
-		<label>SitesManager</label>
-		<nb_visits>4</nb_visits>
-		<nb_events>4</nb_events>
-		<nb_events_with_value>4</nb_events_with_value>
-		<sum_event_value>2</sum_event_value>
-		<min_event_value>0</min_event_value>
-		<max_event_value>2</max_event_value>
-		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
-		<avg_event_value>2</avg_event_value>
-		<segment>eventName==SitesManager</segment>
-		<subtable>
-			<row>
-				<label>getAllSites</label>
-				<nb_visits>2</nb_visits>
-				<nb_events>2</nb_events>
-				<nb_events_with_value>2</nb_events_with_value>
-				<sum_event_value>2</sum_event_value>
-				<min_event_value>0</min_event_value>
-				<max_event_value>2</max_event_value>
-				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
-				<avg_event_value>2</avg_event_value>
-			</row>
-			<row>
-				<label>getSiteFromId</label>
-				<nb_visits>2</nb_visits>
-				<nb_events>2</nb_events>
-				<nb_events_with_value>2</nb_events_with_value>
-				<sum_event_value>2</sum_event_value>
-				<min_event_value>0</min_event_value>
-				<max_event_value>2</max_event_value>
-				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
-				<avg_event_value>2</avg_event_value>
-			</row>
-		</subtable>
-	</row>
-	<row>
-		<label>CoreAdminHome</label>
+		<label>API (count)</label>
 		<nb_visits>2</nb_visits>
 		<nb_events>2</nb_events>
 		<nb_events_with_value>2</nb_events_with_value>
@@ -82,13 +10,24 @@
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
-		<segment>eventName==CoreAdminHome</segment>
+		<segment>eventName==API+%28count%29</segment>
 		<subtable>
 			<row>
-				<label>invalidateArchivedReports</label>
-				<nb_visits>2</nb_visits>
-				<nb_events>2</nb_events>
-				<nb_events_with_value>2</nb_events_with_value>
+				<label>API.getPiwikVersion (count)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>0</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+			<row>
+				<label>API.getSettings (count)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
 				<sum_event_value>2</sum_event_value>
 				<min_event_value>0</min_event_value>
 				<max_event_value>2</max_event_value>
@@ -98,7 +37,7 @@
 		</subtable>
 	</row>
 	<row>
-		<label>UsersManager</label>
+		<label>API (speed)</label>
 		<nb_visits>2</nb_visits>
 		<nb_events>2</nb_events>
 		<nb_events_with_value>2</nb_events_with_value>
@@ -107,13 +46,24 @@
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
-		<segment>eventName==UsersManager</segment>
+		<segment>eventName==API+%28speed%29</segment>
 		<subtable>
 			<row>
-				<label>getUsers</label>
-				<nb_visits>2</nb_visits>
-				<nb_events>2</nb_events>
-				<nb_events_with_value>2</nb_events_with_value>
+				<label>API.getPiwikVersion (speed)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>0</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+			<row>
+				<label>API.getSettings (speed)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
 				<sum_event_value>2</sum_event_value>
 				<min_event_value>0</min_event_value>
 				<max_event_value>2</max_event_value>
@@ -123,7 +73,7 @@
 		</subtable>
 	</row>
 	<row>
-		<label>VisitsSummary</label>
+		<label>SitesManager (count)</label>
 		<nb_visits>2</nb_visits>
 		<nb_events>2</nb_events>
 		<nb_events_with_value>2</nb_events_with_value>
@@ -132,13 +82,210 @@
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
-		<segment>eventName==VisitsSummary</segment>
+		<segment>eventName==SitesManager+%28count%29</segment>
 		<subtable>
 			<row>
-				<label>get</label>
-				<nb_visits>2</nb_visits>
-				<nb_events>2</nb_events>
-				<nb_events_with_value>2</nb_events_with_value>
+				<label>SitesManager.getAllSites (count)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>0</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+			<row>
+				<label>SitesManager.getSiteFromId (count)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>0</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+		</subtable>
+	</row>
+	<row>
+		<label>SitesManager (speed)</label>
+		<nb_visits>2</nb_visits>
+		<nb_events>2</nb_events>
+		<nb_events_with_value>2</nb_events_with_value>
+		<sum_event_value>2</sum_event_value>
+		<min_event_value>0</min_event_value>
+		<max_event_value>2</max_event_value>
+		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+		<avg_event_value>2</avg_event_value>
+		<segment>eventName==SitesManager+%28speed%29</segment>
+		<subtable>
+			<row>
+				<label>SitesManager.getAllSites (speed)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>0</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+			<row>
+				<label>SitesManager.getSiteFromId (speed)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>0</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+		</subtable>
+	</row>
+	<row>
+		<label>CoreAdminHome (count)</label>
+		<nb_visits>1</nb_visits>
+		<nb_events>1</nb_events>
+		<nb_events_with_value>1</nb_events_with_value>
+		<sum_event_value>2</sum_event_value>
+		<min_event_value>0</min_event_value>
+		<max_event_value>2</max_event_value>
+		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+		<avg_event_value>2</avg_event_value>
+		<segment>eventName==CoreAdminHome+%28count%29</segment>
+		<subtable>
+			<row>
+				<label>CoreAdminHome.invalidateArchivedReports (count)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>0</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+		</subtable>
+	</row>
+	<row>
+		<label>CoreAdminHome (speed)</label>
+		<nb_visits>1</nb_visits>
+		<nb_events>1</nb_events>
+		<nb_events_with_value>1</nb_events_with_value>
+		<sum_event_value>2</sum_event_value>
+		<min_event_value>0</min_event_value>
+		<max_event_value>2</max_event_value>
+		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+		<avg_event_value>2</avg_event_value>
+		<segment>eventName==CoreAdminHome+%28speed%29</segment>
+		<subtable>
+			<row>
+				<label>CoreAdminHome.invalidateArchivedReports (speed)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>0</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+		</subtable>
+	</row>
+	<row>
+		<label>UsersManager (count)</label>
+		<nb_visits>1</nb_visits>
+		<nb_events>1</nb_events>
+		<nb_events_with_value>1</nb_events_with_value>
+		<sum_event_value>2</sum_event_value>
+		<min_event_value>0</min_event_value>
+		<max_event_value>2</max_event_value>
+		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+		<avg_event_value>2</avg_event_value>
+		<segment>eventName==UsersManager+%28count%29</segment>
+		<subtable>
+			<row>
+				<label>UsersManager.getUsers (count)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>0</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+		</subtable>
+	</row>
+	<row>
+		<label>UsersManager (speed)</label>
+		<nb_visits>1</nb_visits>
+		<nb_events>1</nb_events>
+		<nb_events_with_value>1</nb_events_with_value>
+		<sum_event_value>2</sum_event_value>
+		<min_event_value>0</min_event_value>
+		<max_event_value>2</max_event_value>
+		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+		<avg_event_value>2</avg_event_value>
+		<segment>eventName==UsersManager+%28speed%29</segment>
+		<subtable>
+			<row>
+				<label>UsersManager.getUsers (speed)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>0</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+		</subtable>
+	</row>
+	<row>
+		<label>VisitsSummary (count)</label>
+		<nb_visits>1</nb_visits>
+		<nb_events>1</nb_events>
+		<nb_events_with_value>1</nb_events_with_value>
+		<sum_event_value>2</sum_event_value>
+		<min_event_value>0</min_event_value>
+		<max_event_value>2</max_event_value>
+		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+		<avg_event_value>2</avg_event_value>
+		<segment>eventName==VisitsSummary+%28count%29</segment>
+		<subtable>
+			<row>
+				<label>VisitsSummary.get (count)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>0</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+		</subtable>
+	</row>
+	<row>
+		<label>VisitsSummary (speed)</label>
+		<nb_visits>1</nb_visits>
+		<nb_events>1</nb_events>
+		<nb_events_with_value>1</nb_events_with_value>
+		<sum_event_value>2</sum_event_value>
+		<min_event_value>0</min_event_value>
+		<max_event_value>2</max_event_value>
+		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+		<avg_event_value>2</avg_event_value>
+		<segment>eventName==VisitsSummary+%28speed%29</segment>
+		<subtable>
+			<row>
+				<label>VisitsSummary.get (speed)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
 				<sum_event_value>2</sum_event_value>
 				<min_event_value>0</min_event_value>
 				<max_event_value>2</max_event_value>

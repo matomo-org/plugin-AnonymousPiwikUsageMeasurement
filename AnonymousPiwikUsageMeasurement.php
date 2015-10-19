@@ -60,12 +60,11 @@ class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
         $endTime = microtime(true);
 
         $name = $endHookParams['module'];
-        $action = $endHookParams['action'];
+        $method = $name . '.' . $endHookParams['action'];
         $neededTimeInMs = 0;
 
         do {
             $call = array_pop($this->profilingStack);
-            $method = $name . '.' . $action;
 
             // we need to make sure the call was actually for this method to not send wrong data.
             if ($method === $call['method']) {
@@ -85,7 +84,7 @@ class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
         $now = Date::now()->getDatetime();
         $category = 'API';
 
-        $profiles->pushProfile($now, $category, $name, $action, $count = 1, (int) $neededTimeInMs);
+        $profiles->pushProfile($now, $category, $name, $method, $count = 1, (int) $neededTimeInMs);
     }
 
     public function getJsFiles(&$jsFiles)

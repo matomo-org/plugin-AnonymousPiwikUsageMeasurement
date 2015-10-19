@@ -45,19 +45,19 @@ class AnonymousPiwikUsageMeasurementTest extends IntegrationTestCase
             array (
                 'category' => 'API',
                 'name' => 'API',
-                'action' => 'getPiwikVersion',
+                'action' => 'API.getPiwikVersion',
                 'count' => '2',
             ),
             array (
                 'category' => 'API',
                 'name' => 'API',
-                'action' => 'getSettings',
+                'action' => 'API.getSettings',
                 'count' => '1',
             ),
             array (
                 'category' => 'API',
                 'name' => 'UsersManager',
-                'action' => 'getUsers',
+                'action' => 'UsersManager.getUsers',
                 'count' => '1',
             )
         );

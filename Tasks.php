@@ -65,11 +65,13 @@ class Tasks extends \Piwik\Plugin\Tasks
             $tracker->doTrackPageView('System-Report');
 
             foreach ($profiles as $profile) {
-                $tracker->doTrackEvent($profile['category'], $profile['action'], $profile['name'], $profile['count']);
+                $countAppendix =  ' (count)';
+                $tracker->doTrackEvent($profile['category'] . $countAppendix, $profile['action'] . $countAppendix, $profile['name'] . $countAppendix, $profile['count']);
 
                 if ($profile['count'] > 0) {
+                    $speedAppendix =  ' (speed)';
                     $wallTimeAvg = round($profile['wall_time'] / $profile['count'], 1);
-                    $tracker->doTrackEvent($profile['category'] . ' Wall Time', $profile['action'], $profile['name'], $wallTimeAvg);
+                    $tracker->doTrackEvent($profile['category'] . $speedAppendix, $profile['action'] . $speedAppendix, $profile['name'] . $speedAppendix, $wallTimeAvg);
                 }
             }
 

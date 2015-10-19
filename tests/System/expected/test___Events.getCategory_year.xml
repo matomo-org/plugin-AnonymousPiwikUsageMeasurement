@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <result>
 	<row>
-		<label>API</label>
+		<label>API (count)</label>
 		<nb_visits>7</nb_visits>
 		<nb_events>7</nb_events>
 		<nb_events_with_value>7</nb_events_with_value>
@@ -10,10 +10,10 @@
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
-		<segment>eventCategory==API</segment>
+		<segment>eventCategory==API+%28count%29</segment>
 		<subtable>
 			<row>
-				<label>get</label>
+				<label>API.getPiwikVersion (count)</label>
 				<nb_visits>1</nb_visits>
 				<nb_events>1</nb_events>
 				<nb_events_with_value>1</nb_events_with_value>
@@ -24,7 +24,7 @@
 				<avg_event_value>2</avg_event_value>
 			</row>
 			<row>
-				<label>getAllSites</label>
+				<label>API.getSettings (count)</label>
 				<nb_visits>1</nb_visits>
 				<nb_events>1</nb_events>
 				<nb_events_with_value>1</nb_events_with_value>
@@ -35,7 +35,7 @@
 				<avg_event_value>2</avg_event_value>
 			</row>
 			<row>
-				<label>getPiwikVersion</label>
+				<label>CoreAdminHome.invalidateArchivedReports (count)</label>
 				<nb_visits>1</nb_visits>
 				<nb_events>1</nb_events>
 				<nb_events_with_value>1</nb_events_with_value>
@@ -46,7 +46,7 @@
 				<avg_event_value>2</avg_event_value>
 			</row>
 			<row>
-				<label>getSettings</label>
+				<label>SitesManager.getAllSites (count)</label>
 				<nb_visits>1</nb_visits>
 				<nb_events>1</nb_events>
 				<nb_events_with_value>1</nb_events_with_value>
@@ -57,7 +57,7 @@
 				<avg_event_value>2</avg_event_value>
 			</row>
 			<row>
-				<label>getSiteFromId</label>
+				<label>SitesManager.getSiteFromId (count)</label>
 				<nb_visits>1</nb_visits>
 				<nb_events>1</nb_events>
 				<nb_events_with_value>1</nb_events_with_value>
@@ -68,7 +68,7 @@
 				<avg_event_value>2</avg_event_value>
 			</row>
 			<row>
-				<label>getUsers</label>
+				<label>UsersManager.getUsers (count)</label>
 				<nb_visits>1</nb_visits>
 				<nb_events>1</nb_events>
 				<nb_events_with_value>1</nb_events_with_value>
@@ -79,7 +79,7 @@
 				<avg_event_value>2</avg_event_value>
 			</row>
 			<row>
-				<label>invalidateArchivedReports</label>
+				<label>VisitsSummary.get (count)</label>
 				<nb_visits>1</nb_visits>
 				<nb_events>1</nb_events>
 				<nb_events_with_value>1</nb_events_with_value>
@@ -92,7 +92,7 @@
 		</subtable>
 	</row>
 	<row>
-		<label>API Wall Time</label>
+		<label>API (speed)</label>
 		<nb_visits>7</nb_visits>
 		<nb_events>7</nb_events>
 		<nb_events_with_value>7</nb_events_with_value>
@@ -101,10 +101,10 @@
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
-		<segment>eventCategory==API+Wall+Time</segment>
+		<segment>eventCategory==API+%28speed%29</segment>
 		<subtable>
 			<row>
-				<label>get</label>
+				<label>API.getPiwikVersion (speed)</label>
 				<nb_visits>1</nb_visits>
 				<nb_events>1</nb_events>
 				<nb_events_with_value>1</nb_events_with_value>
@@ -115,7 +115,7 @@
 				<avg_event_value>2</avg_event_value>
 			</row>
 			<row>
-				<label>getAllSites</label>
+				<label>API.getSettings (speed)</label>
 				<nb_visits>1</nb_visits>
 				<nb_events>1</nb_events>
 				<nb_events_with_value>1</nb_events_with_value>
@@ -126,7 +126,7 @@
 				<avg_event_value>2</avg_event_value>
 			</row>
 			<row>
-				<label>getPiwikVersion</label>
+				<label>CoreAdminHome.invalidateArchivedReports (speed)</label>
 				<nb_visits>1</nb_visits>
 				<nb_events>1</nb_events>
 				<nb_events_with_value>1</nb_events_with_value>
@@ -137,7 +137,7 @@
 				<avg_event_value>2</avg_event_value>
 			</row>
 			<row>
-				<label>getSettings</label>
+				<label>SitesManager.getAllSites (speed)</label>
 				<nb_visits>1</nb_visits>
 				<nb_events>1</nb_events>
 				<nb_events_with_value>1</nb_events_with_value>
@@ -148,7 +148,7 @@
 				<avg_event_value>2</avg_event_value>
 			</row>
 			<row>
-				<label>getSiteFromId</label>
+				<label>SitesManager.getSiteFromId (speed)</label>
 				<nb_visits>1</nb_visits>
 				<nb_events>1</nb_events>
 				<nb_events_with_value>1</nb_events_with_value>
@@ -159,7 +159,7 @@
 				<avg_event_value>2</avg_event_value>
 			</row>
 			<row>
-				<label>getUsers</label>
+				<label>UsersManager.getUsers (speed)</label>
 				<nb_visits>1</nb_visits>
 				<nb_events>1</nb_events>
 				<nb_events_with_value>1</nb_events_with_value>
@@ -170,7 +170,7 @@
 				<avg_event_value>2</avg_event_value>
 			</row>
 			<row>
-				<label>invalidateArchivedReports</label>
+				<label>VisitsSummary.get (speed)</label>
 				<nb_visits>1</nb_visits>
 				<nb_events>1</nb_events>
 				<nb_events_with_value>1</nb_events_with_value>
