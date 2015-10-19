@@ -68,6 +68,9 @@ piwikUsageTracking.createTrackersIfNeeded = function ()
             if (action) {
                 title += ' ' + ucfirst(action);
             }
+        } else if ($('#login_form').length) {
+            // this is the case when eg opening http://example.piwik.org/ and one is not logged in (we show login page)
+            title = 'Login';
         }
 
         tracker.setDocumentTitle(title);
@@ -144,7 +147,8 @@ var _paq = {
     }
 };
 
-(function () {
-    piwikUsageTracking.createTrackersIfNeeded();
-})();
-
+$(function () {
+    if (piwikUsageTracking && piwikUsageTracking.createTrackersIfNeeded) {
+        piwikUsageTracking.createTrackersIfNeeded();
+    }
+});
