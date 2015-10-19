@@ -12,12 +12,12 @@ namespace Piwik\Plugins\AnonymousPiwikUsageMeasurement\Updates;
 use Piwik\Common;
 use Piwik\Db\Settings;
 use Piwik\Updater;
-use Piwik\Updates;
+use Piwik\Updates as PiwikUpdates;
 
 /**
  * Update for version 0.1.1.
  */
-class Updates_0_1_1 extends Updates
+class Updates_0_1_1 extends PiwikUpdates
 {
 
     /**

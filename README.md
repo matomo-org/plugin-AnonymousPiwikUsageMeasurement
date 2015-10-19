@@ -1,5 +1,7 @@
 # Piwik AnonymousPiwikUsageMeasurement Plugin
 
+[![Build Status](https://travis-ci.org/piwik/plugin-AnonymousPiwikUsageMeasurement.svg?branch=master)](https://travis-ci.org/piwik/plugin-AnonymousPiwikUsageMeasurement)
+
 ## Description
 
 Measure how your Piwik platform is being used. 
