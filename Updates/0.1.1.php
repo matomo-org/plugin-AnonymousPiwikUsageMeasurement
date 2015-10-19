@@ -7,7 +7,7 @@
  *
  */
 
-namespace Piwik\Plugins\AnonymousPiwikUsageMeasurement;
+namespace Piwik\Plugins\AnonymousPiwikUsageMeasurement\Updates;
 
 use Piwik\Common;
 use Piwik\Db\Settings;
