@@ -97,6 +97,20 @@ class AnonymousPiwikUsageMeasurementTest extends IntegrationTestCase
         $this->assertContains('{"id":1,"name":"Access","value":"anonymous"}', $out);
     }
 
+    public function test_shouldAddTrackingCallsWithoutTargetsAndCustomVariables_IfOptOutIsDisabled()
+    {
+        $settings = $this->makePluginSettings();
+        $settings->canUserOptOut->setValue(false);
+        $settings->save();
+
+        // we need to save it first and create new settings instance since the setting will be missing afterwards.
+        $this->makePluginSettings();
+
+        $out = '';
+        Piwik::postEvent('Template.jsGlobalVariables', array(&$out));
+        $this->assertContains('var piwikUsageTracking = {"targets":[{"url":"http:\/\/demo-anonymous.piwik.org\/piwik.php","idSite":1}],"visitorCustomVariables":[{"id":1,"name":"Access","value":"superuser"}],"trackingDomain":"http:\/\/demo-anonymous.piwik.org","exampleDomain":"http:\/\/example.com"}', $out);
+    }
+
     private function makePluginSettings()
     {
         $settings = new Settings();

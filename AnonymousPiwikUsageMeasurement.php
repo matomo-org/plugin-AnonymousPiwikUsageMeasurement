@@ -111,6 +111,7 @@ class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
         );
 
         if (Piwik::isUserIsAnonymous()
+            || !$settings->canUserOptOut->getValue()
             || !$settings->userTrackingEnabled->isReadableByCurrentUser()
             || $settings->userTrackingEnabled->getValue()) {
             // an anonymous user is currently always tracked, an anonymous user would not have permission to read
