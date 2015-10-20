@@ -24,10 +24,16 @@ piwikUsageTracking.createTrackersIfNeeded = function ()
         return;
     }
 
+    var isHttps = location.protocol == "https:";
+
     $.each(piwikUsageTracking.targets, function (index, target) {
         if ('undefined' === (typeof Piwik)) {
             // blocked by ad blocker
             return;
+        }
+
+        if (isHttps && 0 === target.url.indexOf('http:')) {
+            target.url = location.protocol + target.url.substring(location.protocol.length);
         }
 
         var tracker = Piwik.getTracker(target.url, target.idSite);

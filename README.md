@@ -55,9 +55,9 @@ When the plugin is activated, the following data will be tracked:
 
 __Are there any prerequisites?__
 
-If sending usage data to Piwik is enabled, the Piwik installation must be connected to the internet
-If tracking to a custom Piwik installation is enabled, your Piwik installation and your Piwik users must be able to connect to this instance
-
+* If sending usage data to Piwik is enabled, the Piwik installation must be connected to the internet
+* If tracking to a custom Piwik installation is enabled, your Piwik installation and your Piwik users must be able to connect to this instance
+* If tracking to a custom Piwik installation is enabled and your Piwik is served via HTTPS, the custom Piwik installation must be available via HTTPS as well
 
 __Why was this plugin created?__
 
