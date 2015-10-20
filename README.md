@@ -19,7 +19,7 @@ We are very careful in what we track and we make sure to anonymize data that cou
 * We overwrite the page title as the title could contain the name of the viewed website
 * We remove any referrer information
 * We replace URL paramaters with a predefined value apart from a few whitelisted ones to make sure no actual token_auth, CSRF token or user defined value will be tracked
-* On demo-anonymous.piwik.org 3 bytes of the IP are anonymised (eg when IP is 192.168.1.1 we track only 192.0.0.0). The original IP is not used to identify your location and provider information is not collected. The anonymized IP address is used when we enrich visits
+* On demo-anonymous.piwik.org 3 bytes of the IP are anonymised (eg when IP is 192.168.1.1 we track only 192.0.0.0). The original IP is not used to identify your location and provider information is not collected. 
 * We do not just track any outlinks or downloads
 
 ### When should I not install this plugin?
