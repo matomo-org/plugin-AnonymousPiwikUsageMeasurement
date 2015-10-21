@@ -71,6 +71,7 @@ This is to assure the tracked data is anonymous (transparency) and to showcase h
 
 ## Changelog
 
+* 0.1.4 Fixed a bug that failed to track under HTTPS under circumstances
 * 0.1.3 Updated plugin description only
 * 0.1.2 Bugfixes
 * 0.1.1 Track average API executime time
