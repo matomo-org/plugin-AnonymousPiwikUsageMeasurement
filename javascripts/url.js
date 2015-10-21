@@ -1,6 +1,22 @@
-var urlAnonymizer = (function () {
+var UrlAnonymizer = function (absoluteUrl) {
 
-    var whitelistUrlParams = ['module', 'action', 'idSite', 'idDashboard', 'period', 'date', 'popover', 'idGoal', 'pluginName'];
+    var whitelistUrlParams = ['module', 'action', 'idSite', 'idDashboard', 'period', 'date', 'popover', 'idGoal', 'pluginName', 'category', 'subcategory'];
+    var isPiwik3Reporting = isPiwik3ReportingUrl();
+
+    function isPiwik3ReportingUrl()
+    {
+        var category = broadcast.getValueFromHash('category', absoluteUrl);
+        var subcategory = broadcast.getValueFromHash('subcategory', absoluteUrl);
+
+        if (!!category && !!subcategory) {
+            return true;
+        }
+
+        category = broadcast.getValueFromUrl('category', absoluteUrl);
+        subcategory = broadcast.getValueFromUrl('subcategory', absoluteUrl);
+
+        return (!!category && !!subcategory);
+    }
 
     function getTrackingDomain()
     {
@@ -10,15 +26,65 @@ var urlAnonymizer = (function () {
         }
     }
 
+    function removeFirstPartFromTranslationKeyIfPresent(translationKey)
+    {
+        var posUnderscore = translationKey.indexOf('_');
+        if (posUnderscore >= 1) {
+            translationKey = translationKey.substr(posUnderscore + 1);
+        }
+
+        return translationKey;
+    }
+
+    function isNumber(string)
+    {
+        return /^\d+$/.test(string + '');
+    }
+
+    function getTopLevelId()
+    {
+        var id = '';
+        if (isPiwik3Reporting) {
+            id = getValueFromHashOrUrl('category', absoluteUrl);
+            id = removeFirstPartFromTranslationKeyIfPresent(id);
+        } else {
+            id = getValueFromHashOrUrl('module');
+        }
+
+        return id;
+    }
+
+    function getSubLevelId()
+    {
+        var id = '';
+
+        if (isPiwik3Reporting) {
+            id = broadcast.getValueFromHash('subcategory', absoluteUrl);
+            id = removeFirstPartFromTranslationKeyIfPresent(id);
+
+            if (isNumber(id)) {
+                // prevent titles or urls like 'Dashboard 6' (Dashboard Id 6) or 'Goal 5' (Goal Id 5)
+                id = '';
+            }
+        } else {
+            id = getValueFromHashOrUrl('action');
+        }
+
+        return id;
+    }
+
     function makeUrlHierarchical(url)
     {
-        var module = broadcast.getValueFromUrl('module', url);
-        var action = broadcast.getValueFromUrl('action', url);
+        var anonymizer = new UrlAnonymizer(url);
+
+        var module = anonymizer.getTopLevelId();
+        var action = anonymizer.getSubLevelId();
+
         if (!action) {
             action = 'default';
         }
 
-        var search = getSearchFromUrl(url);
+        var search = anonymizer.getSearchFromUrl();
 
         var hierarchicalUrl = getTrackingDomain() + '/';
         if (module) {
@@ -27,12 +93,10 @@ var urlAnonymizer = (function () {
 
         var searchParams = broadcast.extractKeyValuePairsFromQueryString(search);
 
-        if ('module' in searchParams) {
-            delete searchParams['module'];
-        }
-        if ('action' in searchParams) {
-            delete searchParams['action'];
-        }
+        delete searchParams['module'];
+        delete searchParams['action'];
+        delete searchParams['category'];
+        delete searchParams['subcategory'];
 
         hierarchicalUrl += '?';
         $.each(searchParams, function (key, value) {
@@ -51,20 +115,26 @@ var urlAnonymizer = (function () {
         return string.substr(-1 * needle.length, needle.length) === needle;
     }
 
-    function getSearchFromUrl(url)
+    function getSearchFromUrl()
     {
-        var searchPos = url.lastIndexOf('?');
+        var searchPos = absoluteUrl.indexOf('?');
 
         if (-1 === searchPos) {
             return '';
         }
 
-        return url.substr(searchPos + 1);
+        var search = absoluteUrl.substr(searchPos + 1);
+
+        if (search && search.match('#')) {
+            search = search.substring(0, search.indexOf("#"));
+        }
+
+        return search;
     }
 
-    function getBlacklistedUrlParams(url)
+    function getBlacklistedUrlParams()
     {
-        var search = getSearchFromUrl(url);
+        var search = getSearchFromUrl();
 
         if (!search) {
             return [];
@@ -81,73 +151,100 @@ var urlAnonymizer = (function () {
         return blacklisted;
     }
 
-    function anonymizeUrlParams(url, paramsToAnonymize)
+    function anonymizeUrlParams(paramsToAnonymize)
     {
         $.each(paramsToAnonymize, function (i, paramToAnonymize) {
-            if (-1 !== url.indexOf(paramToAnonymize + '=')) {
+            if (-1 !== absoluteUrl.indexOf(paramToAnonymize + '=')) {
                 // make sure to anonymize token_auth
-                url = broadcast.updateParamValue(paramToAnonymize + '=XYZ', url);
+                absoluteUrl = broadcast.updateParamValue(paramToAnonymize + '=XYZ', absoluteUrl);
+
+                var toBeReplaced = paramToAnonymize + '=&' + paramToAnonymize + '=XYZ';
+                if (absoluteUrl.indexOf(toBeReplaced) > 0) {
+                    // workaround a bug in broadcast.updateParamValue when paramToAnonymize is given but no value assigned
+                    absoluteUrl = absoluteUrl.replace(toBeReplaced, paramToAnonymize + '=XYZ');
+                }
             }
         });
 
-        return url;
+        return absoluteUrl;
     }
 
-    function anonymizeIntegerValueInUrl(url, urlParam)
+    function anonymizeIntegerValueInUrl(urlParam)
     {
-        if (-1 !== url.indexOf(urlParam + '=')) {
-            var oldValue = getValueFromHashOrUrl(urlParam, url)
+        if (-1 !== absoluteUrl.indexOf(urlParam + '=')) {
+            var oldValue = getValueFromHashOrUrl(urlParam)
             var newValue = (oldValue % 20); // max 20
             if (newValue === 0) {
                 newValue = 20;
             }
             // anonymize idSite, if there is a Piwik instance having many sites, one could maybe identify a specific
             // instance based on a high siteid
-            url = broadcast.updateParamValue(urlParam + '=' + newValue, url);
+            absoluteUrl = broadcast.updateParamValue(urlParam + '=' + newValue, absoluteUrl);
         }
 
-        return url;
+        return absoluteUrl;
     }
 
-    function getAnonymizedUrl(location)
+    function anonymizePopoverName()
+    {
+        var popoverName = getPopoverNameFromUrl();
+        if (popoverName) {
+            // anonymize visitor ids etc. Otherwise one could check if your own visitor id is present in demo-anonymous.piwik.org
+            // and identify specific piwik instances and see which Piwik and PHP version they use, whether they use
+            // this plugin and what they do with their piwik. Also a transition or row evolution could include a URL
+            // etc
+            absoluteUrl = broadcast.updateParamValue('popover=' + popoverName, absoluteUrl);
+        } else if (-1 !== absoluteUrl.indexOf('popover=')) {
+            absoluteUrl = anonymizeUrlParams(['popover']);
+        }
+
+        return absoluteUrl;
+    }
+
+    function getHashFromUrl()
+    {
+        if (absoluteUrl && absoluteUrl.match('#')) {
+            return absoluteUrl.substring(absoluteUrl.indexOf("#"), absoluteUrl.length);
+        }
+
+        return '';
+    }
+
+    function getAnonymizedUrl()
     {
         var anonymizedUrl;
+        var hash = getHashFromUrl();
+        var search = getSearchFromUrl();
 
-        if (location.hash && location.hash.length > 4) {
-            anonymizedUrl = makeDemoPiwikUrl(location.hash);
-        } else if (location.search && location.search.length > 4) {
-            anonymizedUrl = makeDemoPiwikUrl(location.search);
+        if (hash && hash.length > 4) {
+            anonymizedUrl = makeDemoPiwikUrl(hash);
+        } else if (search && search.length > 4) {
+            anonymizedUrl = makeDemoPiwikUrl(search);
         } else {
             anonymizedUrl = makeDemoPiwikUrl('');
         }
 
-        var blacklistedParams = getBlacklistedUrlParams(anonymizedUrl);
+        var anonmized = new UrlAnonymizer(anonymizedUrl);
+
+        var blacklistedParams = anonmized.getBlacklistedUrlParams();
+
         blacklistedParams.push('token_auth');
 
         // make sure to anonymize nonce, otherwise one could look for nonce token on demo-anonymous.piwik.org and test it
         // on several instances
         blacklistedParams.push('nonce');
 
-        anonymizedUrl = anonymizeUrlParams(anonymizedUrl, blacklistedParams);
+        anonmized.anonymizeUrlParams(blacklistedParams);
 
         // anonymize idGoal, if there is a Piwik instance having many goal ids and the goal is tracked manually,
         // one could maybe identify a specific instance
-        anonymizedUrl = anonymizeIntegerValueInUrl(anonymizedUrl, 'idGoal');
+        anonmized.anonymizeIntegerValueInUrl('idGoal');
         // anonymize idSite, if there is a Piwik instance having many sites, one could maybe identify a specific
         // instance based on a high siteid
-        anonymizedUrl = anonymizeIntegerValueInUrl(anonymizedUrl, 'idSite');
-        anonymizedUrl = anonymizeIntegerValueInUrl(anonymizedUrl, 'idDashboard');
+        anonmized.anonymizeIntegerValueInUrl('idSite');
+        anonmized.anonymizeIntegerValueInUrl('idDashboard');
 
-        var popoverName = getPopoverNameFromUrl(anonymizedUrl);
-        if (popoverName) {
-            // anonymize visitor ids etc. Otherwise one could check if your own visitor id is present in demo-anonymous.piwik.org
-            // and identify specific piwik instances and see which Piwik and PHP version they use, whether they use
-            // this plugin and what they do with their piwik. Also a transition or row evolution could include a URL
-            // etc
-            anonymizedUrl = broadcast.updateParamValue('popover=' + popoverName, anonymizedUrl);
-        } else if (-1 !== anonymizedUrl.indexOf('popover=')) {
-            anonymizedUrl = broadcast.updateParamValue('popover=XYZ', anonymizedUrl);
-        }
+        anonymizedUrl = anonmized.anonymizePopoverName();
 
         return anonymizedUrl;
     }
@@ -165,16 +262,20 @@ var urlAnonymizer = (function () {
         return getTrackingDomain() + '/index.php?' + url;
     }
 
-    function getValueFromHashOrUrl(param, url)
+    function getValueFromHashOrUrl(param)
     {
-        if (broadcast.getValueFromHash('module', url)) {
-            return broadcast.getValueFromHash(param, url);
+        var isHashUrlInPiwik3 = isPiwik3Reporting && broadcast.getValueFromHash('category', absoluteUrl);
+        var isHashUrlInPiwik2 = !isPiwik3Reporting && broadcast.getValueFromHash('module', absoluteUrl);
+
+        if (isHashUrlInPiwik3 || isHashUrlInPiwik2) {
+
+            return broadcast.getValueFromHash(param, absoluteUrl);
             // fallback to Url only if there is no url in hash specified. Otherwise we'd return wrong value,
             // eg action doesn't have to be specified in hash, using the one from Url would be wrong if there is a module
             // specified in hash
         }
 
-        var value = broadcast.getValueFromUrl(param, url);
+        var value = broadcast.getValueFromUrl(param, absoluteUrl);
 
         if (!value) {
             // we make sure to work with strings
@@ -184,9 +285,9 @@ var urlAnonymizer = (function () {
         return value;
     }
 
-    function getPopoverNameFromUrl(url)
+    function getPopoverNameFromUrl()
     {
-        var popover = getValueFromHashOrUrl('popover', url);
+        var popover = getValueFromHashOrUrl('popover');
 
         if (popover && -1 !== popover.indexOf('$')) {
             popover = decodeURIComponent(popover.replace(/\$/g, '%'));
@@ -206,9 +307,18 @@ var urlAnonymizer = (function () {
     }
 
     return {
-        getAnonymizedUrl: getAnonymizedUrl,
         makeUrlHierarchical: makeUrlHierarchical,
+        isPiwik3ReportingUrl: isPiwik3ReportingUrl,
+        getAnonymizedUrl: getAnonymizedUrl,
         getValueFromHashOrUrl: getValueFromHashOrUrl,
-        getPopoverNameFromUrl: getPopoverNameFromUrl
+        getPopoverNameFromUrl: getPopoverNameFromUrl,
+        getTopLevelId: getTopLevelId,
+        getSubLevelId: getSubLevelId,
+        getBlacklistedUrlParams: getBlacklistedUrlParams,
+        getSearchFromUrl: getSearchFromUrl,
+        getHashFromUrl: getHashFromUrl,
+        anonymizeIntegerValueInUrl: anonymizeIntegerValueInUrl,
+        anonymizeUrlParams: anonymizeUrlParams,
+        anonymizePopoverName: anonymizePopoverName
     };
-})();
+};

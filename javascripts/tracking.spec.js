@@ -9,16 +9,6 @@
         var anonymousDomain = 'http://anonymous.piwikdomain.org';
         var trackingDomain = piwikUsageTracking.trackingDomain;
 
-        var fakeLocation = {
-            hash: "#?module=Dashboard&action=embeddedIndex&idSite=43&period=day&date=yesterday&idDashboard=25",
-            host: "anonymous.piwikdomain.org",
-            hostname: "anonymous.piwikdomain.org",
-            href: anonymousDomain + "/index.php?module=CoreHome&action=index&idSite=43&period=day&date=yesterday#?module=Dashboard&action=embeddedIndex&idSite=43&period=day&date=yesterday&idDashboard=25",
-            origin: anonymousDomain,
-            pathname: "/index.php",
-            search: "?module=CoreHome&action=index&idSite=43&period=day&date=yesterday"
-        }
-
         describe('#initialized', function() {
             it('should be initialized automatically', function() {
                 expect(piwikUsageTracking.initialized).to.be.true;
