@@ -17,7 +17,7 @@ env:
     - PIWIK_ROOT_DIR=$TRAVIS_BUILD_DIR/piwik
     # this variable controls the version of Piwik your tests will run against. increment it when
     # making your plugin compatible with the new version of Piwik.
-    - PIWIK_TEST_TARGET=2.15.0-rc3
+    - PIWIK_TEST_TARGET=2.15.0-rc4
     - secure: "cxZpqOKdyKErak0SWHboDGktWjEeRqqec4vRL0FNJiXbDeMnfHhQh/DLNdssAsfDrvBKe00yUDR4sHa/O14XtlbnODzz+AL61ykOVl53pmHWq0OePb+Omppri+Tg9NmczEKMNq+LijTWGe9owcEhmphtnB5RBSCagCeFd6s0OR/P8ItMdUQ990ncOW1rvXZxZC4sIH+kBtxcwTSBwum0U9SK5rRCriIt4BFYmxIe17fTBsuy6/DNtBupPTPTMaWGZRHVgVMbgqdBDEFXlKyD9jts4OkXi6XlOv2G7+JY8j4ICDily28dACV44mXUshFWLoMH4E10IOMeyxYHQYcTFVHXNGg1mj3SnHmmbG2DbVmHhub0SNZllLi5oLooqHsbSkHPnKG7o8Om5PFW0VytyAGZwPZxLI1iIo1ETsthDaPiOeuzacvM/LVT+DCEq1zZz20wgDWbW90na2X49YPg9Kd1xm9OfD4bGTSBqJs5FCTYf0QFohZr4MM2IB7E2AsVhMgyKNZVHmmIxpg4F3HwfvnYEMmWZ0DTclSCqeCkp9KcgHTylQQu9QRzLiqDqE/cpARcTJO0LzhxV1NlavIqRYf4rKOLvZgO1kAaHVT3ElTBSd2CzF1Y0Ith3T5PURZmmTH4uGC9jf+Dd+PqkMHPEesmji90ag28JZCpg8v5s18="
   matrix:
     - TEST_SUITE=PluginTests MYSQL_ADAPTER=PDO_MYSQL TEST_AGAINST_PIWIK_BRANCH=$PIWIK_TEST_TARGET
