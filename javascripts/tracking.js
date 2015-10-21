@@ -33,7 +33,7 @@ piwikUsageTracking.createTrackersIfNeeded = function ()
         }
 
         if (isHttps && 0 === target.url.indexOf('http:')) {
-            target.url = location.protocol + target.url.substring(location.protocol.length);
+            target.url = 'https://' + target.url.substring(location.protocol.length);
         }
 
         var tracker = Piwik.getTracker(target.url, target.idSite);
