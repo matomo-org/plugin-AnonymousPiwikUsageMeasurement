@@ -61,10 +61,16 @@ piwikUsageTracking.createTrackersIfNeeded = function ()
         return firstLetter + text.substr(1);
     }
 
+    function createUrlAnonymizer()
+    {
+        return new UrlAnonymizer(location.href);
+    }
+
     function anonymizeTitle(tracker)
     {
-        var module  = urlAnonymizer.getValueFromHashOrUrl('module')
-        var action  = urlAnonymizer.getValueFromHashOrUrl('action');
+        var urlAnonymizer = createUrlAnonymizer();
+        var module  = urlAnonymizer.getTopLevelId()
+        var action  = urlAnonymizer.getSubLevelId();
 
         var title = 'Piwik Web Analytics';
 
@@ -89,15 +95,16 @@ piwikUsageTracking.createTrackersIfNeeded = function ()
 
     function anonymizeUrl(tracker)
     {
-        var url = urlAnonymizer.getAnonymizedUrl(location);
+        var urlAnonymizer = createUrlAnonymizer();
+        var url = urlAnonymizer.getAnonymizedUrl();
         url = urlAnonymizer.makeUrlHierarchical(url);
+
         tracker.setCustomUrl(url);
     }
 
     function trackPageView()
     {
-        var module  = urlAnonymizer.getValueFromHashOrUrl('module')
-        var action  = urlAnonymizer.getValueFromHashOrUrl('action');
+        var urlAnonymizer = createUrlAnonymizer();;
         var popover = urlAnonymizer.getPopoverNameFromUrl();
 
         angular.forEach(piwikUsageTracking.trackers, anonymizeTitle);
@@ -115,6 +122,7 @@ piwikUsageTracking.createTrackersIfNeeded = function ()
         var timeStart;
 
         $(broadcast).on('locationChangeSuccess', function () {
+            // Piwik 2.X
             if (timeStart) {
                 var timeEnd = new Date().getTime();
                 var timeTaken = timeEnd - timeStart;
@@ -129,6 +137,16 @@ piwikUsageTracking.createTrackersIfNeeded = function ()
 
         $rootScope.$on('$locationChangeSuccess', function (event, newUrl, oldUrl) {
             timeStart = new Date().getTime();
+
+            var urlAnonymizer = createUrlAnonymizer();
+
+            if (urlAnonymizer.isPiwik3ReportingUrl() && newUrl !== oldUrl) {
+                // Piwik 3.X
+                _paq.push(['setGenerationTimeMs', 0]);
+                // we cannot set generation time since the page is loaded immediately via angular, instead widgets
+                // are loaded separately. Ideally we would at some point check when all widgets are loaded but not easy
+                trackPageView();
+            }
         });
     });
 };
