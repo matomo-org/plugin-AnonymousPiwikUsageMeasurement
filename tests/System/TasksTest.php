@@ -80,7 +80,7 @@ class TasksTest extends SystemTestCase
         $apiToTest[] = array($api,
             array(
                 'idSite'     => 1,
-                'date'       => 'today',
+                'date'       => '2013-01-23',
                 'periods'    => array('year'),
                 'testSuffix' => '',
                 'apiNotToCall' => array('CustomVariables.getUsagesOfSlots'),
