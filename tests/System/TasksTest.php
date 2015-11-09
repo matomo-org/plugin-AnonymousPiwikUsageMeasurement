@@ -82,7 +82,8 @@ class TasksTest extends SystemTestCase
                 'idSite'     => 1,
                 'date'       => 'today',
                 'periods'    => array('year'),
-                'testSuffix' => ''
+                'testSuffix' => '',
+                'apiNotToCall' => array('CustomVariables.getUsagesOfSlots'),
             )
         );
 
