@@ -83,6 +83,9 @@ class TasksTest extends SystemTestCase
                 'date'       => 'today',
                 'periods'    => array('year'),
                 'testSuffix' => '',
+
+                // when calling CustomVariables.getUsagesOfSlots, new archives are created until 'today',
+                // which increments idsubdatatable, but we need to have deterministic idsubdatatable
                 'apiNotToCall' => array('CustomVariables.getUsagesOfSlots'),
             )
         );
