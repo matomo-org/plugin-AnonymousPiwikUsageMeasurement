@@ -41,6 +41,7 @@ class TasksTest extends SystemTestCase
             foreach ($return as &$value) {
                 $value->setColumn('sum_event_value', '2');
                 $value->setColumn('max_event_value', '2');
+                $value->setColumn('min_event_value', '2');
                 $value->setColumn('sum_daily_nb_uniq_visitors', '2');
                 $value->setColumn('avg_event_value', '2');
 
@@ -49,6 +50,7 @@ class TasksTest extends SystemTestCase
                     foreach ($subtable->getRows() as $row) {
                         $row->setColumn('sum_event_value', '2');
                         $row->setColumn('max_event_value', '2');
+                        $row->setColumn('min_event_value', '2');
                         $row->setColumn('sum_daily_nb_uniq_visitors', '2');
                         $row->setColumn('avg_event_value', '2');
                     }

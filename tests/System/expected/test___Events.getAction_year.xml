@@ -31,7 +31,7 @@
 		<nb_events>1</nb_events>
 		<nb_events_with_value>1</nb_events_with_value>
 		<sum_event_value>2</sum_event_value>
-		<min_event_value>1</min_event_value>
+		<min_event_value>2</min_event_value>
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
@@ -43,7 +43,7 @@
 				<nb_events>1</nb_events>
 				<nb_events_with_value>1</nb_events_with_value>
 				<sum_event_value>2</sum_event_value>
-				<min_event_value>1</min_event_value>
+				<min_event_value>2</min_event_value>
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
@@ -56,7 +56,7 @@
 		<nb_events>1</nb_events>
 		<nb_events_with_value>1</nb_events_with_value>
 		<sum_event_value>2</sum_event_value>
-		<min_event_value>1</min_event_value>
+		<min_event_value>2</min_event_value>
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
@@ -68,7 +68,7 @@
 				<nb_events>1</nb_events>
 				<nb_events_with_value>1</nb_events_with_value>
 				<sum_event_value>2</sum_event_value>
-				<min_event_value>1</min_event_value>
+				<min_event_value>2</min_event_value>
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
@@ -81,7 +81,7 @@
 		<nb_events>1</nb_events>
 		<nb_events_with_value>1</nb_events_with_value>
 		<sum_event_value>2</sum_event_value>
-		<min_event_value>1</min_event_value>
+		<min_event_value>2</min_event_value>
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
@@ -93,7 +93,7 @@
 				<nb_events>1</nb_events>
 				<nb_events_with_value>1</nb_events_with_value>
 				<sum_event_value>2</sum_event_value>
-				<min_event_value>1</min_event_value>
+				<min_event_value>2</min_event_value>
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
@@ -106,7 +106,7 @@
 		<nb_events>1</nb_events>
 		<nb_events_with_value>1</nb_events_with_value>
 		<sum_event_value>2</sum_event_value>
-		<min_event_value>1</min_event_value>
+		<min_event_value>2</min_event_value>
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
@@ -118,7 +118,7 @@
 				<nb_events>1</nb_events>
 				<nb_events_with_value>1</nb_events_with_value>
 				<sum_event_value>2</sum_event_value>
-				<min_event_value>1</min_event_value>
+				<min_event_value>2</min_event_value>
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
@@ -131,7 +131,7 @@
 		<nb_events>1</nb_events>
 		<nb_events_with_value>1</nb_events_with_value>
 		<sum_event_value>2</sum_event_value>
-		<min_event_value>66</min_event_value>
+		<min_event_value>2</min_event_value>
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
@@ -143,7 +143,7 @@
 				<nb_events>1</nb_events>
 				<nb_events_with_value>1</nb_events_with_value>
 				<sum_event_value>2</sum_event_value>
-				<min_event_value>66</min_event_value>
+				<min_event_value>2</min_event_value>
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
@@ -156,7 +156,7 @@
 		<nb_events>1</nb_events>
 		<nb_events_with_value>1</nb_events_with_value>
 		<sum_event_value>2</sum_event_value>
-		<min_event_value>1</min_event_value>
+		<min_event_value>2</min_event_value>
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
@@ -168,7 +168,7 @@
 				<nb_events>1</nb_events>
 				<nb_events_with_value>1</nb_events_with_value>
 				<sum_event_value>2</sum_event_value>
-				<min_event_value>1</min_event_value>
+				<min_event_value>2</min_event_value>
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
@@ -206,7 +206,7 @@
 		<nb_events>1</nb_events>
 		<nb_events_with_value>1</nb_events_with_value>
 		<sum_event_value>2</sum_event_value>
-		<min_event_value>1</min_event_value>
+		<min_event_value>2</min_event_value>
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
@@ -218,7 +218,7 @@
 				<nb_events>1</nb_events>
 				<nb_events_with_value>1</nb_events_with_value>
 				<sum_event_value>2</sum_event_value>
-				<min_event_value>1</min_event_value>
+				<min_event_value>2</min_event_value>
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
@@ -231,7 +231,7 @@
 		<nb_events>1</nb_events>
 		<nb_events_with_value>1</nb_events_with_value>
 		<sum_event_value>2</sum_event_value>
-		<min_event_value>1</min_event_value>
+		<min_event_value>2</min_event_value>
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
@@ -243,7 +243,7 @@
 				<nb_events>1</nb_events>
 				<nb_events_with_value>1</nb_events_with_value>
 				<sum_event_value>2</sum_event_value>
-				<min_event_value>1</min_event_value>
+				<min_event_value>2</min_event_value>
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
@@ -281,7 +281,7 @@
 		<nb_events>1</nb_events>
 		<nb_events_with_value>1</nb_events_with_value>
 		<sum_event_value>2</sum_event_value>
-		<min_event_value>1</min_event_value>
+		<min_event_value>2</min_event_value>
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
@@ -293,7 +293,7 @@
 				<nb_events>1</nb_events>
 				<nb_events_with_value>1</nb_events_with_value>
 				<sum_event_value>2</sum_event_value>
-				<min_event_value>1</min_event_value>
+				<min_event_value>2</min_event_value>
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
@@ -306,7 +306,7 @@
 		<nb_events>1</nb_events>
 		<nb_events_with_value>1</nb_events_with_value>
 		<sum_event_value>2</sum_event_value>
-		<min_event_value>1</min_event_value>
+		<min_event_value>2</min_event_value>
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
@@ -318,7 +318,7 @@
 				<nb_events>1</nb_events>
 				<nb_events_with_value>1</nb_events_with_value>
 				<sum_event_value>2</sum_event_value>
-				<min_event_value>1</min_event_value>
+				<min_event_value>2</min_event_value>
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
@@ -331,7 +331,7 @@
 		<nb_events>1</nb_events>
 		<nb_events_with_value>1</nb_events_with_value>
 		<sum_event_value>2</sum_event_value>
-		<min_event_value>2272</min_event_value>
+		<min_event_value>2</min_event_value>
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
@@ -343,7 +343,7 @@
 				<nb_events>1</nb_events>
 				<nb_events_with_value>1</nb_events_with_value>
 				<sum_event_value>2</sum_event_value>
-				<min_event_value>2272</min_event_value>
+				<min_event_value>2</min_event_value>
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
