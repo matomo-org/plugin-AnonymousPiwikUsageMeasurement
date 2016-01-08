@@ -212,8 +212,7 @@ class Settings extends \Piwik\Plugin\Settings
         $optionCheckbox = new SystemSetting($optionName, 'Turn on anonymization');
         $optionCheckbox->type = static::TYPE_BOOL;
         $optionCheckbox->uiControlType = static::CONTROL_CHECKBOX;
-        $optionCheckbox->introduction  = 'Send anonmyized usage data to the creator of Piwik';
-        $optionCheckbox->description = 'If enabled, logged in users can opt out in their plugin settings. Anonymous users cannot opt out.';
+        $optionCheckbox->description = 'Enable/Disable anonymization';
         $optionCheckbox->defaultValue = true;
         $optionCheckbox->readableByCurrentUser = true;
 
