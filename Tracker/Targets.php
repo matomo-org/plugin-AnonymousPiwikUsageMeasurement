@@ -36,6 +36,7 @@ class Targets
             $targets[] = array(
                 'url' => 'http://demo-anonymous.piwik.org/piwik.php',
                 'idSite' => 1,
+                'anon' => true
             );
         }
 
@@ -48,6 +49,7 @@ class Targets
             $targets[] = array(
                 'url' => $piwikUrl . 'piwik.php',
                 'idSite' => (int) $ownSiteId,
+                'anon' => $this->settings->anonymizeSelfPiwik->getValue()
             );
         }
 
@@ -57,6 +59,7 @@ class Targets
             $targets[] = array(
                 'url' => $customUrl,
                 'idSite' => (int) $customSiteId,
+                'anon' => $this->settings->anonymizeCustomPiwik->getValue()
             );
         }
 
