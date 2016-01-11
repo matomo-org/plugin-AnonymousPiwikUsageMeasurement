@@ -124,7 +124,7 @@ class TargetsTest extends IntegrationTestCase
         return array(
             'url' => $url,
             'idSite' => $idSite,
-            'anon' => true
+            'useAnonymization' => true
         );
     }
 

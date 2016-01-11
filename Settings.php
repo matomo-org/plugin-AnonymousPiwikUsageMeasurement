@@ -209,10 +209,9 @@ class Settings extends \Piwik\Plugin\Settings
 
     private function anonymizationOption($optionName)
     {
-        $optionCheckbox = new SystemSetting($optionName, 'Turn on anonymization');
+        $optionCheckbox = new SystemSetting($optionName, 'Anonymize tracking requests');
         $optionCheckbox->type = static::TYPE_BOOL;
         $optionCheckbox->uiControlType = static::CONTROL_CHECKBOX;
-        $optionCheckbox->description = 'Enable/Disable anonymization';
         $optionCheckbox->defaultValue = true;
         $optionCheckbox->readableByCurrentUser = true;
 
