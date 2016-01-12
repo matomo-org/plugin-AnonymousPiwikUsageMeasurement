@@ -10,5 +10,6 @@
 		<nb_visits_converted>0</nb_visits_converted>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<sum_daily_nb_users>0</sum_daily_nb_users>
+		<segment>referrerType==direct</segment>
 	</row>
 </result>
