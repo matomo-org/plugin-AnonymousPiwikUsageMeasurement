@@ -6,17 +6,28 @@
  */
 (function () {
 
-    beforeEach(function() {
+    function initAnonymizedTrackers() {
+        "use strict";
+        initTrackers(true);
+    }
+
+    function initNotAnonymizedTrackers() {
+        "use strict";
+        initTrackers(false);
+    }
+
+    function initTrackers(anonymize) {
         "use strict";
 
-        piwikUsageTracking.targets[0].useAnonymization = true;
-        piwikUsageTracking.targets[1].useAnonymization = false;
-        piwikUsageTracking.targets[2].useAnonymization = false;
+        for (var i = 0; i < piwikUsageTracking.targets.length; i++) {
+            piwikUsageTracking.targets[i].useAnonymization = anonymize;
+        }
 
         piwikUsageTracking.initialized = false;
         piwikUsageTracking.createTrackersIfNeeded();
-    });
+    }
 
+    beforeEach(initAnonymizedTrackers);
 
     describe('AnonymousPiwikUsageMeasurementUrl', function() {
         var anonymousDomain = 'http://anonymous.piwikdomain.org';
@@ -63,17 +74,23 @@
                 expect(tracker3.getCustomVariable(1, 'visit')).to.eql(['Access', 'user']);
             });
 
-            it('should anonymize url and referrer', function() {
-                var tracker = piwikUsageTracking.trackers[0];
+            it('should anonymize url and referrer by default', function() {
 
-                var request = tracker.getRequest('');
-                expect(request).to.contain('&url=http%3A%2F%2Fdemo.piwik.org%2F%3F');
-                expect(request).to.contain('&_cvar=%7B%221%22%3A%5B%22Access%22%2C%22user%22%5D%7D');
-                expect(request).to.not.contain('urlref=');
+                for (var i = 1; i < piwikUsageTracking.trackers.length; i++) {
+                    var tracker = piwikUsageTracking.trackers[i];
+
+                    var request = tracker.getRequest('');
+                    expect(request).to.contain('&url=http%3A%2F%2Fdemo.piwik.org%2F%3F');
+                    expect(request).to.contain('&_cvar=%7B%221%22%3A%5B%22Access%22%2C%22user%22%5D%7D');
+                    expect(request).to.not.contain('urlref=');
+
+                }
 
             });
 
             it('should not anonymize url and referrer', function() {
+
+                initNotAnonymizedTrackers();
 
                 for (var i = 1; i < piwikUsageTracking.trackers.length; i++) {
                     var tracker = piwikUsageTracking.trackers[i];
@@ -81,8 +98,11 @@
                     var request = tracker.getRequest('');
                     expect(request).to.not.contain('&url=http%3A%2F%2Fdemo.piwik.org%2F%3F');
                     expect(request).to.contain('urlref=');
+
                 }
+
             });
+
         });
 
         describe('_paq.push', function() {
