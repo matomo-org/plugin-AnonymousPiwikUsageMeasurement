@@ -37,13 +37,19 @@ piwikUsageTracking.createTrackersIfNeeded = function ()
         }
 
         var tracker = Piwik.getTracker(target.url, target.idSite);
-
+            tracker.isAnon = target.useAnonymization;
         // we could do those calls later via `paq.push` but I want to make sure those methods are called and anonymized
         // eg if there was a typo in `setDocumentTitle` we would not notice the method is not executed otherwise and
         // it would result in a not anonymized title
+
+        if (!target.useAnonymization) {
+            tracker.setUserId(piwikUsageTracking.userId);
+        }
+
         anonymizeReferrer(tracker);
         anonymizeTitle(tracker);
         anonymizeUrl(tracker);
+
 
         piwikUsageTracking.trackers.push(tracker);
     });
@@ -68,6 +74,8 @@ piwikUsageTracking.createTrackersIfNeeded = function ()
 
     function anonymizeTitle(tracker)
     {
+        if (!tracker.isAnon) return;
+
         var urlAnonymizer = createUrlAnonymizer();
         var module  = urlAnonymizer.getTopLevelId()
         var action  = urlAnonymizer.getSubLevelId();
@@ -90,11 +98,15 @@ piwikUsageTracking.createTrackersIfNeeded = function ()
 
     function anonymizeReferrer(tracker)
     {
+        if (!tracker.isAnon) return;
+
         tracker.setReferrerUrl('');
     }
 
     function anonymizeUrl(tracker)
     {
+        if (!tracker.isAnon) return;
+
         var urlAnonymizer = createUrlAnonymizer();
         var url = urlAnonymizer.getAnonymizedUrl();
         url = urlAnonymizer.makeUrlHierarchical(url);

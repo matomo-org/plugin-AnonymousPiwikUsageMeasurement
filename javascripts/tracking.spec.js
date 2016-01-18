@@ -5,6 +5,32 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
 (function () {
+
+    function initAnonymizedTrackers() {
+        "use strict";
+        initTrackers(true);
+    }
+
+    function initNotAnonymizedTrackers() {
+        "use strict";
+        initTrackers(false);
+    }
+
+    function initTrackers(anonymize) {
+        "use strict";
+
+        piwikUsageTracking.userId = "testuserid";
+
+        for (var i = 0; i < piwikUsageTracking.targets.length; i++) {
+            piwikUsageTracking.targets[i].useAnonymization = anonymize;
+        }
+
+        piwikUsageTracking.initialized = false;
+        piwikUsageTracking.createTrackersIfNeeded();
+    }
+
+    beforeEach(initAnonymizedTrackers);
+
     describe('AnonymousPiwikUsageMeasurementUrl', function() {
         var anonymousDomain = 'http://anonymous.piwikdomain.org';
         var trackingDomain = piwikUsageTracking.trackingDomain;
@@ -30,6 +56,7 @@
             });
         });
 
+
         describe('#trackers', function() {
             it('should have created multiple trackers with correct idSite, domain and custom variables', function() {
                 var tracker1 = piwikUsageTracking.trackers[0];
@@ -49,15 +76,36 @@
                 expect(tracker3.getCustomVariable(1, 'visit')).to.eql(['Access', 'user']);
             });
 
-            it('should anonymize url and referrer', function() {
-                for (var i = 0; i < piwikUsageTracking.trackers.length; i++) {
+            it('should anonymize url and referrer by default', function() {
+
+                for (var i = 1; i < piwikUsageTracking.trackers.length; i++) {
                     var tracker = piwikUsageTracking.trackers[i];
+
                     var request = tracker.getRequest('');
                     expect(request).to.contain('&url=http%3A%2F%2Fdemo.piwik.org%2F%3F');
                     expect(request).to.contain('&_cvar=%7B%221%22%3A%5B%22Access%22%2C%22user%22%5D%7D');
                     expect(request).to.not.contain('urlref=');
+                    expect(request).to.not.contain('uid=testuserid');
                 }
+
             });
+
+            it('should not anonymize url and referrer', function() {
+
+                initNotAnonymizedTrackers();
+
+                for (var i = 1; i < piwikUsageTracking.trackers.length; i++) {
+                    var tracker = piwikUsageTracking.trackers[i];
+
+                    var request = tracker.getRequest('');
+                    expect(request).to.not.contain('&url=http%3A%2F%2Fdemo.piwik.org%2F%3F');
+                    expect(request).to.contain('urlref=');
+                    expect(request).to.contain('uid=testuserid');
+
+                }
+
+            });
+
         });
 
         describe('_paq.push', function() {

@@ -38,17 +38,25 @@ class Settings extends \Piwik\Plugin\Settings
     /** @var SystemSetting */
     public $customPiwikSiteUrl;
 
+    /** @var SystemSetting */
+    public $anonymizeCustomPiwik;
+
+    /** @var SystemSetting */
+    public $anonymizeSelfPiwik;
+
     protected function init()
     {
         $this->createLetUsersOptOutSetting();
         $this->createTrackToPiwikSetting();
 
         $this->createTrackToOwnPiwikSetting();
+        $this->anonymizeSelfPiwikCheckbox();
 
         $this->createTrackToCustomSiteUrlSetting();
         $this->createTrackToCustomSiteIdSetting();
 
         $this->createUsersOptOutSetting();
+        $this->anonymizeCustomPiwikCheckbox();
     }
 
     private function createLetUsersOptOutSetting()
@@ -185,4 +193,28 @@ class Settings extends \Piwik\Plugin\Settings
         $this->addSetting($this->customPiwikSiteId);
     }
 
+    private function anonymizeCustomPiwikCheckbox()
+    {
+        $this->anonymizeCustomPiwik = $this->anonymizationOption("anonymizeCustomPiwik");
+
+        $this->addSetting($this->anonymizeCustomPiwik);
+    }
+
+    private function anonymizeSelfPiwikCheckbox()
+    {
+        $this->anonymizeSelfPiwik = $this->anonymizationOption("anonymizeSelfPiwik");
+
+        $this->addSetting($this->anonymizeSelfPiwik);
+    }
+
+    private function anonymizationOption($optionName)
+    {
+        $optionCheckbox = new SystemSetting($optionName, 'Anonymize tracking requests');
+        $optionCheckbox->type = static::TYPE_BOOL;
+        $optionCheckbox->uiControlType = static::CONTROL_CHECKBOX;
+        $optionCheckbox->defaultValue = true;
+        $optionCheckbox->readableByCurrentUser = true;
+
+        return $optionCheckbox;
+    }
 }

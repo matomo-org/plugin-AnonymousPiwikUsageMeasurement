@@ -70,9 +70,9 @@ class TrackersTest extends IntegrationTestCase
     public function test_makeTrackers_CanCreateMultipleTrackers_AndSavesUrlAndIdSiteCorrectInTheInstance_AndAnonymizesUrlAndReferrer()
     {
         $targets = array(
-            array('url' => 'http://demo-anonymous.piwik.org/piwik/piwik.php', 'idSite' => 5),
-            array('url' => 'http://apache.piwik/piwik.php', 'idSite' => 98),
-            array('url' => 'http://apache.piwik/piwik/piwik.php', 'idSite' => 101),
+            array('url' => 'http://demo-anonymous.piwik.org/piwik/piwik.php', 'idSite' => 5, 'useAnonymization' => true),
+            array('url' => 'http://apache.piwik/piwik.php', 'idSite' => 98, 'useAnonymization' => true),
+            array('url' => 'http://apache.piwik/piwik/piwik.php', 'idSite' => 101, 'useAnonymization' => true),
         );
 
         $targets  = new TestTargets($targets);
