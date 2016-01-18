@@ -107,7 +107,8 @@ class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
             'targets' => array(),
             'visitorCustomVariables' => array(),
             'trackingDomain' => self::TRACKING_DOMAIN,
-            'exampleDomain' => self::EXAMPLE_DOMAIN
+            'exampleDomain' => self::EXAMPLE_DOMAIN,
+            'userId' => Piwik::getCurrentUserLogin()
         );
 
         if (Piwik::isUserIsAnonymous()

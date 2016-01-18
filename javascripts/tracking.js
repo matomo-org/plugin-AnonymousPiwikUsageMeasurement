@@ -42,6 +42,10 @@ piwikUsageTracking.createTrackersIfNeeded = function ()
         // eg if there was a typo in `setDocumentTitle` we would not notice the method is not executed otherwise and
         // it would result in a not anonymized title
 
+        if (!target.useAnonymization) {
+            tracker.setUserId(piwikUsageTracking.userId);
+        }
+
         anonymizeReferrer(tracker);
         anonymizeTitle(tracker);
         anonymizeUrl(tracker);
