@@ -21,7 +21,7 @@ var UrlAnonymizer = function (absoluteUrl) {
     function getTrackingDomain()
     {
         if ('undefined' !== (typeof piwikUsageTracking)
-            && piwikUsageTracking && piwikUsageTracking.trackingDomain) {
+            && piwikUsageTracking && piwikUsageTracking.trackingDomain) {
             return piwikUsageTracking.trackingDomain;
         }
     }

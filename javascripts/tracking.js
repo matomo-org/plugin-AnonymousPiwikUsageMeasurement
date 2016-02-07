@@ -5,7 +5,7 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
 
-if ('undefined' === (typeof piwikUsageTracking) || !piwikUsageTracking) {
+if ('undefined' === (typeof piwikUsageTracking) || !piwikUsageTracking) {
     piwikUsageTracking = {targets: [], visitorCustomVariables: [], trackingDomain: '', exampleDomain: ''};
 }
 
