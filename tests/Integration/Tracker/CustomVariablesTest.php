@@ -8,6 +8,7 @@
 
 namespace Piwik\Plugins\AnonymousPiwikUsageMeasurement\tests\Integration\Tracker;
 
+use Piwik\Db;
 use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\CustomVariables;
 use Piwik\Plugins\SegmentEditor\API as SegmentApi;
 use Piwik\Plugins\UsersManager\API as UsersApi;
@@ -109,6 +110,11 @@ class CustomVariablesTest extends IntegrationTestCase
                 'id' => 5,
                 'name' => 'Num Segments',
                 'value' => 4,
+            ),
+            array(
+                'id' => 6,
+                'name' => 'MySQL Version',
+                'value' => Db::get()->getServerVersion(),
             ),
         );
 

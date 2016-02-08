@@ -24,6 +24,12 @@ class CustomVariables
         $users = Request::processRequest('UsersManager.getUsers', array('filter_limit' => '-1'));
         $websites = Request::processRequest('SitesManager.getAllSites', array('filter_limit' => '-1'));
 
+        $db = Db::get();
+        $mySqlVersion = null;
+        if (method_exists($db, 'getServerVersion')) {
+            $mySqlVersion = $db->getServerVersion();
+        }
+
         $customVars = array(
             array(
                 'id' => 1,
@@ -55,6 +61,14 @@ class CustomVariables
                 'id' => 5,
                 'name' => 'Num Segments',
                 'value' => count($segments),
+            );
+        }
+
+        if (isset($mySqlVersion)) {
+            $customVars[] = array(
+                'id' => 6,
+                'name' => 'MySQL Version',
+                'value' => $mySqlVersion,
             );
         }
 
