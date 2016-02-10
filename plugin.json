@@ -1,6 +1,6 @@
 {
     "name": "AnonymousPiwikUsageMeasurement",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "Help improve your Piwik experience by sending anonymized usage data to the creators of Piwik, to your own Piwik instance or to any other Piwik",
     "theme": false,
     "keywords": [
