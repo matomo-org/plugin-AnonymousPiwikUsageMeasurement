@@ -8,7 +8,7 @@
 
 namespace Piwik\Plugins\AnonymousPiwikUsageMeasurement\tests\Integration\Tracker;
 
-use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Settings;
+use Piwik\Plugins\AnonymousPiwikUsageMeasurement\SystemSettings;
 use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\Targets;
 use Piwik\Tests\Framework\Fixture;
 use Piwik\Tests\Framework\TestCase\IntegrationTestCase;
@@ -69,12 +69,15 @@ class TargetsTest extends IntegrationTestCase
         $this->assertTargets(array($customInstance), $settings);
     }
 
-    public function test_TrackToCustomPiwikEnabled_ShoulNotReturnAnythingIfNotSiteAndUrlAreSet()
+    public function test_TrackToCustomPiwikEnabled_ShoulNotReturnAnythingIfNoSiteISSet()
     {
         $settings = $this->makeSettingsWithNoInstanceEnabled();
         $settings->customPiwikSiteUrl->setValue('http://example.com/piwik');
         $this->assertTargets(array(), $settings);
+    }
 
+    public function test_TrackToCustomPiwikEnabled_ShoulNotReturnAnythingIfNoUrlIsSet()
+    {
         $settings = $this->makeSettingsWithNoInstanceEnabled();
         $settings->customPiwikSiteId->setValue(72);
         $this->assertTargets(array(), $settings);
@@ -99,7 +102,7 @@ class TargetsTest extends IntegrationTestCase
 
     private function makeDefaultSettings()
     {
-        return new Settings();
+        return new SystemSettings();
     }
 
     private function makeSettingsWithNoInstanceEnabled()

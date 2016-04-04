@@ -9,7 +9,7 @@
 namespace Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker;
 
 use Piwik\Common;
-use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Settings;
+use Piwik\Plugins\AnonymousPiwikUsageMeasurement\SystemSettings;
 use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker;
 use Piwik\SettingsPiwik;
 
@@ -19,11 +19,11 @@ use Piwik\SettingsPiwik;
 class Targets
 {
     /**
-     * @var Settings
+     * @var SystemSettings
      */
     private $settings;
 
-    public function __construct(Settings $settings)
+    public function __construct(SystemSettings $settings)
     {
         $this->settings = $settings;
     }
