@@ -8,23 +8,23 @@
 
 namespace Piwik\Plugins\AnonymousPiwikUsageMeasurement\tests\Integration;
 
-use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Settings;
+use Piwik\Plugins\AnonymousPiwikUsageMeasurement\SystemSettings;
 use Piwik\Tests\Framework\Fixture;
 use Piwik\Tests\Framework\TestCase\IntegrationTestCase;
 
 /**
  * @group AnonymousPiwikUsageMeasurement
  * @group Settings
- * @group SettingsTest
+ * @group SystemSettingsTest
  * @group Plugins
  */
-class SettingsTest extends IntegrationTestCase
+class SystemSettingsTest extends IntegrationTestCase
 {
 
     private $idSite = 1;
 
     /**
-     * @var Settings
+     * @var SystemSettings
      */
     private $settings;
 
@@ -36,12 +36,7 @@ class SettingsTest extends IntegrationTestCase
             Fixture::createWebsite('2014-01-01 00:00:00');
         }
 
-        $this->settings = new Settings();
-    }
-
-    public function test_userTrackingEnabled_ShouldBeEnabledByDefault()
-    {
-        $this->assertSame(true, $this->settings->userTrackingEnabled->getValue());
+        $this->settings = new SystemSettings();
     }
 
     public function test_canUserOptOut_ShouldBeEnabledByDefault()

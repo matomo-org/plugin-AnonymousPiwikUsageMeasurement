@@ -101,7 +101,8 @@ class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
 
     public function addPiwikClientTracking(&$out)
     {
-        $settings = StaticContainer::get('Piwik\Plugins\AnonymousPiwikUsageMeasurement\Settings');
+        $settings = StaticContainer::get('Piwik\Plugins\AnonymousPiwikUsageMeasurement\SystemSettings');
+        $userSettings = StaticContainer::get('Piwik\Plugins\AnonymousPiwikUsageMeasurement\UserSettings');
 
         $config = array(
             'targets' => array(),
@@ -113,8 +114,7 @@ class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
 
         if (Piwik::isUserIsAnonymous()
             || !$settings->canUserOptOut->getValue()
-            || !$settings->userTrackingEnabled->isReadableByCurrentUser()
-            || $settings->userTrackingEnabled->getValue()) {
+            || $userSettings->userTrackingEnabled->getValue()) {
             // an anonymous user is currently always tracked, an anonymous user would not have permission to read
             // this user setting. The `isUserIsAnonymous()` check is not needed but there to improve performance
             // in case user is anonymous. Then we avoid checking whether user has access to any sites which can be slow

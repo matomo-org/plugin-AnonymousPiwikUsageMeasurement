@@ -8,7 +8,7 @@
 
 namespace Piwik\Plugins\AnonymousPiwikUsageMeasurement\tests\Integration\Tracker;
 
-use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Settings;
+use Piwik\Plugins\AnonymousPiwikUsageMeasurement\SystemSettings;
 use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\Trackers;
 use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker;
 use Piwik\Tests\Framework\TestCase\IntegrationTestCase;
@@ -54,7 +54,7 @@ class TrackersTest extends IntegrationTestCase
      */
     public function test_makeTrackers_FromDefaultSettings()
     {
-        $settings = new Settings();
+        $settings = new SystemSettings();
         $targets  = new Tracker\Targets($settings);
         $trackers = new Trackers($targets);
         $trackers = $trackers->makeTrackers();

@@ -26,7 +26,7 @@ describe("AnonymousPiwikUsageMeasurement", function () {
             + ',#pluginSettings[data-pluginname=AnonymousPiwikUsageMeasurement]';
 
         expect.screenshot('admin_settings_page').to.be.captureSelector(selector, function (page) {
-            page.load("?module=CoreAdminHome&action=adminPluginSettings&idSite=1&period=day&date=yesterday");
+            page.load("?module=CoreAdminHome&action=generalSettings&idSite=1&period=day&date=yesterday");
         }, done);
     });
 
@@ -35,7 +35,7 @@ describe("AnonymousPiwikUsageMeasurement", function () {
             + ',#pluginSettings[data-pluginname=AnonymousPiwikUsageMeasurement]';
 
         expect.screenshot('user_settings_page').to.be.captureSelector(selector, function (page) {
-            page.load("?module=CoreAdminHome&action=userPluginSettings&idSite=1&period=day&date=yesterday");
+            page.load("?module=UsersManager&action=userSettings&idSite=1&period=day&date=yesterday");
         }, done);
     });
 
