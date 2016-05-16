@@ -23,7 +23,7 @@ describe("AnonymousPiwikUsageMeasurement", function () {
 
     it("should display the admin settings page", function (done) {
         var selector = '#AnonymousPiwikUsageMeasurement,#AnonymousPiwikUsageMeasurement+ .pluginIntroduction,#AnonymousPiwikUsageMeasurement + .pluginIntroduction + .adminTable'
-            + ',#pluginSettings[data-pluginname=AnonymousPiwikUsageMeasurement]';
+            + ',#pluginSettings[piwik-plugin-name=AnonymousPiwikUsageMeasurement]';
 
         expect.screenshot('admin_settings_page').to.be.captureSelector(selector, function (page) {
             page.load("?module=CoreAdminHome&action=generalSettings&idSite=1&period=day&date=yesterday");
@@ -32,7 +32,7 @@ describe("AnonymousPiwikUsageMeasurement", function () {
 
     it("should display the user settings page", function (done) {
         var selector = '#AnonymousPiwikUsageMeasurement,#AnonymousPiwikUsageMeasurement+ .pluginIntroduction,#AnonymousPiwikUsageMeasurement + .pluginIntroduction + .adminTable'
-            + ',#pluginSettings[data-pluginname=AnonymousPiwikUsageMeasurement]';
+            + ',#pluginSettings[piwik-plugin-name=AnonymousPiwikUsageMeasurement]';
 
         expect.screenshot('user_settings_page').to.be.captureSelector(selector, function (page) {
             page.load("?module=UsersManager&action=userSettings&idSite=1&period=day&date=yesterday");

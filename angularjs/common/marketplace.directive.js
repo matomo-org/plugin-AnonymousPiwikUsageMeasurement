@@ -34,7 +34,7 @@
 
                 element.find('.plugin').each(function (index, plugin) {
                     var $plugin    = $(plugin);
-                    var pluginName = $plugin.find('[data-pluginname]').attr('data-pluginname');
+                    var pluginName = $plugin.find('[piwik-plugin-name]').attr('piwik-plugin-name');
 
                     var header = $plugin.find('.panel-heading');
                     makeContentBlock(header, pluginName, 'Headline', 'popover');
