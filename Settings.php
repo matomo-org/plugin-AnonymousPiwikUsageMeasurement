@@ -90,7 +90,7 @@ class Settings extends \Piwik\Plugin\Settings
         $this->trackToPiwik = new SystemSetting('trackToPiwik', 'Send usage data to Piwik.org');
         $this->trackToPiwik->type  = static::TYPE_BOOL;
         $this->trackToPiwik->uiControlType = static::CONTROL_CHECKBOX;
-        $this->trackToPiwik->introduction  = 'Send anonmyized usage data to the creator of Piwik';
+        $this->trackToPiwik->introduction  = 'Send anonmyized usage data to the creators of Piwik';
         $this->trackToPiwik->description   = 'If enabled, anonymized usage data will be sent to demo-anonymous.piwik.org and the tracked data can be viewed there (the data is public). The collected data is used to improve Piwik. Thank you for making Piwik better!';
         $this->trackToPiwik->defaultValue  = true;
         $this->trackToPiwik->readableByCurrentUser = true;
