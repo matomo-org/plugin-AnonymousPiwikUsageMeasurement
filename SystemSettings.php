@@ -69,7 +69,7 @@ class SystemSettings extends \Piwik\Settings\Plugin\SystemSettings
         return $this->makeSetting('trackToPiwik', $default = true, FieldConfig::TYPE_BOOL, function (FieldConfig $field) {
             $field->title = 'Send usage data to Piwik.org';
             $field->uiControl = FieldConfig::UI_CONTROL_CHECKBOX;
-            $field->introduction = 'Send anonmyized usage data to the creator of Piwik';
+            $field->introduction = 'Send anonmyized usage data to the creators of Piwik';
             $field->description = 'If enabled, anonymized usage data will be sent to demo-anonymous.piwik.org and the tracked data can be viewed there (the data is public). The collected data is used to improve Piwik. Thank you for making Piwik better!';
         });
     }
