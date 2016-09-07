@@ -14,6 +14,11 @@
     "require": {
         "piwik": ">=3.0.0-dev,<4.0.0-dev"
     },
+    "support": {
+        "issues": "https://github.com/piwik/plugin-AnonymousPiwikUsageMeasurement/issues",
+        "forum": "https://forum.piwik.org",
+        "source": "https://github.com/piwik/plugin-AnonymousPiwikUsageMeasurement"
+    },
     "authors": [
         {
             "name": "Piwik",
