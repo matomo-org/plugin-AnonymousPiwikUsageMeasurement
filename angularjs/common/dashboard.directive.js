@@ -12,28 +12,31 @@
  * <div widget-id>
  */
 (function () {
-    angular.module('piwikApp').directive('widgetid', piwikWidgetId);
+    angular.module('piwikApp').directive('piwikDashboard', piwikWidgetId);
 
-    piwikWidgetId.$inject = [];
+    piwikWidgetId.$inject = ['$timeout'];
 
-    function piwikWidgetId(){
+    function piwikWidgetId($timeout){
 
         return {
             restrict: 'A',
+            priority: 20,
             link: function (scope, element, attrs, ngModel) {
 
-                var $widget = $(element);
+                $(element).on('click', '#close,#minimise,#maximise,#refresh', function () {
 
-                if (!$widget.hasClass('sortable')) {
-                    return;
-                }
+                    var $widget = $(this);
 
-                $widget.on('click', '#close,#minimise,#maximise,#refresh', function () {
+                    if (!$widget.parents('.sortable').size()) {
+                        return;
+                    }
+
                     var category = 'Dashboard';
                     var name     = 'Widget';
                     var action   = $(this).attr('id');
                     _paq.push(['trackEvent', category, action, name]);
                 });
+
             }
         };
     }
