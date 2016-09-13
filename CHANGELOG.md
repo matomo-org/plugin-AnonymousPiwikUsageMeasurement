@@ -1,5 +1,6 @@
 ## Changelog
 
+* 3.0.0 Compatibility with Piwik 3
 * 0.2.1 Track MySQL server version in a custom variable.
 * 0.2.0 Add possibility to enable/disable anonymization and tracking user login as userID
 * 0.1.4 Fixed a bug that failed to track under HTTPS under circumstances
