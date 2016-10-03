@@ -17,11 +17,12 @@
 (function () {
     angular.module('piwikApp').directive('marketplace', piwikMarketplace);
 
-    piwikMarketplace.$inject = [];
+    piwikMarketplace.$inject = ['$timeout'];
 
-    function piwikMarketplace(){
+    function piwikMarketplace($timeout){
         return {
             restrict: 'C',
+            priority: 20,
             link: function (scope, element, attrs, ngModel) {
 
                 function makeContentBlock($element, pluginName, contentPiece, target)
@@ -29,27 +30,27 @@
                     $element.attr('data-track-content', '');
                     $element.attr('data-content-name', pluginName);
                     $element.attr('data-content-piece', contentPiece);
-                    $element.attr('data-content-target', 'popover');
+                    $element.attr('data-content-target', target);
                 }
 
                 element.find('.plugin').each(function (index, plugin) {
                     var $plugin    = $(plugin);
-                    var pluginName = $plugin.find('[data-pluginname]').attr('data-pluginname');
+                    var pluginName = $plugin.find('[piwik-plugin-name]').attr('piwik-plugin-name');
 
-                    var header = $plugin.find('.panel-heading');
-                    makeContentBlock(header, pluginName, 'Headline', 'popover');
+                    var header = $plugin.find('.card-title');
                     makeContentBlock(header, pluginName, 'Headline', 'popover');
 
-                    var body = $plugin.find('.panel-body');
+                    var body = $plugin.find('.description');
                     makeContentBlock(body, pluginName, 'Body', 'popover');
 
-                    var footer = $plugin.find('.panel-footer');
+                    var footer = $plugin.find('.footer');
                     makeContentBlock(footer, pluginName, 'Install', 'self');
                 });
 
                 var checkOnScroll = true;
                 var timeInterval = 0; // disable for better performance
                 _paq.push(['trackVisibleContentImpressions', checkOnScroll, timeInterval]);
+
             }
         };
     }

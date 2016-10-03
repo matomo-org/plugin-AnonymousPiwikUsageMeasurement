@@ -10,7 +10,7 @@ namespace Piwik\Plugins\AnonymousPiwikUsageMeasurement\tests\Fixtures;
 use Piwik\API\Request;
 use Piwik\Date;
 use Piwik\Tests\Framework\Fixture;
-use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Settings;
+use Piwik\Plugins\AnonymousPiwikUsageMeasurement\SystemSettings;
 use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tasks;
 use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\Profiles;
 use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\CustomVariables;
@@ -32,7 +32,7 @@ class SendSystemReportTaskFixture extends Fixture
         $this->setUpWebsite();
         $this->executeSomeApiMethods();
 
-        $settings = new Settings();
+        $settings = new SystemSettings();
         $settings->trackToPiwik->setValue(false);
         $settings->ownPiwikSiteId->setValue($this->idSite);
         $targets  = new Targets($settings);

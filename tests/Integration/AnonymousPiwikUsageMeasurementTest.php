@@ -11,8 +11,9 @@ namespace Piwik\Plugins\AnonymousPiwikUsageMeasurement\tests\Integration;
 use Piwik\API\Request;
 use Piwik\Container\StaticContainer;
 use Piwik\Piwik;
-use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Settings;
+use Piwik\Plugins\AnonymousPiwikUsageMeasurement\SystemSettings;
 use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\Profiles;
+use Piwik\Plugins\AnonymousPiwikUsageMeasurement\UserSettings;
 use Piwik\Tests\Framework\Mock\FakeAccess;
 use Piwik\Tests\Framework\TestCase\IntegrationTestCase;
 
@@ -67,7 +68,7 @@ class AnonymousPiwikUsageMeasurementTest extends IntegrationTestCase
 
     public function test_shouldNotAddTargetsOrCustomVariables_IfDisabledByUser()
     {
-        $settings = $this->makePluginSettings();
+        $settings = $this->makeUserSettings();
         $settings->userTrackingEnabled->setValue(false);
 
         $out = '';
@@ -78,7 +79,7 @@ class AnonymousPiwikUsageMeasurementTest extends IntegrationTestCase
 
     public function test_shouldAddTrackingCallsWithTargetsAndCustomVariables_IfEnabledByUser()
     {
-        $settings = $this->makePluginSettings();
+        $settings = $this->makeUserSettings();
         $settings->userTrackingEnabled->setValue(true);
 
         $out = '';
@@ -113,8 +114,15 @@ class AnonymousPiwikUsageMeasurementTest extends IntegrationTestCase
 
     private function makePluginSettings()
     {
-        $settings = new Settings();
-        StaticContainer::getContainer()->set('Piwik\Plugins\AnonymousPiwikUsageMeasurement\Settings', $settings);
+        $settings = new SystemSettings();
+        StaticContainer::getContainer()->set('Piwik\Plugins\AnonymousPiwikUsageMeasurement\SystemSettings', $settings);
+        return $settings;
+    }
+
+    private function makeUserSettings()
+    {
+        $settings = new UserSettings($this->makePluginSettings());
+        StaticContainer::getContainer()->set('Piwik\Plugins\AnonymousPiwikUsageMeasurement\UserSettings', $settings);
         return $settings;
     }
 
