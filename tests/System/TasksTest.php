@@ -86,6 +86,10 @@ class TasksTest extends SystemTestCase
                 'periods'    => array('year'),
                 'testSuffix' => '',
 
+                'otherRequestParameters' => array(
+                      'hideColumns' => 'sum_bandwidth,nb_hits_with_bandwidth,min_bandwidth,max_bandwidth,avg_bandwidth,nb_total_overall_bandwidth,nb_total_pageview_bandwidth,nb_total_download_bandwidth',
+                ),
+
                 // when calling CustomVariables.getUsagesOfSlots, new archives are created until 'today',
                 // which increments idsubdatatable, but we need to have deterministic idsubdatatable
                 'apiNotToCall' => array('CustomVariables.getUsagesOfSlots'),
