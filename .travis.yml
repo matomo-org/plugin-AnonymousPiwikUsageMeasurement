@@ -27,11 +27,12 @@ env:
   global:
     - PLUGIN_NAME=AnonymousPiwikUsageMeasurement
     - PIWIK_ROOT_DIR=$TRAVIS_BUILD_DIR/piwik
-    # this variable controls the version of Piwik your tests will run against. increment it when
-    # making your plugin compatible with the new version of Piwik.
-    - PIWIK_TEST_TARGET=2.16.0-b2
-    - secure: "cxZpqOKdyKErak0SWHboDGktWjEeRqqec4vRL0FNJiXbDeMnfHhQh/DLNdssAsfDrvBKe00yUDR4sHa/O14XtlbnODzz+AL61ykOVl53pmHWq0OePb+Omppri+Tg9NmczEKMNq+LijTWGe9owcEhmphtnB5RBSCagCeFd6s0OR/P8ItMdUQ990ncOW1rvXZxZC4sIH+kBtxcwTSBwum0U9SK5rRCriIt4BFYmxIe17fTBsuy6/DNtBupPTPTMaWGZRHVgVMbgqdBDEFXlKyD9jts4OkXi6XlOv2G7+JY8j4ICDily28dACV44mXUshFWLoMH4E10IOMeyxYHQYcTFVHXNGg1mj3SnHmmbG2DbVmHhub0SNZllLi5oLooqHsbSkHPnKG7o8Om5PFW0VytyAGZwPZxLI1iIo1ETsthDaPiOeuzacvM/LVT+DCEq1zZz20wgDWbW90na2X49YPg9Kd1xm9OfD4bGTSBqJs5FCTYf0QFohZr4MM2IB7E2AsVhMgyKNZVHmmIxpg4F3HwfvnYEMmWZ0DTclSCqeCkp9KcgHTylQQu9QRzLiqDqE/cpARcTJO0LzhxV1NlavIqRYf4rKOLvZgO1kAaHVT3ElTBSd2CzF1Y0Ith3T5PURZmmTH4uGC9jf+Dd+PqkMHPEesmji90ag28JZCpg8v5s18="
-    - secure: "TEVDf96quGnUqNB8P61WXJPEZU9q+5LU3tuNQqp/21X1PFT79RsMjNTkeGHC0eYwDSzum0NA85pHCLU9xq411CT+XVb3Mf554cjxkE+9ugaAUa3mCbi6e6Y1uYOTFm2sLI08oz3Y32m41uWn/JFKDmTDBQB77gU1hPnKN+sJ6iAvBMmprNMa0qb8+SFL29EhOpZEMY/JAs3EHwOicgWFvg9jUuAQjX+3AuVqPFnAim6/kgCRkYy80t0lkbP2c9unJqDG/fbCabED6echkOq50VY4jteZY4ON5l50aOgHcpswga/buc7S+ErXVfHMOuclGMysJYLsuR3Gs4Wx1fcW01Qxo6Pj3zZ5XxNgp/lD0Zs+y45z4bl7zjiyFdeHMm5nIpUZ0Y2f8JW6lyoungeaE9bfS8kWXlTD/FEgOJTgi1W+1PF4WalFHfnwegTM0M/hFMfMbx4e21If7b7G37s/fx/+naV/My3JhEnPrrC4ggj4di6IEam8BvvFEyJuKY3X0yCAPEoDQNWQVOve1pz3D59N63wCC6GPP4Dg1jQyDs9ocX2jiBFVpvYBiZbOSDUvWl040ugznmcr0kw+/5EJ6TJQWilKKg+OalUdf7410/H9XfgjC2AUa1TJ8vewXaj8jeTOtUfTOtS8yLOmR81CLmXMlZNcCpBbrOHk5cMuti4="
+    # this variable controls the version of Piwik your tests will run against.
+    # by default it will run against the maximum support version read from plugin.json
+    # (PIWIK_TEST_TARGET=maximum_supported_piwik).
+    # You can also specify a specific Piwik version
+    # (PIWIK_TEST_TARGET=2.16.0-b1).
+    - PIWIK_TEST_TARGET=maximum_supported_piwik
   matrix:
     - TEST_SUITE=PluginTests MYSQL_ADAPTER=PDO_MYSQL TEST_AGAINST_PIWIK_BRANCH=$PIWIK_TEST_TARGET
     - TEST_SUITE=UITests MYSQL_ADAPTER=PDO_MYSQL TEST_AGAINST_PIWIK_BRANCH=$PIWIK_TEST_TARGET
@@ -39,10 +40,10 @@ env:
 matrix:
   exclude:
     # execute latest stable tests only w/ PHP 5.5
-    - php: 5.3.3
+    - php: 5.3
       env: TEST_SUITE=PluginTests MYSQL_ADAPTER=PDO_MYSQL TEST_AGAINST_CORE=minimum_required_piwik
     # execute UI tests only w/ PHP 5.6
-    - php: 5.3.3
+    - php: 5.3
       env: TEST_SUITE=UITests MYSQL_ADAPTER=PDO_MYSQL TEST_AGAINST_PIWIK_BRANCH=$PIWIK_TEST_TARGET
 
 sudo: required
@@ -52,7 +53,6 @@ script: $PIWIK_ROOT_DIR/tests/travis/travis.sh
 before_install:
   # do not use the Zend allocator on PHP 5.3 since it will randomly segfault after program execution
   - '[[ "$TRAVIS_PHP_VERSION" == 5.3* ]] && export USE_ZEND_ALLOC=0 || true'
-  - ./tests/travis/install_git_lfs.sh
 
 install:
   # move all contents of current repo (which contains the plugin) to a new directory
@@ -70,7 +70,7 @@ install:
   - '[ -d ./tests/travis/.git ] || sh -c "rm -rf ./tests/travis && git clone https://github.com/piwik/travis-scripts.git ./tests/travis"'
   - cd ./tests/travis ; git checkout master ; cd ../..
 
-  - export GENERATE_TRAVIS_YML_COMMAND="php ./tests/travis/generator/main.php generate:travis-yml --plugin=\"AnonymousPiwikUsageMeasurement\" --verbose"
+  - export GENERATE_TRAVIS_YML_COMMAND="php ./tests/travis/generator/main.php generate:travis-yml --plugin=\"AnonymousPiwikUsageMeasurement\" --php-versions=\"5.6,5.3\" --verbose"
   - '[[ "$TRAVIS_JOB_NUMBER" != *.1 || "$TRAVIS_PULL_REQUEST" != "false" ]] || ./tests/travis/autoupdate_travis_yml.sh'
 
   - ./tests/travis/checkout_test_against_branch.sh
@@ -134,6 +134,7 @@ before_script:
 
   - ./tests/travis/prepare.sh
   - ./tests/travis/setup_webserver.sh
+  - if [[ "$TRAVIS_PHP_VERSION" != 5.3* ]]; then ./tests/travis/install_phantomjs.sh; export PATH=$PWD/travis_phantomjs/phantomjs-2.1.1-linux-x86_64/bin:$PATH; fi
 
   - cd tests/PHPUnit
 
