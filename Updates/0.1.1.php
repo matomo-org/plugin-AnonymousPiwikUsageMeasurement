@@ -7,7 +7,7 @@
  *
  */
 
-namespace Piwik\Plugins\AnonymousPiwikUsageMeasurement\Updates;
+namespace Piwik\Plugins\AnonymousPiwikUsageMeasurement;
 
 use Piwik\Updater;
 use Piwik\Updates as PiwikUpdates;
