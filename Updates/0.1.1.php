@@ -55,7 +55,7 @@ class Updates_0_1_1 extends PiwikUpdates
                 'action' => 'VARCHAR(200) NOT NULL',
                 'count' => 'INT UNSIGNED NOT NULL DEFAULT 0' ,
                 'wall_time' => 'BIGINT UNSIGNED NOT NULL DEFAULT 0' ,
-            ), $primary = array('category, name, action'))
+            ), $primary = array('category', 'name', 'action'))
         );
 
         return $sqls;
