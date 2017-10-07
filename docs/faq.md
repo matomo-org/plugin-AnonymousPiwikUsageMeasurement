@@ -12,6 +12,6 @@ This plugin was created to provide a simple way to measure how Piwik product its
 
 __Who has access to the tracked data at demo-anonymous.piwik.org?__
 
-The data is public and therefore can be seen by anyone on [http://demo-anonymous.piwik.org](http://demo-anonymous.piwik.org).
+The data is public and therefore can be seen by anyone on [https://demo-anonymous.piwik.org](https://demo-anonymous.piwik.org).
 
 This is to assure the tracked data is anonymous (transparency) and to showcase how Piwik can be used to track an application.
