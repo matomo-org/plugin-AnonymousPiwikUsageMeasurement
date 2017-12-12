@@ -22,7 +22,7 @@ class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
     private $profilingStack = array();
 
     /**
-     * @see Piwik\Plugin::registerEvents
+     * @see \Piwik\Plugin::registerEvents
      */
     public function registerEvents()
     {

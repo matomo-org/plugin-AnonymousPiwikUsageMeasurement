@@ -81,8 +81,8 @@ class SystemSettings extends \Piwik\Settings\Plugin\SystemSettings
             // ideally we would use a SELECT control and let user choose an existing site but this would make performance slow
             // since we'd always have to get all site ids in each request
             $field->uiControl = FieldConfig::UI_CONTROL_TEXT;
-            $field->introduction = 'Send anonymize usage data to this Piwik';
-            $field->description = 'If specified, anonymized usage data will be sent to the specified site in this Piwik.';
+            $field->introduction = 'Send usage data to this Piwik';
+            $field->description = 'If specified, anonymized usage data will be sent to the specified site in this Piwik. This lets you analyze how you and your colleagues are using Piwik.';
             $field->validate = function ($idSite) {
                 if (empty($idSite)) {
                     return;
@@ -112,7 +112,7 @@ class SystemSettings extends \Piwik\Settings\Plugin\SystemSettings
             $field->title = 'Piwik Url';
             $field->uiControl = FieldConfig::UI_CONTROL_TEXT;
             $field->uiControlAttributes = array('placeHolder' => 'eg. http://example.com/piwik');
-            $field->introduction = 'Send anonymize usage data to a custom Piwik';
+            $field->introduction = 'Send usage data to a custom Piwik';
             $field->description = '';
             $field->validate = function ($value, $setting) {
                 if (empty($value)) {
