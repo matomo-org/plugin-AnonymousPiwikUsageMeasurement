@@ -61,7 +61,7 @@ class TrackersTest extends IntegrationTestCase
 
         $this->assertCount(1, $trackers);
 
-        $this->assertStringStartsWith('http://demo-anonymous.piwik.org/piwik.php?idsite=1&rec=1', $trackers[0]->getUrlTrackPageView());
+        $this->assertStringStartsWith('http://demo-anonymous.matomo.org/piwik.php?idsite=1&rec=1', $trackers[0]->getUrlTrackPageView());
     }
 
     /**
@@ -70,7 +70,7 @@ class TrackersTest extends IntegrationTestCase
     public function test_makeTrackers_CanCreateMultipleTrackers_AndSavesUrlAndIdSiteCorrectInTheInstance_AndAnonymizesUrlAndReferrer()
     {
         $targets = array(
-            array('url' => 'http://demo-anonymous.piwik.org/piwik/piwik.php', 'idSite' => 5, 'useAnonymization' => true),
+            array('url' => 'http://demo-anonymous.matomo.org/piwik/piwik.php', 'idSite' => 5, 'useAnonymization' => true),
             array('url' => 'http://apache.piwik/piwik.php', 'idSite' => 98, 'useAnonymization' => true),
             array('url' => 'http://apache.piwik/piwik/piwik.php', 'idSite' => 101, 'useAnonymization' => true),
         );
@@ -82,14 +82,14 @@ class TrackersTest extends IntegrationTestCase
         $this->assertCount(3, $trackers);
 
         // verify url anonymized, referrer removed, idSite + url applied
-        $this->assertStringStartsWith('http://demo-anonymous.piwik.org/piwik/piwik.php?idsite=5&rec=1', $trackers[0]->getUrlTrackPageView());
-        $this->assertStringEndsWith('url=http%3A%2F%2Fdemo-anonymous.piwik.org&urlref=', $trackers[0]->getUrlTrackPageView());
+        $this->assertStringStartsWith('http://demo-anonymous.matomo.org/piwik/piwik.php?idsite=5&rec=1', $trackers[0]->getUrlTrackPageView());
+        $this->assertStringEndsWith('url=http%3A%2F%2Fdemo-anonymous.matomo.org&urlref=', $trackers[0]->getUrlTrackPageView());
 
         $this->assertStringStartsWith('http://apache.piwik/piwik.php?idsite=98&rec=1', $trackers[1]->getUrlTrackPageView());
-        $this->assertStringEndsWith('url=http%3A%2F%2Fdemo-anonymous.piwik.org&urlref=', $trackers[1]->getUrlTrackPageView());
+        $this->assertStringEndsWith('url=http%3A%2F%2Fdemo-anonymous.matomo.org&urlref=', $trackers[1]->getUrlTrackPageView());
 
         $this->assertStringStartsWith('http://apache.piwik/piwik/piwik.php?idsite=101&rec=1', $trackers[2]->getUrlTrackPageView());
-        $this->assertStringEndsWith('url=http%3A%2F%2Fdemo-anonymous.piwik.org&urlref=', $trackers[2]->getUrlTrackPageView());
+        $this->assertStringEndsWith('url=http%3A%2F%2Fdemo-anonymous.matomo.org&urlref=', $trackers[2]->getUrlTrackPageView());
     }
 
 }

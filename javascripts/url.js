@@ -189,7 +189,7 @@ var UrlAnonymizer = function (absoluteUrl) {
     {
         var popoverName = getPopoverNameFromUrl();
         if (popoverName) {
-            // anonymize visitor ids etc. Otherwise one could check if your own visitor id is present in demo-anonymous.piwik.org
+            // anonymize visitor ids etc. Otherwise one could check if your own visitor id is present in demo-anonymous.matomo.org
             // and identify specific piwik instances and see which Piwik and PHP version they use, whether they use
             // this plugin and what they do with their piwik. Also a transition or row evolution could include a URL
             // etc
@@ -230,7 +230,7 @@ var UrlAnonymizer = function (absoluteUrl) {
 
         blacklistedParams.push('token_auth');
 
-        // make sure to anonymize nonce, otherwise one could look for nonce token on demo-anonymous.piwik.org and test it
+        // make sure to anonymize nonce, otherwise one could look for nonce token on demo-anonymous.matomo.org and test it
         // on several instances
         blacklistedParams.push('nonce');
 

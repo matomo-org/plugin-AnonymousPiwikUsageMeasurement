@@ -1,7 +1,7 @@
 {
     "name": "AnonymousPiwikUsageMeasurement",
     "version": "3.0.2",
-    "description": "Help improve your Piwik experience by sending anonymized usage data to the creators of Piwik, to your own Piwik instance or to any other Piwik",
+    "description": "Help improve your Matomo experience by sending anonymized usage data to the creators of Matomo, to your own Matomo instance or to any other Matomo",
     "theme": false,
     "keywords": [
         "usage",
@@ -10,20 +10,20 @@
         "piwik"
     ],
     "license": "GPL v3+",
-    "homepage": "http:\/\/piwik.org",
+    "homepage": "https:\/\/matomo.org",
     "require": {
         "piwik": ">=3.0.0-dev,<4.0.0-dev"
     },
     "support": {
-        "issues": "https://github.com/piwik/plugin-AnonymousPiwikUsageMeasurement/issues",
-        "forum": "https://forum.piwik.org",
-        "source": "https://github.com/piwik/plugin-AnonymousPiwikUsageMeasurement"
+        "issues": "https://github.com/matomo-org/plugin-AnonymousPiwikUsageMeasurement/issues",
+        "forum": "https://forum.matomo.org",
+        "source": "https://github.com/matomo-org/plugin-AnonymousPiwikUsageMeasurement"
     },
     "authors": [
         {
-            "name": "Piwik",
-            "email": "hello@piwik.org",
-            "homepage": "http:\/\/piwik.org"
+            "name": "Matomo",
+            "email": "hello@matomo.org",
+            "homepage": "https:\/\/matomo.org"
         }
     ]
 }
