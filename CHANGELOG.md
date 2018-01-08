@@ -1,5 +1,6 @@
 ## Changelog
 
+* 3.0.3 Renaming from Piwik to Matomo
 * 3.0.0 Compatibility with Matomo 3
 * 0.2.1 Track MySQL server version in a custom variable.
 * 0.2.0 Add possibility to enable/disable anonymization and tracking user login as userID
