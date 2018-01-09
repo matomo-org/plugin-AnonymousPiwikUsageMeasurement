@@ -20,7 +20,7 @@ class Tracker extends \PiwikTracker
 
     /**
      * The method name is not ideal but want to make sure PiwikTracker won't define such method at some point.
-     * @param string $baseApiUrl eg 'http://demo-anonymous.piwik.org/piwik.php'
+     * @param string $baseApiUrl eg 'http://demo-anonymous.matomo.org/piwik.php'
      */
     public function setBaseApiUrl($baseApiUrl)
     {

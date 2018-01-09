@@ -39,7 +39,7 @@ class Tasks extends \Piwik\Plugin\Tasks
     public function schedule()
     {
         $scheduledTime = $this->daily('sendSystemReport');
-        $scheduledTime->setHour(rand(1, 23)); // make sure not all Piwik instances send data to piwik.org at same time
+        $scheduledTime->setHour(rand(1, 23)); // make sure not all Piwik instances send data to matomo.org at same time
     }
 
     /**

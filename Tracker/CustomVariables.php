@@ -33,7 +33,7 @@ class CustomVariables
         $customVars = array(
             array(
                 'id' => 1,
-                'name' => 'Piwik Version',
+                'name' => 'Matomo Version',
                 'value' => StaticContainer::get('AnonymousPiwikUsageMeasurement.piwikVersion'),
             ),
             array(

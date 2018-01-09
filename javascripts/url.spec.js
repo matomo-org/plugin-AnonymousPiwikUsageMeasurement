@@ -393,19 +393,19 @@
 
         describe('#getTopLevelId', function() {
 
-            it('should detect id from Piwik 2 URL', function() {
+            it('should detect id from Matomo 2 URL', function() {
                 var urlAnonymizer = new UrlAnonymizer(fakeUrl);
                 var id = urlAnonymizer.getTopLevelId();
                 expect(id).to.eql('Dashboard');
             });
 
-            it('should detect id from Piwik 2 URL and use module from search when hash does not contain module', function() {
+            it('should detect id from Matomo 2 URL and use module from search when hash does not contain module', function() {
                 var urlAnonymizer = new UrlAnonymizer(buildUrl(fakeSearch, ''));
                 var id = urlAnonymizer.getTopLevelId();
                 expect(id).to.eql('CoreHome');
             });
 
-            it('should detect id from Piwik 3 URL', function() {
+            it('should detect id from Matomo 3 URL', function() {
                 var urlAnonymizer = new UrlAnonymizer(piwik3Url);
                 var id = urlAnonymizer.getTopLevelId();
                 expect(id).to.eql('Actions');
@@ -426,19 +426,19 @@
 
         describe('#getSubLevelId', function() {
 
-            it('should detect id from Piwik 2 URL', function() {
+            it('should detect id from Matomo 2 URL', function() {
                 var urlAnonymizer = new UrlAnonymizer(fakeUrl);
                 var id = urlAnonymizer.getSubLevelId();
                 expect(id).to.eql('embeddedIndex');
             });
 
-            it('should detect id from Piwik 2 URL and use module from search when hash does not contain module', function() {
+            it('should detect id from Matomo 2 URL and use module from search when hash does not contain module', function() {
                 var urlAnonymizer = new UrlAnonymizer(buildUrl(fakeSearch, ''));
                 var id = urlAnonymizer.getSubLevelId();
                 expect(id).to.eql('index');
             });
 
-            it('should detect id from Piwik 3 URL', function() {
+            it('should detect id from Matomo 3 URL', function() {
                 var urlAnonymizer = new UrlAnonymizer(piwik3Url);
                 var id = urlAnonymizer.getSubLevelId();
                 expect(id).to.eql('Events');

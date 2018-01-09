@@ -64,7 +64,7 @@ class UserSettings extends \Piwik\Settings\Plugin\UserSettings
     private function createUsersOptOutSetting()
     {
         return $this->makeSetting('userTrackingEnabled', $default = true, FieldConfig::TYPE_BOOL, function (FieldConfig $field) {
-            $field->title = 'Piwik usage tracking enabled';
+            $field->title = 'Matomo usage tracking enabled';
             $field->uiControl = FieldConfig::UI_CONTROL_CHECKBOX;
             $field->description = 'If enabled, anonymous usage data will be tracked. For example which pages are viewed and which reports are used most often. For more information contact your system administrator.';
         });

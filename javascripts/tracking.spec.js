@@ -82,7 +82,7 @@
                     var tracker = piwikUsageTracking.trackers[i];
 
                     var request = tracker.getRequest('');
-                    expect(request).to.contain('&url=http%3A%2F%2Fdemo.piwik.org%2F%3F');
+                    expect(request).to.contain('&url=http%3A%2F%2Fdemo.matomo.org%2F%3F');
                     expect(request).to.contain('&_cvar=%7B%221%22%3A%5B%22Access%22%2C%22user%22%5D%7D');
                     expect(request).to.not.contain('urlref=');
                     expect(request).to.not.contain('uid=testuserid');
@@ -98,7 +98,7 @@
                     var tracker = piwikUsageTracking.trackers[i];
 
                     var request = tracker.getRequest('');
-                    expect(request).to.not.contain('&url=http%3A%2F%2Fdemo.piwik.org%2F%3F');
+                    expect(request).to.not.contain('&url=http%3A%2F%2Fdemo.matomo.org%2F%3F');
                     expect(request).to.contain('urlref=');
                     expect(request).to.contain('uid=testuserid');
 

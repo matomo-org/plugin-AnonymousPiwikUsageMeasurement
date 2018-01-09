@@ -114,7 +114,7 @@ class TargetsTest extends IntegrationTestCase
 
     private function getPiwikOrgTarget()
     {
-        return $this->getCustomPiwikTarget('http://demo-anonymous.piwik.org/piwik.php', 1);
+        return $this->getCustomPiwikTarget('http://demo-anonymous.matomo.org/piwik.php', 1);
     }
 
     private function getOwnPiwikTarget()
