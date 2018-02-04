@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <result>
 	<row>
+		<label>Matomo Version</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>15</nb_actions>
+		<max_actions>15</max_actions>
+		<sum_visit_length>1</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_users>0</sum_daily_nb_users>
+		<slots>
+			<row>
+				<scope>visit</scope>
+				<index>1</index>
+			</row>
+		</slots>
+		<segment>customVariableName==Matomo+Version</segment>
+		<subtable>
+			<row>
+				<label>2.14.3</label>
+				<nb_visits>1</nb_visits>
+				<nb_actions>15</nb_actions>
+				<max_actions>15</max_actions>
+				<sum_visit_length>1</sum_visit_length>
+				<bounce_count>0</bounce_count>
+				<nb_visits_converted>0</nb_visits_converted>
+				<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+				<sum_daily_nb_users>0</sum_daily_nb_users>
+			</row>
+		</subtable>
+	</row>
+	<row>
 		<label>Num Segments</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>15</nb_actions>
@@ -113,37 +144,6 @@
 		<subtable>
 			<row>
 				<label>5.5.27</label>
-				<nb_visits>1</nb_visits>
-				<nb_actions>15</nb_actions>
-				<max_actions>15</max_actions>
-				<sum_visit_length>1</sum_visit_length>
-				<bounce_count>0</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-				<sum_daily_nb_users>0</sum_daily_nb_users>
-			</row>
-		</subtable>
-	</row>
-	<row>
-		<label>Piwik Version</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>15</nb_actions>
-		<max_actions>15</max_actions>
-		<sum_visit_length>1</sum_visit_length>
-		<bounce_count>0</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<sum_daily_nb_users>0</sum_daily_nb_users>
-		<slots>
-			<row>
-				<scope>visit</scope>
-				<index>1</index>
-			</row>
-		</slots>
-		<segment>customVariableName==Piwik+Version</segment>
-		<subtable>
-			<row>
-				<label>2.14.3</label>
 				<nb_visits>1</nb_visits>
 				<nb_actions>15</nb_actions>
 				<max_actions>15</max_actions>

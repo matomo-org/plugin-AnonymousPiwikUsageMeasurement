@@ -80,7 +80,7 @@ piwikUsageTracking.createTrackersIfNeeded = function ()
         var module  = urlAnonymizer.getTopLevelId()
         var action  = urlAnonymizer.getSubLevelId();
 
-        var title = 'Piwik Web Analytics';
+        var title = 'Matomo Web Analytics';
 
         if (module) {
             title = ucfirst(module);
@@ -89,7 +89,7 @@ piwikUsageTracking.createTrackersIfNeeded = function ()
                 title += ' ' + ucfirst(action);
             }
         } else if ($('#login_form').length) {
-            // this is the case when eg opening http://example.piwik.org/ and one is not logged in (we show login page)
+            // this is the case when eg opening http://example.matomo.org/ and one is not logged in (we show login page)
             title = 'Login';
         }
 

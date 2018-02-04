@@ -88,7 +88,7 @@ class CustomVariablesTest extends IntegrationTestCase
         $customVars = array(
             array(
                 'id' => 1,
-                'name' => 'Piwik Version',
+                'name' => 'Matomo Version',
                 'value' => '2.14.3',
             ),
             array(
