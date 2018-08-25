@@ -13,9 +13,6 @@ describe("AnonymousPiwikUsageMeasurement", function () {
     // uncomment this if you want to define a custom fixture to load before the test instead of the default one
     // this.fixture = "Piwik\\Plugins\\AnonymousPiwikUsageMeasurement\\tests\\Fixtures\\YOUR_FIXTURE_NAME";
 
-    var generalParams = 'idSite=1&period=day&date=2010-01-03',
-        urlBase = 'module=CoreHome&action=index&' + generalParams;
-
     before(function () {
         testEnvironment.pluginsToLoad = ['AnonymousPiwikUsageMeasurement'];
         testEnvironment.save();
@@ -23,16 +20,18 @@ describe("AnonymousPiwikUsageMeasurement", function () {
 
     var selector = '.card-content:contains(\'AnonymousPiwikUsageMeasurement\')';
 
-    it("should display the admin settings page", function (done) {
-        expect.screenshot('admin_settings_page').to.be.captureSelector(selector, function (page) {
-            page.load("?module=CoreAdminHome&action=generalSettings&idSite=1&period=day&date=yesterday");
-        }, done);
+    it("should display the admin settings page", async function () {
+        await page.goto("?module=CoreAdminHome&action=generalSettings&idSite=1&period=day&date=yesterday");
+
+        var elem = await page.jQuery(selector);
+        expect(await elem.screenshot()).to.matchImage('admin_settings_page');
     });
 
-    it("should display the user settings page", function (done) {
-        expect.screenshot('user_settings_page').to.be.captureSelector(selector, function (page) {
-            page.load("?module=UsersManager&action=userSettings&idSite=1&period=day&date=yesterday");
-        }, done);
+    it("should display the user settings page", async function () {
+        await page.goto("?module=UsersManager&action=userSettings&idSite=1&period=day&date=yesterday");
+
+        var elem = await page.jQuery(selector);
+        expect(await elem.screenshot()).to.matchImage('user_settings_page');
     });
 
 });
