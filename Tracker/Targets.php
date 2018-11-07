@@ -1,8 +1,8 @@
 <?php
 /**
- * Piwik - free/libre analytics platform
+ * Matomo - free/libre analytics platform
  *
- * @link http://piwik.org
+ * @link https://matomo.org
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
 
@@ -12,6 +12,7 @@ use Piwik\Common;
 use Piwik\Plugins\AnonymousPiwikUsageMeasurement\SystemSettings;
 use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker;
 use Piwik\SettingsPiwik;
+use Piwik\Tests\Framework\Fixture;
 
 /**
  * Defines Settings for AnonymousPiwikUsageMeasurement.
@@ -61,6 +62,12 @@ class Targets
                 'idSite' => (int) $customSiteId,
                 'useAnonymization' => $this->settings->anonymizeCustomPiwik->getValue()
             );
+        }
+
+        if (defined('PIWIK_TEST_MODE') && PIWIK_TEST_MODE && Common::isPhpCliMode()) {
+            foreach ($targets as &$target) {
+                $target['token_auth'] = Fixture::getTokenAuth();
+            }
         }
 
         return $targets;

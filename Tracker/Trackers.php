@@ -1,8 +1,8 @@
 <?php
 /**
- * Piwik - free/libre analytics platform
+ * Matomo - free/libre analytics platform
  *
- * @link http://piwik.org
+ * @link https://matomo.org
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
 
@@ -37,6 +37,9 @@ class Trackers
             $tracker->setRequestTimeout($seconds = 15);
             $tracker->setAnonymousUrl();
             $tracker->setUrlReferrer('');
+            if (isset($target['token_auth'])) {
+                $tracker->setTokenAuth($target['token_auth']);
+            }
             $trackers[] = $tracker;
         }
 
