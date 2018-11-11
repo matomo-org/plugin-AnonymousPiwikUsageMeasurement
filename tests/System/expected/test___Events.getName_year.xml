@@ -1,6 +1,210 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <result>
 	<row>
+		<label>TagManager (count)</label>
+		<nb_visits>8</nb_visits>
+		<nb_events>8</nb_events>
+		<nb_events_with_value>8</nb_events_with_value>
+		<sum_event_value>2</sum_event_value>
+		<min_event_value>2</min_event_value>
+		<max_event_value>2</max_event_value>
+		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+		<avg_event_value>2</avg_event_value>
+		<segment>eventName==TagManager+%28count%29</segment>
+		<subtable>
+			<row>
+				<label>TagManager.addContainer (count)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>2</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+			<row>
+				<label>TagManager.addContainerTag (count)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>2</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+			<row>
+				<label>TagManager.addContainerTrigger (count)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>2</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+			<row>
+				<label>TagManager.addContainerVariable (count)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>2</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+			<row>
+				<label>TagManager.createContainerVersion (count)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>2</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+			<row>
+				<label>TagManager.createDefaultContainerForSite (count)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>2</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+			<row>
+				<label>TagManager.getAvailableEnvironments (count)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>2</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+			<row>
+				<label>TagManager.publishContainerVersion (count)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>2</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+		</subtable>
+	</row>
+	<row>
+		<label>TagManager (speed)</label>
+		<nb_visits>8</nb_visits>
+		<nb_events>8</nb_events>
+		<nb_events_with_value>8</nb_events_with_value>
+		<sum_event_value>2</sum_event_value>
+		<min_event_value>2</min_event_value>
+		<max_event_value>2</max_event_value>
+		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+		<avg_event_value>2</avg_event_value>
+		<segment>eventName==TagManager+%28speed%29</segment>
+		<subtable>
+			<row>
+				<label>TagManager.addContainer (speed)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>2</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+			<row>
+				<label>TagManager.addContainerTag (speed)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>2</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+			<row>
+				<label>TagManager.addContainerTrigger (speed)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>2</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+			<row>
+				<label>TagManager.addContainerVariable (speed)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>2</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+			<row>
+				<label>TagManager.createContainerVersion (speed)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>2</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+			<row>
+				<label>TagManager.createDefaultContainerForSite (speed)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>2</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+			<row>
+				<label>TagManager.getAvailableEnvironments (speed)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>2</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+			<row>
+				<label>TagManager.publishContainerVersion (speed)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>2</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+		</subtable>
+	</row>
+	<row>
 		<label>API (count)</label>
 		<nb_visits>2</nb_visits>
 		<nb_events>2</nb_events>
@@ -233,6 +437,56 @@
 		<subtable>
 			<row>
 				<label>Goals.getGoals (speed)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>2</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+		</subtable>
+	</row>
+	<row>
+		<label>LanguagesManager (count)</label>
+		<nb_visits>1</nb_visits>
+		<nb_events>1</nb_events>
+		<nb_events_with_value>1</nb_events_with_value>
+		<sum_event_value>2</sum_event_value>
+		<min_event_value>2</min_event_value>
+		<max_event_value>2</max_event_value>
+		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+		<avg_event_value>2</avg_event_value>
+		<segment>eventName==LanguagesManager+%28count%29</segment>
+		<subtable>
+			<row>
+				<label>LanguagesManager.uses12HourClockForUser (count)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>2</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+		</subtable>
+	</row>
+	<row>
+		<label>LanguagesManager (speed)</label>
+		<nb_visits>1</nb_visits>
+		<nb_events>1</nb_events>
+		<nb_events_with_value>1</nb_events_with_value>
+		<sum_event_value>2</sum_event_value>
+		<min_event_value>2</min_event_value>
+		<max_event_value>2</max_event_value>
+		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+		<avg_event_value>2</avg_event_value>
+		<segment>eventName==LanguagesManager+%28speed%29</segment>
+		<subtable>
+			<row>
+				<label>LanguagesManager.uses12HourClockForUser (speed)</label>
 				<nb_visits>1</nb_visits>
 				<nb_events>1</nb_events>
 				<nb_events_with_value>1</nb_events_with_value>
