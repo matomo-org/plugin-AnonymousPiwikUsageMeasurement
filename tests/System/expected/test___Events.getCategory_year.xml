@@ -2,9 +2,9 @@
 <result>
 	<row>
 		<label>API (count)</label>
-		<nb_visits>17</nb_visits>
-		<nb_events>17</nb_events>
-		<nb_events_with_value>17</nb_events_with_value>
+		<nb_visits>19</nb_visits>
+		<nb_events>19</nb_events>
+		<nb_events_with_value>19</nb_events_with_value>
 		<sum_event_value>2</sum_event_value>
 		<min_event_value>2</min_event_value>
 		<max_event_value>2</max_event_value>
@@ -36,6 +36,28 @@
 			</row>
 			<row>
 				<label>CoreAdminHome.invalidateArchivedReports (count)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>2</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+			<row>
+				<label>CustomDimensions.getConfiguredCustomDimensions (count)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>2</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+			<row>
+				<label>Dashboard.getDashboards (count)</label>
 				<nb_visits>1</nb_visits>
 				<nb_events>1</nb_events>
 				<nb_events_with_value>1</nb_events_with_value>
@@ -203,9 +225,9 @@
 	</row>
 	<row>
 		<label>API (speed)</label>
-		<nb_visits>17</nb_visits>
-		<nb_events>17</nb_events>
-		<nb_events_with_value>17</nb_events_with_value>
+		<nb_visits>19</nb_visits>
+		<nb_events>19</nb_events>
+		<nb_events_with_value>19</nb_events_with_value>
 		<sum_event_value>2</sum_event_value>
 		<min_event_value>2</min_event_value>
 		<max_event_value>2</max_event_value>
@@ -237,6 +259,28 @@
 			</row>
 			<row>
 				<label>CoreAdminHome.invalidateArchivedReports (speed)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>2</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+			<row>
+				<label>CustomDimensions.getConfiguredCustomDimensions (speed)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>2</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+			<row>
+				<label>Dashboard.getDashboards (speed)</label>
 				<nb_visits>1</nb_visits>
 				<nb_events>1</nb_events>
 				<nb_events_with_value>1</nb_events_with_value>
