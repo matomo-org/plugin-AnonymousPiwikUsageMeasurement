@@ -63,15 +63,15 @@
                 var tracker2 = piwikUsageTracking.trackers[1];
                 var tracker3 = piwikUsageTracking.trackers[2];
 
-                expect(tracker1.getTrackerUrl()).to.eql('http://localhost/piwik.php');
+                expect(tracker1.getTrackerUrl()).to.eql('http://localhost/matomo.php');
                 expect(tracker1.getSiteId()).to.eql(1);
                 expect(tracker1.getCustomVariable(1, 'visit')).to.eql(['Access', 'user']);
 
-                expect(tracker2.getTrackerUrl()).to.eql('http://127.0.0.1/piwik.php');
+                expect(tracker2.getTrackerUrl()).to.eql('http://127.0.0.1/matomo.php');
                 expect(tracker2.getSiteId()).to.eql(20);
                 expect(tracker2.getCustomVariable(1, 'visit')).to.eql(['Access', 'user']);
 
-                expect(tracker3.getTrackerUrl()).to.eql('http://localhost/piwik.php');
+                expect(tracker3.getTrackerUrl()).to.eql('http://localhost/matomo.php');
                 expect(tracker3.getSiteId()).to.eql(33);
                 expect(tracker3.getCustomVariable(1, 'visit')).to.eql(['Access', 'user']);
             });
