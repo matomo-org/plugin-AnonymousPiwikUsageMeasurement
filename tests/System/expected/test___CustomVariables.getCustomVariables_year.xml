@@ -3,8 +3,8 @@
 	<row>
 		<label>Matomo Version</label>
 		<nb_visits>1</nb_visits>
-		<nb_actions>39</nb_actions>
-		<max_actions>39</max_actions>
+		<nb_actions>21</nb_actions>
+		<max_actions>21</max_actions>
 		<sum_visit_length>1</sum_visit_length>
 		<bounce_count>0</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
@@ -21,8 +21,8 @@
 			<row>
 				<label>2.14.3</label>
 				<nb_visits>1</nb_visits>
-				<nb_actions>39</nb_actions>
-				<max_actions>39</max_actions>
+				<nb_actions>21</nb_actions>
+				<max_actions>21</max_actions>
 				<sum_visit_length>1</sum_visit_length>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
@@ -34,8 +34,8 @@
 	<row>
 		<label>Num Segments</label>
 		<nb_visits>1</nb_visits>
-		<nb_actions>39</nb_actions>
-		<max_actions>39</max_actions>
+		<nb_actions>21</nb_actions>
+		<max_actions>21</max_actions>
 		<sum_visit_length>1</sum_visit_length>
 		<bounce_count>0</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
@@ -52,8 +52,8 @@
 			<row>
 				<label>0</label>
 				<nb_visits>1</nb_visits>
-				<nb_actions>39</nb_actions>
-				<max_actions>39</max_actions>
+				<nb_actions>21</nb_actions>
+				<max_actions>21</max_actions>
 				<sum_visit_length>1</sum_visit_length>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
@@ -65,8 +65,8 @@
 	<row>
 		<label>Num Users</label>
 		<nb_visits>1</nb_visits>
-		<nb_actions>39</nb_actions>
-		<max_actions>39</max_actions>
+		<nb_actions>21</nb_actions>
+		<max_actions>21</max_actions>
 		<sum_visit_length>1</sum_visit_length>
 		<bounce_count>0</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
@@ -83,8 +83,8 @@
 			<row>
 				<label>1</label>
 				<nb_visits>1</nb_visits>
-				<nb_actions>39</nb_actions>
-				<max_actions>39</max_actions>
+				<nb_actions>21</nb_actions>
+				<max_actions>21</max_actions>
 				<sum_visit_length>1</sum_visit_length>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
@@ -96,8 +96,8 @@
 	<row>
 		<label>Num Websites</label>
 		<nb_visits>1</nb_visits>
-		<nb_actions>39</nb_actions>
-		<max_actions>39</max_actions>
+		<nb_actions>21</nb_actions>
+		<max_actions>21</max_actions>
 		<sum_visit_length>1</sum_visit_length>
 		<bounce_count>0</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
@@ -114,8 +114,8 @@
 			<row>
 				<label>1</label>
 				<nb_visits>1</nb_visits>
-				<nb_actions>39</nb_actions>
-				<max_actions>39</max_actions>
+				<nb_actions>21</nb_actions>
+				<max_actions>21</max_actions>
 				<sum_visit_length>1</sum_visit_length>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
@@ -127,8 +127,8 @@
 	<row>
 		<label>PHP Version</label>
 		<nb_visits>1</nb_visits>
-		<nb_actions>39</nb_actions>
-		<max_actions>39</max_actions>
+		<nb_actions>21</nb_actions>
+		<max_actions>21</max_actions>
 		<sum_visit_length>1</sum_visit_length>
 		<bounce_count>0</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
@@ -145,8 +145,8 @@
 			<row>
 				<label>5.5.27</label>
 				<nb_visits>1</nb_visits>
-				<nb_actions>39</nb_actions>
-				<max_actions>39</max_actions>
+				<nb_actions>21</nb_actions>
+				<max_actions>21</max_actions>
 				<sum_visit_length>1</sum_visit_length>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
