@@ -35,7 +35,7 @@ class Targets
 
         if ($this->settings->trackToPiwik->getValue()) {
             $targets[] = array(
-                'url' => 'http://demo-anonymous.matomo.org/piwik.php',
+                'url' => 'https://demo-anonymous.matomo.org/piwik.php',
                 'idSite' => 1,
                 'useAnonymization' => true
             );
