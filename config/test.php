@@ -11,7 +11,6 @@ return array(
         \Piwik\Access::doAsSuperUser(function () use (&$settings) {
             $settings = new Piwik\Plugins\AnonymousPiwikUsageMeasurement\SystemSettings();
             // make sure no tracking is enabled when running tests, especially on travis and during ui tests
-            $settings->trackToPiwik->setValue(false);
             $settings->ownPiwikSiteId->setValue(0);
             $settings->customPiwikSiteId->setValue(0);
         });

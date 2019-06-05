@@ -82,6 +82,10 @@ class AnonymousPiwikUsageMeasurementTest extends IntegrationTestCase
         $settings = $this->makeUserSettings();
         $settings->userTrackingEnabled->setValue(true);
 
+        $systemSettings = $this->makePluginSettings();
+        $systemSettings->customPiwikSiteId->setValue(1);
+        $systemSettings->customPiwikSiteUrl->setValue('http://demo-anonymous.matomo.org/piwik.php');
+
         $out = '';
         Piwik::postEvent('Template.jsGlobalVariables', array(&$out));
         $this->assertContains('var piwikUsageTracking = {"targets":[{"url":"http:\/\/demo-anonymous.matomo.org\/piwik.php","idSite":1,"useAnonymization":true,"token_auth":null}],"visitorCustomVariables":[{"id":1,"name":"Access","value":"superuser"}],"trackingDomain":"http:\/\/demo-anonymous.matomo.org","exampleDomain":"http:\/\/example.com","userId":"superUserLogin"}', $out);
@@ -89,7 +93,10 @@ class AnonymousPiwikUsageMeasurementTest extends IntegrationTestCase
 
     public function test_shouldAlwaysAddTrackingCallAndNotFail_IfUserIsAnonmyous()
     {
-        $this->makePluginSettings();
+        $systemSettings = $this->makePluginSettings();
+        $systemSettings->customPiwikSiteId->setValue(1);
+        $systemSettings->customPiwikSiteUrl->setValue('http://demo-anonymous.matomo.org/piwik.php');
+
         FakeAccess::clearAccess($superUser = false, array(), array(), $login = 'anonymous');
 
         $out = '';
@@ -102,6 +109,8 @@ class AnonymousPiwikUsageMeasurementTest extends IntegrationTestCase
     {
         $settings = $this->makePluginSettings();
         $settings->canUserOptOut->setValue(false);
+        $settings->customPiwikSiteId->setValue(1);
+        $settings->customPiwikSiteUrl->setValue('http://demo-anonymous.matomo.org/piwik.php');
         $settings->save();
 
         // we need to save it first and create new settings instance since the setting will be missing afterwards.

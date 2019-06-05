@@ -34,7 +34,6 @@ class SendSystemReportTaskFixture extends Fixture
 
         Fixture::createSuperUser(true);
         $settings = new SystemSettings();
-        $settings->trackToPiwik->setValue(false);
         $settings->ownPiwikSiteId->setValue($this->idSite);
         $targets  = new Targets($settings);
         $trackers = new Trackers($targets);

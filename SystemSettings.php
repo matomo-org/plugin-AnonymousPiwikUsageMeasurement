@@ -44,7 +44,6 @@ class SystemSettings extends \Piwik\Settings\Plugin\SystemSettings
     protected function init()
     {
         $this->canUserOptOut = $this->createLetUsersOptOutSetting();
-        $this->trackToPiwik = $this->createTrackToPiwikSetting();
 
         $this->ownPiwikSiteId = $this->createTrackToOwnPiwikSetting();
         $this->anonymizeSelfPiwik = $this->anonymizationOption('anonymizeSelfPiwik');
@@ -61,16 +60,6 @@ class SystemSettings extends \Piwik\Settings\Plugin\SystemSettings
             $field->title = 'Let users disable anonymous tracking';
             $field->uiControl = FieldConfig::UI_CONTROL_CHECKBOX;
             $field->description = 'If enabled, logged in users can opt out in their plugin settings. Anonymous users cannot opt out.';
-        });
-    }
-
-    private function createTrackToPiwikSetting()
-    {
-        return $this->makeSetting('trackToPiwik', $default = true, FieldConfig::TYPE_BOOL, function (FieldConfig $field) {
-            $field->title = 'Send usage data to Matomo.org';
-            $field->uiControl = FieldConfig::UI_CONTROL_CHECKBOX;
-            $field->introduction = 'Send anonmyized usage data to the creators of Matomo';
-            $field->description = 'If enabled, anonymized usage data will be sent to demo-anonymous.matomo.org and the tracked data can be viewed there (the data is public). The collected data is used to improve Matomo. Thank you for making Matomo better!';
         });
     }
 

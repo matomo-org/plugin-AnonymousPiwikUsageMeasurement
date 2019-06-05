@@ -44,11 +44,6 @@ class SystemSettingsTest extends IntegrationTestCase
         $this->assertSame(true, $this->settings->canUserOptOut->getValue());
     }
 
-    public function test_trackToPiwik_ShouldBeEnabledByDefault()
-    {
-        $this->assertSame(true, $this->settings->trackToPiwik->getValue());
-    }
-
     public function test_ownPiwikSiteId_shouldBeZeroByDefault()
     {
         $this->assertSame(0, $this->settings->ownPiwikSiteId->getValue());
