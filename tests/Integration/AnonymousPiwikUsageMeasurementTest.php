@@ -84,7 +84,7 @@ class AnonymousPiwikUsageMeasurementTest extends IntegrationTestCase
 
         $systemSettings = $this->makePluginSettings();
         $systemSettings->customPiwikSiteId->setValue(1);
-        $systemSettings->customPiwikSiteUrl->setValue('http://demo-anonymous.matomo.org/piwik.php');
+        $systemSettings->customPiwikSiteUrl->setValue('https://demo-anonymous.matomo.org/piwik.php');
 
         $out = '';
         Piwik::postEvent('Template.jsGlobalVariables', array(&$out));
@@ -95,7 +95,7 @@ class AnonymousPiwikUsageMeasurementTest extends IntegrationTestCase
     {
         $systemSettings = $this->makePluginSettings();
         $systemSettings->customPiwikSiteId->setValue(1);
-        $systemSettings->customPiwikSiteUrl->setValue('http://demo-anonymous.matomo.org/piwik.php');
+        $systemSettings->customPiwikSiteUrl->setValue('https://demo-anonymous.matomo.org/piwik.php');
 
         FakeAccess::clearAccess($superUser = false, array(), array(), $login = 'anonymous');
 
@@ -110,7 +110,7 @@ class AnonymousPiwikUsageMeasurementTest extends IntegrationTestCase
         $settings = $this->makePluginSettings();
         $settings->canUserOptOut->setValue(false);
         $settings->customPiwikSiteId->setValue(1);
-        $settings->customPiwikSiteUrl->setValue('http://demo-anonymous.matomo.org/piwik.php');
+        $settings->customPiwikSiteUrl->setValue('https://demo-anonymous.matomo.org/piwik.php');
         $settings->save();
 
         // we need to save it first and create new settings instance since the setting will be missing afterwards.

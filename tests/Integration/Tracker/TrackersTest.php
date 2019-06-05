@@ -80,10 +80,10 @@ class TrackersTest extends IntegrationTestCase
 
         // verify url anonymized, referrer removed, idSite + url applied
         $this->assertStringStartsWith('http://apache.piwik/piwik.php?idsite=98&rec=1', $trackers[0]->getUrlTrackPageView());
-        $this->assertStringEndsWith('url=http%3A%2F%2Fdemo-anonymous.matomo.org&urlref=', $trackers[0]->getUrlTrackPageView());
+        $this->assertStringEndsWith('url=https%3A%2F%2Fdemo-anonymous.matomo.org&urlref=', $trackers[0]->getUrlTrackPageView());
 
         $this->assertStringStartsWith('http://apache.piwik/piwik/piwik.php?idsite=101&rec=1', $trackers[1]->getUrlTrackPageView());
-        $this->assertStringEndsWith('url=http%3A%2F%2Fdemo-anonymous.matomo.org&urlref=', $trackers[1]->getUrlTrackPageView());
+        $this->assertStringEndsWith('url=https%3A%2F%2Fdemo-anonymous.matomo.org&urlref=', $trackers[1]->getUrlTrackPageView());
 
     }
 
