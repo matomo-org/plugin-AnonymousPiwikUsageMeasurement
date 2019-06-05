@@ -84,6 +84,7 @@ class TrackersTest extends IntegrationTestCase
 
         $this->assertStringStartsWith('http://apache.piwik/piwik/piwik.php?idsite=101&rec=1', $trackers[1]->getUrlTrackPageView());
         $this->assertStringEndsWith('url=http%3A%2F%2Fdemo-anonymous.matomo.org&urlref=', $trackers[1]->getUrlTrackPageView());
+
     }
 
 }

@@ -14,24 +14,18 @@ use Piwik\DbHelper;
 
 class Profiles
 {
-    /**
-     * @var Db
-     */
-    private $db;
-
     private $tableName = 'usage_measurement_profiles';
     private $tableNamePrefixed;
 
     public function __construct()
     {
-        $this->db = Db::get();
         $this->tableNamePrefixed = Common::prefixTable($this->tableName);
     }
 
     public function popAll()
     {
-        $profiles = $this->db->fetchAll('SELECT * FROM ' . $this->tableNamePrefixed);
-        $this->db->query('DELETE FROM ' . $this->tableNamePrefixed);
+        $profiles = Db::get()->fetchAll('SELECT * FROM ' . $this->tableNamePrefixed);
+        Db::get()->query('DELETE FROM ' . $this->tableNamePrefixed);
 
         return $profiles;
     }
@@ -44,7 +38,7 @@ class Profiles
                 ' ON DUPLICATE KEY UPDATE `count` = `count` + ?, `wall_time` = `wall_time` + ?';
         $bind = array($creationDate, $category, $name, $action, $count, $wallTimeInMs, $count, $wallTimeInMs);
 
-        $this->db->query($sql, $bind);
+        Db::get()->query($sql, $bind);
     }
 
     public function install()

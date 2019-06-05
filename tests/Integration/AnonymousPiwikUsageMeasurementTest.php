@@ -88,7 +88,7 @@ class AnonymousPiwikUsageMeasurementTest extends IntegrationTestCase
 
         $out = '';
         Piwik::postEvent('Template.jsGlobalVariables', array(&$out));
-        $this->assertContains('var piwikUsageTracking = {"targets":[{"url":"http:\/\/demo-anonymous.matomo.org\/piwik.php","idSite":1,"useAnonymization":true,"token_auth":null}],"visitorCustomVariables":[{"id":1,"name":"Access","value":"superuser"}],"trackingDomain":"http:\/\/demo-anonymous.matomo.org","exampleDomain":"http:\/\/example.com","userId":"superUserLogin"}', $out);
+        $this->assertContains('var piwikUsageTracking = {"targets":[{"url":"https:\/\/demo-anonymous.matomo.org\/piwik.php","idSite":1,"useAnonymization":true,"token_auth":null}],"visitorCustomVariables":[{"id":1,"name":"Access","value":"superuser"}],"trackingDomain":"https:\/\/demo-anonymous.matomo.org","exampleDomain":"http:\/\/example.com","userId":"superUserLogin"}', $out);
     }
 
     public function test_shouldAlwaysAddTrackingCallAndNotFail_IfUserIsAnonmyous()
@@ -118,7 +118,7 @@ class AnonymousPiwikUsageMeasurementTest extends IntegrationTestCase
 
         $out = '';
         Piwik::postEvent('Template.jsGlobalVariables', array(&$out));
-        $this->assertContains('var piwikUsageTracking = {"targets":[{"url":"http:\/\/demo-anonymous.matomo.org\/piwik.php","idSite":1,"useAnonymization":true,"token_auth":null}],"visitorCustomVariables":[{"id":1,"name":"Access","value":"superuser"}],"trackingDomain":"http:\/\/demo-anonymous.matomo.org","exampleDomain":"http:\/\/example.com","userId":"superUserLogin"}', $out);
+        $this->assertContains('var piwikUsageTracking = {"targets":[{"url":"https:\/\/demo-anonymous.matomo.org\/piwik.php","idSite":1,"useAnonymization":true,"token_auth":null}],"visitorCustomVariables":[{"id":1,"name":"Access","value":"superuser"}],"trackingDomain":"https:\/\/demo-anonymous.matomo.org","exampleDomain":"http:\/\/example.com","userId":"superUserLogin"}', $out);
     }
 
     private function makePluginSettings()
