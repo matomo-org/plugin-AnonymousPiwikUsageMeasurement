@@ -32,13 +32,11 @@ class TargetsTest extends IntegrationTestCase
         }
     }
 
-    public function test_defaultSettings_ShouldOnlyReturnDemoPiwik()
+    public function test_defaultSettings_ShouldOnlyReturnNone()
     {
         $settings = $this->makeDefaultSettings();
 
-        $piwikInstance = $this->getPiwikOrgTarget();
-
-        $this->assertTargets(array($piwikInstance), $settings);
+        $this->assertTargets(array(), $settings);
     }
 
     public function test_NoTargetEnabled_ShouldReturnNothing()
@@ -86,13 +84,11 @@ class TargetsTest extends IntegrationTestCase
     public function test_AllEnabled_shouldReturnAll()
     {
         $settings = $this->makeSettingsWithNoInstanceEnabled();
-        $settings->trackToPiwik->setValue(true);
         $settings->ownPiwikSiteId->setValue($this->idSite);
         $settings->customPiwikSiteUrl->setValue('http://example.com/piwik');
         $settings->customPiwikSiteId->setValue(73);
 
         $targets = array(
-            $this->getPiwikOrgTarget(),
             $this->getOwnPiwikTarget(),
             $this->getCustomPiwikTarget('http://example.com/piwik/piwik.php', 73)
         );
@@ -108,13 +104,7 @@ class TargetsTest extends IntegrationTestCase
     private function makeSettingsWithNoInstanceEnabled()
     {
         $settings = $this->makeDefaultSettings();
-        $settings->trackToPiwik->setValue(false);
         return $settings;
-    }
-
-    private function getPiwikOrgTarget()
-    {
-        return $this->getCustomPiwikTarget('https://demo-anonymous.matomo.org/piwik.php', 1);
     }
 
     private function getOwnPiwikTarget()

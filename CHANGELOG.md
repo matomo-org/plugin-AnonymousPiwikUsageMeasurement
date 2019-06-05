@@ -1,5 +1,6 @@
 ## Changelog
 
+* 3.1.0 No longer send optionally any usage data to Matomo
 * 3.0.3 Renaming from Piwik to Matomo
 * 3.0.0 Compatibility with Matomo 3
 * 0.2.1 Track MySQL server version in a custom variable.
