@@ -18,20 +18,18 @@ describe("AnonymousPiwikUsageMeasurement", function () {
         testEnvironment.save();
     });
 
-    var selector = '.card-content:contains(\'AnonymousPiwikUsageMeasurement\')';
+    let selector = '.card-content:contains(\'AnonymousPiwikUsageMeasurement\')';
 
     it("should display the admin settings page", async function () {
         await page.goto("?module=CoreAdminHome&action=generalSettings&idSite=1&period=day&date=yesterday");
 
-        var elem = await page.jQuery(selector);
-        expect(await elem.screenshot()).to.matchImage('admin_settings_page');
+        expect(await page.screenshotSelector(selector)).to.matchImage('admin_settings_page');
     });
 
     it("should display the user settings page", async function () {
         await page.goto("?module=UsersManager&action=userSettings&idSite=1&period=day&date=yesterday");
 
-        var elem = await page.jQuery(selector);
-        expect(await elem.screenshot()).to.matchImage('user_settings_page');
+        expect(await page.screenshotSelector(selector)).to.matchImage('user_settings_page');
     });
 
 });
