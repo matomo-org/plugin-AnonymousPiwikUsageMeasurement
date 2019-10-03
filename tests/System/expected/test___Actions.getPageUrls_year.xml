@@ -17,6 +17,6 @@
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<url>https://demo-anonymous.matomo.org/system-report</url>
-		<segment>pageUrl==https%3A%2F%2Fdemo-anonymous.matomo.org%2Fsystem-report</segment>
+		<segment>pageUrl==https%253A%252F%252Fdemo-anonymous.matomo.org%252Fsystem-report</segment>
 	</row>
 </result>
