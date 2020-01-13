@@ -1,6 +1,6 @@
 {
     "name": "AnonymousPiwikUsageMeasurement",
-    "version": "3.1.0",
+    "version": "4.0.0",
     "description": "Send anonymized usage data to your own Matomo instance or to any other Matomo",
     "theme": false,
     "keywords": [
@@ -12,7 +12,7 @@
     "license": "GPL v3+",
     "homepage": "https:\/\/matomo.org",
     "require": {
-        "piwik": ">=3.0.0-dev,<4.0.0-dev"
+        "matomo": ">=4.0.0-b1,<5.0.0-b1"
     },
     "support": {
         "issues": "https://github.com/matomo-org/plugin-AnonymousPiwikUsageMeasurement/issues",
