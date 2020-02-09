@@ -24,7 +24,7 @@ class ProfilesTest extends IntegrationTestCase
      */
     private $profiles;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

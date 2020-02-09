@@ -27,7 +27,7 @@ class SendSystemReportTaskFixture extends Fixture
     public $dateTime = '2013-01-23 01:23:45';
     public $idSite = 1;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->setUpWebsite();
         $this->executeSomeApiMethods();
@@ -43,7 +43,7 @@ class SendSystemReportTaskFixture extends Fixture
         $task->sendSystemReport();
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         // empty
     }
