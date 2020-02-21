@@ -49,7 +49,7 @@ class Profiles
                   `action` VARCHAR(200) NOT NULL,
                   `count` INT UNSIGNED NOT NULL DEFAULT 0 ,
                   `wall_time` BIGINT UNSIGNED NOT NULL DEFAULT 0 ,
-                  PRIMARY KEY(`category`, `name`, `action`)";
+                  PRIMARY KEY(`category`(64), `name`(64), `action`(63))";
 
         DbHelper::createTable($this->tableName, $table);
     }
