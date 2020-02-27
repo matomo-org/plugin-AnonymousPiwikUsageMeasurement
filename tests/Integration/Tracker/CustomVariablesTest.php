@@ -32,7 +32,7 @@ class CustomVariablesTest extends IntegrationTestCase
      */
     private $customVars;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

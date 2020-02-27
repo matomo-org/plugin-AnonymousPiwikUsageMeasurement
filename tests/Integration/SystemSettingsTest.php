@@ -28,7 +28,7 @@ class SystemSettingsTest extends IntegrationTestCase
      */
     private $settings;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -56,21 +56,17 @@ class SystemSettingsTest extends IntegrationTestCase
         $this->assertSame(0, $this->settings->ownPiwikSiteId->getValue());
     }
 
-    /**
-     * @expectedException \Exception
-     * @expectedExceptionMessage Site Id 'MyTest0' should be a number
-     */
     public function test_ownPiwikSiteId_shouldThrowAnException_IfValueIsNotNumeric()
     {
+        $this->expectException(\Exception::class);
+        $this->expectDeprecationMessage("Site Id 'MyTest0' should be a number");
         $this->settings->ownPiwikSiteId->setValue('MyTest0');
     }
 
-    /**
-     * @expectedException \Exception
-     * @expectedExceptionMessage The specified idSite '5' does not exist
-     */
     public function test_ownPiwikSiteId_shouldThrowAnException_IfSiteIdDoesNotExist()
     {
+        $this->expectException(\Exception::class);
+        $this->expectDeprecationMessage("The specified idSite '5' does not exist");
         $this->settings->ownPiwikSiteId->setValue('5');
     }
 
@@ -97,12 +93,10 @@ class SystemSettingsTest extends IntegrationTestCase
         $this->assertSame('http://example.com/piwik.php', $this->settings->customPiwikSiteUrl->getValue());
     }
 
-    /**
-     * @expectedException \Exception
-     * @expectedExceptionMessage URL 'http:/Valtes.com/idUrl' seems to be not a valid URL
-     */
     public function test_customPiwikSiteUrl_shouldThrowAnException_WhenNotAValidUrlIsSet()
     {
+        $this->expectException(\Exception::class);
+        $this->expectDeprecationMessage("URL 'http:/Valtes.com/idUrl' seems to be not a valid URL");
         $this->settings->customPiwikSiteUrl->setValue('http:/Valtes.com/idUrl');
     }
 
@@ -132,12 +126,10 @@ class SystemSettingsTest extends IntegrationTestCase
         $this->assertSame(95, $this->settings->customPiwikSiteId->getValue());
     }
 
-    /**
-     * @expectedException \Exception
-     * @expectedExceptionMessage Site Id 'MyTest0' should be a number
-     */
     public function test_customPiwikSiteId_shouldThrowAnException_IfValueIsNotNumeric()
     {
+        $this->expectException(\Exception::class);
+        $this->expectDeprecationMessage("Site Id 'MyTest0' should be a number");
         $this->settings->customPiwikSiteId->setValue('MyTest0');
     }
 
