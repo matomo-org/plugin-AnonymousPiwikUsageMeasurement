@@ -116,7 +116,7 @@ piwikUsageTracking.createTrackersIfNeeded = function ()
 
     function trackPageView()
     {
-        var urlAnonymizer = createUrlAnonymizer();;
+        var urlAnonymizer = createUrlAnonymizer();
         var popover = urlAnonymizer.getPopoverNameFromUrl();
 
         angular.forEach(piwikUsageTracking.trackers, anonymizeTitle);
@@ -131,32 +131,15 @@ piwikUsageTracking.createTrackersIfNeeded = function ()
 
     $(function () {
         var $rootScope = angular.element(document).injector().get('$rootScope');
-        var timeStart;
 
         $(broadcast).on('locationChangeSuccess', function () {
-            // Piwik 2.X
-            if (timeStart) {
-                var timeEnd = new Date().getTime();
-                var timeTaken = timeEnd - timeStart;
-                _paq.push(['setGenerationTimeMs', timeTaken]);
-                timeStart = null;
-            } else {
-                _paq.push(['setGenerationTimeMs', 0]);
-            }
-
             trackPageView();
         });
 
         $rootScope.$on('$locationChangeSuccess', function (event, newUrl, oldUrl) {
-            timeStart = new Date().getTime();
-
             var urlAnonymizer = createUrlAnonymizer();
 
             if (urlAnonymizer.isPiwik3ReportingUrl() && newUrl !== oldUrl) {
-                // Piwik 3.X
-                _paq.push(['setGenerationTimeMs', 0]);
-                // we cannot set generation time since the page is loaded immediately via angular, instead widgets
-                // are loaded separately. Ideally we would at some point check when all widgets are loaded but not easy
                 trackPageView();
             }
         });
