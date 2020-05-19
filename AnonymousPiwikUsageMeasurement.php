@@ -8,6 +8,7 @@
 
 namespace Piwik\Plugins\AnonymousPiwikUsageMeasurement;
 
+use Piwik\Common;
 use Piwik\Container\StaticContainer;
 use Piwik\Date;
 use Piwik\Piwik;
@@ -31,6 +32,7 @@ class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
             'Template.jsGlobalVariables' => 'addPiwikClientTracking',
             'API.Request.dispatch' => 'logStartTimeOfApiCall',
             'API.Request.dispatch.end' => 'trackApiCall',
+            'Db.getTablesInstalled' => 'getTablesInstalled'
         );
     }
 
@@ -44,6 +46,16 @@ class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
     {
         $dao = new Profiles();
         $dao->uninstall();
+    }
+
+    /**
+     * Register the new tables, so Matomo knows about them.
+     *
+     * @param array $allTablesInstalled
+     */
+    public function getTablesInstalled(&$allTablesInstalled)
+    {
+        $allTablesInstalled[] = Common::prefixTable('usage_measurement_profiles');
     }
 
     public function logStartTimeOfApiCall(&$finalParameters, $pluginName, $methodName)
