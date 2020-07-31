@@ -10,7 +10,6 @@ namespace Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker;
 
 use Piwik\Common;
 use Piwik\Plugins\AnonymousPiwikUsageMeasurement\SystemSettings;
-use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker;
 use Piwik\SettingsPiwik;
 use Piwik\Tests\Framework\Fixture;
 
@@ -40,7 +39,7 @@ class Targets
                 $piwikUrl .= '/';
             }
             $targets[] = array(
-                'url' => $piwikUrl . 'piwik.php',
+                'url' => $piwikUrl . 'matomo.php',
                 'idSite' => (int) $ownSiteId,
                 'useAnonymization' => $this->settings->anonymizeSelfPiwik->getValue()
             );
