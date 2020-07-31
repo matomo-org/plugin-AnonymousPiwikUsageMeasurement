@@ -12,6 +12,7 @@ use Piwik\API\Request;
 use Piwik\Container\StaticContainer;
 use Piwik\Db;
 use Piwik\Piwik;
+use Piwik\Plugins\SegmentEditor\Services\StoredSegmentService;
 
 class CustomVariables
 {
@@ -53,16 +54,13 @@ class CustomVariables
             ),
         );
 
-        $segmentClass = 'Piwik\Plugins\SegmentEditor\Services\StoredSegmentService';
-        if (class_exists($segmentClass)) {
-            $service = StaticContainer::get($segmentClass);
-            $segments = $service->getAllSegmentsAndIgnoreVisibility();
-            $customVars[] = array(
-                'id' => 5,
-                'name' => 'Num Segments',
-                'value' => count($segments),
-            );
-        }
+        $service = StaticContainer::get(StoredSegmentService::class);
+        $segments = $service->getAllSegmentsAndIgnoreVisibility();
+        $customVars[] = array(
+            'id' => 5,
+            'name' => 'Num Segments',
+            'value' => count($segments),
+        );
 
         if (isset($mySqlVersion)) {
             $customVars[] = array(

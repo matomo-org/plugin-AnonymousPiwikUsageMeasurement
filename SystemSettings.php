@@ -24,9 +24,6 @@ class SystemSettings extends \Piwik\Settings\Plugin\SystemSettings
     public $canUserOptOut;
 
     /** @var Setting */
-    public $trackToPiwik;
-
-    /** @var Setting */
     public $ownPiwikSiteId;
 
     /** @var Setting */
@@ -119,11 +116,11 @@ class SystemSettings extends \Piwik\Settings\Plugin\SystemSettings
                     return '';
                 }
 
-                if (!Common::stringEndsWith($value, '/piwik.php')) {
+                if (!Common::stringEndsWith($value, '/piwik.php') && !Common::stringEndsWith($value, '/matomo.php')) {
                     if (!Common::stringEndsWith($value, '/')) {
                         $value .= '/';
                     }
-                    $value .= 'piwik.php';
+                    $value .= 'matomo.php';
                 }
 
                 return $value;

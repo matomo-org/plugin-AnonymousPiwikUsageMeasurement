@@ -18,7 +18,7 @@ class Tracker extends \MatomoTracker
 
     /**
      * The method name is not ideal but want to make sure MatomoTracker won't define such method at some point.
-     * @param string $baseApiUrl eg 'http://demo-anonymous.matomo.org/piwik.php'
+     * @param string $baseApiUrl eg 'http://demo-anonymous.matomo.org/matomo.php'
      */
     public function setBaseApiUrl($baseApiUrl)
     {

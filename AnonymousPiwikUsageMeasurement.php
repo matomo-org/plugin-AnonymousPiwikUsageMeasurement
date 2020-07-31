@@ -29,7 +29,7 @@ class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
     {
         return array(
             'AssetManager.getJavaScriptFiles' => 'getJsFiles',
-            'Template.jsGlobalVariables' => 'addPiwikClientTracking',
+            'Template.jsGlobalVariables' => 'addMatomoClientTracking',
             'API.Request.dispatch' => 'logStartTimeOfApiCall',
             'API.Request.dispatch.end' => 'trackApiCall',
             'Db.getTablesInstalled' => 'getTablesInstalled'
@@ -101,7 +101,7 @@ class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
 
     public function getJsFiles(&$jsFiles)
     {
-        $jsFiles[] = 'piwik.js';
+        $jsFiles[] = 'matomo.js';
         $jsFiles[] = 'plugins/AnonymousPiwikUsageMeasurement/javascripts/url.js';
         $jsFiles[] = 'plugins/AnonymousPiwikUsageMeasurement/javascripts/tracking.js';
         $jsFiles[] = 'plugins/AnonymousPiwikUsageMeasurement/angularjs/common/dashboard.directive.js';
@@ -111,10 +111,10 @@ class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
         $jsFiles[] = 'plugins/AnonymousPiwikUsageMeasurement/angularjs/common/multisites.directive.js';
     }
 
-    public function addPiwikClientTracking(&$out)
+    public function addMatomoClientTracking(&$out)
     {
-        $settings = StaticContainer::get('Piwik\Plugins\AnonymousPiwikUsageMeasurement\SystemSettings');
-        $userSettings = StaticContainer::get('Piwik\Plugins\AnonymousPiwikUsageMeasurement\UserSettings');
+        $settings = StaticContainer::get(SystemSettings::class);
+        $userSettings = StaticContainer::get(UserSettings::class);
 
         $config = array(
             'targets' => array(),

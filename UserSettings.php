@@ -17,28 +17,7 @@ use Piwik\Settings\FieldConfig;
 class UserSettings extends \Piwik\Settings\Plugin\UserSettings
 {
     /** @var Setting */
-    public $canUserOptOut;
-
-    /** @var Setting */
     public $userTrackingEnabled;
-
-    /** @var Setting */
-    public $trackToPiwik;
-
-    /** @var Setting */
-    public $ownPiwikSiteId;
-
-    /** @var Setting */
-    public $customPiwikSiteId;
-
-    /** @var Setting */
-    public $customPiwikSiteUrl;
-
-    /** @var Setting */
-    public $anonymizeCustomPiwik;
-
-    /** @var Setting */
-    public $anonymizeSelfPiwik;
 
     /**
      * @var SystemSettings
