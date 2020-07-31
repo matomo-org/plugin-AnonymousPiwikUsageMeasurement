@@ -62,7 +62,7 @@ class TargetsTest extends IntegrationTestCase
         $settings->customPiwikSiteId->setValue(72);
         $settings->customPiwikSiteUrl->setValue('http://example.com/piwik');
 
-        $customInstance = $this->getCustomPiwikTarget('http://example.com/piwik/piwik.php', 72);
+        $customInstance = $this->getCustomPiwikTarget('http://example.com/piwik/matomo.php', 72);
 
         $this->assertTargets(array($customInstance), $settings);
     }
@@ -85,12 +85,12 @@ class TargetsTest extends IntegrationTestCase
     {
         $settings = $this->makeSettingsWithNoInstanceEnabled();
         $settings->ownPiwikSiteId->setValue($this->idSite);
-        $settings->customPiwikSiteUrl->setValue('http://example.com/piwik');
+        $settings->customPiwikSiteUrl->setValue('http://example.com/matomo');
         $settings->customPiwikSiteId->setValue(73);
 
         $targets = array(
             $this->getOwnPiwikTarget(),
-            $this->getCustomPiwikTarget('http://example.com/piwik/piwik.php', 73)
+            $this->getCustomPiwikTarget('http://example.com/matomo/matomo.php', 73)
         );
 
         $this->assertTargets($targets, $settings);
@@ -109,7 +109,7 @@ class TargetsTest extends IntegrationTestCase
 
     private function getOwnPiwikTarget()
     {
-        return $this->getCustomPiwikTarget(Fixture::getRootUrl() . 'tests/PHPUnit/proxy/piwik.php', $this->idSite);
+        return $this->getCustomPiwikTarget(Fixture::getRootUrl() . 'tests/PHPUnit/proxy/matomo.php', $this->idSite);
     }
 
     private function getCustomPiwikTarget($url, $idSite)

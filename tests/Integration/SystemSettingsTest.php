@@ -84,13 +84,16 @@ class SystemSettingsTest extends IntegrationTestCase
     public function test_customPiwikSiteUrl_shouldAppendPiwikPhpIfNeeded()
     {
         $this->settings->customPiwikSiteUrl->setValue('http://example.com');
-        $this->assertSame('http://example.com/piwik.php', $this->settings->customPiwikSiteUrl->getValue());
+        $this->assertSame('http://example.com/matomo.php', $this->settings->customPiwikSiteUrl->getValue());
 
         $this->settings->customPiwikSiteUrl->setValue('http://example.com/');
-        $this->assertSame('http://example.com/piwik.php', $this->settings->customPiwikSiteUrl->getValue());
+        $this->assertSame('http://example.com/matomo.php', $this->settings->customPiwikSiteUrl->getValue());
 
         $this->settings->customPiwikSiteUrl->setValue('http://example.com/piwik.php');
         $this->assertSame('http://example.com/piwik.php', $this->settings->customPiwikSiteUrl->getValue());
+
+        $this->settings->customPiwikSiteUrl->setValue('http://example.com/matomo.php');
+        $this->assertSame('http://example.com/matomo.php', $this->settings->customPiwikSiteUrl->getValue());
     }
 
     public function test_customPiwikSiteUrl_shouldThrowAnException_WhenNotAValidUrlIsSet()
