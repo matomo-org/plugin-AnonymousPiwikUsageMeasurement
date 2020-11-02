@@ -1,6 +1,6 @@
 # Matomo AnonymousPiwikUsageMeasurement Plugin
 
-[![Build Status](https://travis-ci.org/matomo-org/plugin-AnonymousPiwikUsageMeasurement.svg?branch=master)](https://travis-ci.org/matomo-org/plugin-AnonymousPiwikUsageMeasurement)
+[![Build Status](https://travis-ci.com/matomo-org/plugin-AnonymousPiwikUsageMeasurement.svg?branch=4.x-dev)](https://travis-ci.com/matomo-org/plugin-AnonymousPiwikUsageMeasurement)
 
 ## Description
 
