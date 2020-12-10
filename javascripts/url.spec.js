@@ -16,7 +16,7 @@
 
         var fakeSearch = "?module=CoreHome&action=index&idSite=43&period=day&date=yesterday";
         var fakeHash = "#?module=Dashboard&action=embeddedIndex&idSite=43&period=day&date=yesterday&idDashboard=25";
-        var piwik3Hash = "#?idSite=1&period=day&date=year&&category=General_Actions&subcategory=Events_Events";
+        var piwik3Hash = "#?idSite=1&period=day&date=yesterday&category=General_Actions&subcategory=Events_Events";
 
         var fakeUrl = buildUrl(fakeSearch, fakeHash);
         var piwik3Url = buildUrl(fakeSearch, piwik3Hash);
@@ -44,13 +44,13 @@
             });
 
             it('should correctly change a piwik 3 url', function() {
-                var url = urlAnonymizer.makeUrlHierarchical(anonymousDomain + '/index.php?idSite=1&period=day#?idSite=1&period=day&date=year&category=General_Actions&subcategory=Events_Events')
+                var url = urlAnonymizer.makeUrlHierarchical(anonymousDomain + '/index.php?idSite=1&period=day#?idSite=1&period=day&date=yesterday&category=General_Actions&subcategory=Events_Events')
                 expect(url).to.eql(trackingDomain + '/Actions/Events/?idSite=1&period=day');
             });
 
             it('should ignore sublevel id in case it is a number', function() {
-                var url = urlAnonymizer.makeUrlHierarchical(anonymousDomain + '/index.php?idSite=1&period=day&date=year&category=Dashboard_Dashboard&subcategory=5')
-                expect(url).to.eql(trackingDomain + '/Dashboard/default/?idSite=1&period=day&date=year');
+                var url = urlAnonymizer.makeUrlHierarchical(anonymousDomain + '/index.php?idSite=1&period=day&date=yesterday&category=Dashboard_Dashboard&subcategory=5')
+                expect(url).to.eql(trackingDomain + '/Dashboard/default/?idSite=1&period=day&date=yesterday');
             });
         });
 
@@ -385,7 +385,7 @@
             });
 
             it('should be true in case category is zero', function() {
-                var urlAnonymizer = new UrlAnonymizer(buildUrl(fakeSearch, "#?idSite=1&period=day&date=year&&category=0&subcategory=0"));
+                var urlAnonymizer = new UrlAnonymizer(buildUrl(fakeSearch, "#?idSite=1&period=day&date=yesterday&&category=0&subcategory=0"));
                 var isPiwik3 = urlAnonymizer.isPiwik3ReportingUrl();
                 expect(isPiwik3).to.be.true;
             });
@@ -412,7 +412,7 @@
             });
 
             it('should detect top level id when category is zero', function() {
-                var urlAnonymizer = new UrlAnonymizer(buildUrl(fakeSearch, "#?idSite=1&period=day&date=year&category=0&subcategory=0"));
+                var urlAnonymizer = new UrlAnonymizer(buildUrl(fakeSearch, "#?idSite=1&period=day&date=yesterday&category=0&subcategory=0"));
                 var id = urlAnonymizer.getTopLevelId();
                 expect(id).to.eql('0');
             });
@@ -445,12 +445,12 @@
             });
 
             it('should convert a number in subcategory to an empty string', function() {
-                var urlAnonymizer = new UrlAnonymizer(buildUrl(fakeSearch, "#?idSite=1&period=day&date=year&category=0&subcategory=0"));
+                var urlAnonymizer = new UrlAnonymizer(buildUrl(fakeSearch, "#?idSite=1&period=day&date=yesterday&category=0&subcategory=0"));
                 var id = urlAnonymizer.getSubLevelId();
                 expect(id).to.eql('');
             });
 
-            it('should return empty string if it does not contan top level id', function() {
+            it('should return empty string if it does not contain top level id', function() {
                 var urlAnonymizer = new UrlAnonymizer("http://example.com");
                 var id = urlAnonymizer.getSubLevelId();
                 expect(id).to.eql('');
