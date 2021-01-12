@@ -15,7 +15,7 @@ We are very careful in what we track and we make sure to anonymize data that cou
 
 * We overwrite the page title as the title could contain the name of the viewed website
 * We remove any referrer information
-* We replace URL paramaters with a predefined value apart from a few whitelisted ones to make sure no actual token_auth, CSRF token or user defined value will be tracked
+* We replace URL parameters with a predefined value apart from a few whitelisted ones to make sure no actual token_auth, CSRF token or user defined value will be tracked
 * We do not just track any outlinks or downloads
 
 We track any information as efficient as possible to not slow down your Matomo. If you have already performance problems with your Matomo we recommend to not install this plugin though.
