@@ -130,7 +130,7 @@ piwikUsageTracking.createTrackersIfNeeded = function ()
     }
 
     $(function () {
-        var $rootScope = angular.element(document).injector().get('$rootScope');
+        var $rootScope = angular.element(document.body).injector().get('$rootScope');
 
         $(broadcast).on('locationChangeSuccess', function () {
             trackPageView();
