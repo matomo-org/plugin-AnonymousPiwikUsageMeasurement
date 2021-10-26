@@ -8,8 +8,9 @@ return array(
 
         $settings = new Piwik\Plugins\AnonymousPiwikUsageMeasurement\SystemSettings();
         $customSiteUrl = $settings->getSetting('customSiteUrl')->getValue();
-        if (!empty($customSiteUrl)) {
-            $previous->addPolicy('default-src', parse_url($customSiteUrl, PHP_URL_HOST));
+        $host = parse_url($customSiteUrl, PHP_URL_HOST);
+        if (!empty($customSiteUrl) && !empty($host)) {
+            $previous->addPolicy('default-src', $host);
         }
         return $previous;
     })
