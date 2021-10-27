@@ -3,7 +3,7 @@
 return array(
     'AnonymousPiwikUsageMeasurement.piwikVersion' => \Piwik\Version::VERSION,
     'AnonymousPiwikUsageMeasurement.phpVersion' => phpversion(),
-    \Piwik\View\SecurityPolicy::class => DI\decorate(function ($previous) {
+    'Piwik\View\SecurityPolicy' => DI\decorate(function ($previous) {
         /** @var \Piwik\View\SecurityPolicy $previous */
 
         $settings = new Piwik\Plugins\AnonymousPiwikUsageMeasurement\SystemSettings();
