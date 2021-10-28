@@ -1,5 +1,6 @@
 ## Changelog
 
+* 4.0.2 Compatibility with Matomo 4
 * 4.0.1 Compatibility with Matomo 4
 * 4.0.0 Compatibility with Matomo 4
 * 3.1.0 No longer send optionally any usage data to Matomo

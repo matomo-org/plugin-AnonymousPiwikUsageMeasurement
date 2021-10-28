@@ -1,6 +1,6 @@
 {
     "name": "AnonymousPiwikUsageMeasurement",
-    "version": "4.0.1",
+    "version": "4.0.2",
     "description": "Send anonymized usage data to your own Matomo instance or to any other Matomo",
     "theme": false,
     "keywords": [
