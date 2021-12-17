@@ -15,7 +15,6 @@ use Piwik\Plugins\UsersManager\API as UsersApi;
 use Piwik\Tests\Framework\Fixture;
 use Piwik\Tests\Framework\Mock\FakeAccess;
 use Piwik\Tests\Framework\TestCase\IntegrationTestCase;
-use Piwik\Version;
 
 /**
  * @group AnonymousPiwikUsageMeasurement

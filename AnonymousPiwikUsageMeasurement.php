@@ -13,7 +13,6 @@ use Piwik\Container\StaticContainer;
 use Piwik\Date;
 use Piwik\Piwik;
 use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\Profiles;
-use Piwik\View;
 
 class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
 {
