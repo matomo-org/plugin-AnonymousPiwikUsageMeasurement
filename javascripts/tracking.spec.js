@@ -130,6 +130,18 @@
                     expect(this.getSiteId()).to.be.at.least(1);
                 }]);
             });
+
+            it('should disable browser fingerPrint feature', function() {
+                var tracker1 = piwikUsageTracking.trackers[0];
+                _paq.push(['disableBrowserFeatureDetection']);
+                expect(tracker1.getBrowserFeatureDetection()).to.eql(false);
+            });
+
+            it('should enable browser fingerPrint feature', function() {
+                var tracker1 = piwikUsageTracking.trackers[0];
+                _paq.push(['enableBrowserFeatureDetection']);
+                expect(tracker1.getBrowserFeatureDetection()).to.eql(false);
+            });
         });
     });
 })();
