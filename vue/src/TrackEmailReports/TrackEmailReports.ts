@@ -17,7 +17,7 @@ export default {
     $(el).on('click', '[name=linkDownloadReport]', function onClick() {
       let id = parseInt($(this).attr('id')!, 10);
       const url = $(this).attr('href')!;
-      const format = MatomoUrl.parse(url).format as string || 'xml';
+      const format = MatomoUrl.parse((new URL(url)).search.substring(1)).format as string || 'xml';
 
       // avoid tracking large ids to make sure nobody can identify a specific Piwik instance based
       // on that
