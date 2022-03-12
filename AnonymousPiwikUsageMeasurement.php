@@ -103,11 +103,6 @@ class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
         $jsFiles[] = 'matomo.js';
         $jsFiles[] = 'plugins/AnonymousPiwikUsageMeasurement/javascripts/url.js';
         $jsFiles[] = 'plugins/AnonymousPiwikUsageMeasurement/javascripts/tracking.js';
-        $jsFiles[] = 'plugins/AnonymousPiwikUsageMeasurement/angularjs/common/dashboard.directive.js';
-        $jsFiles[] = 'plugins/AnonymousPiwikUsageMeasurement/angularjs/common/marketplace.directive.js';
-        $jsFiles[] = 'plugins/AnonymousPiwikUsageMeasurement/angularjs/common/segment.directive.js';
-        $jsFiles[] = 'plugins/AnonymousPiwikUsageMeasurement/angularjs/common/emailreports.directive.js';
-        $jsFiles[] = 'plugins/AnonymousPiwikUsageMeasurement/angularjs/common/multisites.directive.js';
     }
 
     public function addMatomoClientTracking(&$out)
