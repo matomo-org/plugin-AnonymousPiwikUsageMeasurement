@@ -7,11 +7,12 @@
 
 /* eslint-disable no-underscore-dangle */
 
+import { Matomo } from 'CoreHome';
 import '../types';
 
 const { $ } = window;
 
-export default {
+const TrackMultiSites = {
   mounted(el: HTMLElement): void {
     $(el).on('click', '[target=_blank]', function onClick() {
       // append ID to not have only one link in report, this way we know the position of the
@@ -24,3 +25,9 @@ export default {
     });
   },
 };
+
+export default TrackMultiSites;
+
+Matomo.on('MultiSites.MultiSitesSite.mounted', ({ element }: { element: HTMLElement }) => {
+  TrackMultiSites.mounted(element);
+});

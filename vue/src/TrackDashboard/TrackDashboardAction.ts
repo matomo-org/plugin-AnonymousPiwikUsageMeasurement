@@ -7,18 +7,25 @@
 
 /* eslint-disable no-underscore-dangle */
 
+import { Matomo } from 'CoreHome';
 import '../types';
 
 const { $ } = window;
 
-export default {
+const TrackDashboardAction = {
   mounted(el: HTMLElement): void {
-    $(el).click(() => {
+    $(el).on('click', '[data-action]', function onClick() {
       const category = 'Dashboard';
       const name = 'WidgetSelector';
-      const action = $(el).attr('data-action');
+      const action = $(this).attr('data-action');
 
       window._paq.push(['trackEvent', category, action, name]);
     });
   },
 };
+
+export default TrackDashboardAction;
+
+Matomo.on('Dashboard.DashboardSettings.mounted', (element: HTMLElement) => {
+  TrackDashboardAction.mounted(element);
+});

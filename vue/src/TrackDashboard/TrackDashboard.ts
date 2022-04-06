@@ -7,11 +7,12 @@
 
 /* eslint-disable no-underscore-dangle */
 
+import { Matomo } from 'CoreHome';
 import '../types';
 
 const { $ } = window;
 
-export default {
+const TrackDashboard = {
   mounted(el: HTMLElement): void {
     $(el).on('click', '#close,#minimise,#maximise,#refresh', function onClick() {
       const $widget = $(this);
@@ -28,3 +29,9 @@ export default {
     });
   },
 };
+
+export default TrackDashboard;
+
+Matomo.on('Dashboard.Dashboard.mounted', ({ element }: { element: HTMLElement }) => {
+  TrackDashboard.mounted(element);
+});

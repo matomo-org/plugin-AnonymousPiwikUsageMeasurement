@@ -7,6 +7,7 @@
 
 /* eslint-disable no-underscore-dangle */
 
+import { Matomo } from 'CoreHome';
 import '../types';
 
 const { $ } = window;
@@ -20,7 +21,7 @@ function trackEvent(action: string) {
   };
 }
 
-export default {
+const TrackSegment = {
   mounted(el: HTMLElement): void {
     const element = $(el);
     element.on('click', '[data-idsegment]', trackEvent('Select a segment'));
@@ -29,3 +30,9 @@ export default {
     element.on('mousedown', '.delete', trackEvent('Delete'));
   },
 };
+
+export default TrackSegment;
+
+Matomo.on('piwikSegmentationInited', () => {
+  TrackSegment.mounted($('.segmentListContainer .segmentEditorPanel')[0]);
+});
