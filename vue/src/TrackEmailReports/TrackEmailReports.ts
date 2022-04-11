@@ -7,17 +7,17 @@
 
 /* eslint-disable no-underscore-dangle */
 
-import { MatomoUrl } from 'CoreHome';
+import { MatomoUrl, Matomo } from 'CoreHome';
 import '../types';
 
 const { $ } = window;
 
-export default {
+const TrackEmailReports = {
   mounted(el: HTMLElement): void {
     $(el).on('click', '[name=linkDownloadReport]', function onClick() {
       let id = parseInt($(this).attr('id')!, 10);
-      const url = $(this).attr('href')!;
-      const format = MatomoUrl.parse((new URL(url)).search.substring(1)).format as string || 'xml';
+      const url = $(this).closest('td').children('form').attr('action')!;
+      const format = MatomoUrl.parse(url.split('?')[1] || '').format as string || 'xml';
 
       // avoid tracking large ids to make sure nobody can identify a specific Piwik instance based
       // on that
@@ -31,3 +31,12 @@ export default {
     });
   },
 };
+
+export default TrackEmailReports;
+
+Matomo.on(
+  'ScheduledReports.ManageScheduledReport.mounted',
+  ({ element }: { element: HTMLElement }) => {
+    TrackEmailReports.mounted(element);
+  },
+);

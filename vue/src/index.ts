@@ -5,9 +5,6 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
 
-import './TrackEmailReports/TrackEmailReports.adapter';
-import './TrackMarketplace/TrackMarketplace.adapter';
-
 export { default as TrackDashboard } from './TrackDashboard/TrackDashboard';
 export { default as TrackDashboardAction } from './TrackDashboard/TrackDashboardAction';
 export { default as TrackEmailReports } from './TrackEmailReports/TrackEmailReports';

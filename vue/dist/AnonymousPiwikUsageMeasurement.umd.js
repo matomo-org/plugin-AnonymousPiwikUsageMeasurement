@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("CoreHome"));
+		module.exports = factory(require("CoreHome"), require("vue"));
 	else if(typeof define === 'function' && define.amd)
-		define(["CoreHome"], factory);
+		define(["CoreHome", ], factory);
 	else if(typeof exports === 'object')
-		exports["AnonymousPiwikUsageMeasurement"] = factory(require("CoreHome"));
+		exports["AnonymousPiwikUsageMeasurement"] = factory(require("CoreHome"), require("vue"));
 	else
-		root["AnonymousPiwikUsageMeasurement"] = factory(root["CoreHome"]);
-})((typeof self !== 'undefined' ? self : this), function(__WEBPACK_EXTERNAL_MODULE__19dc__) {
+		root["AnonymousPiwikUsageMeasurement"] = factory(root["CoreHome"], root["Vue"]);
+})((typeof self !== 'undefined' ? self : this), function(__WEBPACK_EXTERNAL_MODULE__19dc__, __WEBPACK_EXTERNAL_MODULE__8bbf__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -103,6 +103,13 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__19dc__;
 
 /***/ }),
 
+/***/ "8bbf":
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE__8bbf__;
+
+/***/ }),
+
 /***/ "fae3":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -113,8 +120,8 @@ __webpack_require__.r(__webpack_exports__);
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, "TrackDashboard", function() { return /* reexport */ TrackDashboard_TrackDashboard; });
 __webpack_require__.d(__webpack_exports__, "TrackDashboardAction", function() { return /* reexport */ TrackDashboard_TrackDashboardAction; });
-__webpack_require__.d(__webpack_exports__, "TrackEmailReports", function() { return /* reexport */ TrackEmailReports; });
-__webpack_require__.d(__webpack_exports__, "TrackMarketplace", function() { return /* reexport */ TrackMarketplace; });
+__webpack_require__.d(__webpack_exports__, "TrackEmailReports", function() { return /* reexport */ TrackEmailReports_TrackEmailReports; });
+__webpack_require__.d(__webpack_exports__, "TrackMarketplace", function() { return /* reexport */ TrackMarketplace_TrackMarketplace; });
 __webpack_require__.d(__webpack_exports__, "TrackMultiSites", function() { return /* reexport */ TrackMultiSites_TrackMultiSites; });
 __webpack_require__.d(__webpack_exports__, "TrackSegment", function() { return /* reexport */ TrackSegment_TrackSegment; });
 
@@ -145,7 +152,7 @@ var external_CoreHome_ = __webpack_require__("19dc");
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
 
-// CONCATENATED MODULE: ./plugins/AnonymousPiwikUsageMeasurement/vue/src/TrackEmailReports/TrackEmailReports.ts
+// CONCATENATED MODULE: ./plugins/AnonymousPiwikUsageMeasurement/vue/src/TrackDashboard/TrackDashboard.ts
 /*!
  * Matomo - free/libre analytics platform
  *
@@ -158,135 +165,37 @@ var external_CoreHome_ = __webpack_require__("19dc");
 
 var _window = window,
     $ = _window.$;
-/* harmony default export */ var TrackEmailReports = ({
-  mounted: function mounted(el) {
-    $(el).on('click', '[name=linkDownloadReport]', function onClick() {
-      var id = parseInt($(this).attr('id'), 10);
-      var url = $(this).attr('href');
-      var format = external_CoreHome_["MatomoUrl"].parse(new URL(url).search.substring(1)).format || 'xml'; // avoid tracking large ids to make sure nobody can identify a specific Piwik instance based
-      // on that
 
-      id = id % 20; // eslint-disable-line operator-assignment
+function TrackDashboard_onClick() {
+  var $widget = $(this);
 
-      var domain = window.piwikUsageTracking.trackingDomain;
-      var sourceUrl = "".concat(domain, "/scheduledreports/emailreport").concat(id, ".").concat(format);
-      var linkType = 'download';
-
-      window._paq.push(['trackLink', sourceUrl, linkType]);
-    });
+  if (!$widget.parents('.sortable').length) {
+    return;
   }
-});
-// CONCATENATED MODULE: ./plugins/AnonymousPiwikUsageMeasurement/vue/src/TrackEmailReports/TrackEmailReports.adapter.ts
-/*!
- * Matomo - free/libre analytics platform
- *
- * @link https://matomo.org
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
- */
 
+  var category = 'Dashboard';
+  var name = 'Widget';
+  var action = $(this).attr('id');
 
-function piwikEmailReports() {
-  return {
-    restrict: 'C',
-    link: function link(scope, element) {
-      TrackEmailReports.mounted(element[0]);
-    }
-  };
+  window._paq.push(['trackEvent', category, action, name]);
 }
 
-window.angular.module('piwikApp').directive('emailReports', piwikEmailReports);
-// CONCATENATED MODULE: ./plugins/AnonymousPiwikUsageMeasurement/vue/src/TrackMarketplace/TrackMarketplace.ts
-/*!
- * Matomo - free/libre analytics platform
- *
- * @link https://matomo.org
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
- */
-
-/* eslint-disable no-underscore-dangle */
-
-var TrackMarketplace_window = window,
-    TrackMarketplace_$ = TrackMarketplace_window.$;
-
-function makeContentBlock($element, pluginName, contentPiece, target) {
-  $element.attr('data-track-content', '');
-  $element.attr('data-content-name', pluginName);
-  $element.attr('data-content-piece', contentPiece);
-  $element.attr('data-content-target', target);
-}
-
-/* harmony default export */ var TrackMarketplace = ({
-  mounted: function mounted(el) {
-    TrackMarketplace_$(el).find('.plugin').each(function (index, plugin) {
-      var $plugin = TrackMarketplace_$(plugin);
-      var pluginName = $plugin.find('[piwik-plugin-name]').attr('piwik-plugin-name') || '';
-      var header = $plugin.find('.card-title');
-      makeContentBlock(header, pluginName, 'Headline', 'popover');
-      var body = $plugin.find('.description');
-      makeContentBlock(body, pluginName, 'Body', 'popover');
-      var footer = $plugin.find('.footer');
-      makeContentBlock(footer, pluginName, 'Install', 'self');
-    });
-    var checkOnScroll = true;
-    var timeInterval = 0; // disable for better performance
-
-    window._paq.push(['trackVisibleContentImpressions', checkOnScroll, timeInterval]);
-  }
-});
-// CONCATENATED MODULE: ./plugins/AnonymousPiwikUsageMeasurement/vue/src/TrackMarketplace/TrackMarketplace.adapter.ts
-/*!
- * Matomo - free/libre analytics platform
- *
- * @link https://matomo.org
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
- */
-
-
-function piwikMarketplace() {
-  return {
-    restrict: 'C',
-    priority: 20,
-    link: function link(scope, element) {
-      TrackMarketplace.mounted(element[0]);
-    }
-  };
-}
-
-window.angular.module('piwikApp').directive('marketplace', piwikMarketplace);
-// CONCATENATED MODULE: ./plugins/AnonymousPiwikUsageMeasurement/vue/src/TrackDashboard/TrackDashboard.ts
-/*!
- * Matomo - free/libre analytics platform
- *
- * @link https://matomo.org
- * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
- */
-
-/* eslint-disable no-underscore-dangle */
-
-
-var TrackDashboard_window = window,
-    TrackDashboard_$ = TrackDashboard_window.$;
 var TrackDashboard = {
   mounted: function mounted(el) {
-    TrackDashboard_$(el).on('click', '#close,#minimise,#maximise,#refresh', function onClick() {
-      var $widget = TrackDashboard_$(this);
-
-      if (!$widget.parents('.sortable').length) {
-        return;
-      }
-
-      var category = 'Dashboard';
-      var name = 'Widget';
-      var action = TrackDashboard_$(this).attr('id');
-
-      window._paq.push(['trackEvent', category, action, name]);
-    });
+    $('body').on('click', '.widget #close,#minimise,#maximise,#refresh', TrackDashboard_onClick);
+  },
+  unmounted: function unmounted(el) {
+    $('body').off('click', '.widget #close,#minimise,#maximise,#refresh', TrackDashboard_onClick);
   }
 };
 /* harmony default export */ var TrackDashboard_TrackDashboard = (TrackDashboard);
 external_CoreHome_["Matomo"].on('Dashboard.Dashboard.mounted', function (_ref) {
   var element = _ref.element;
   TrackDashboard.mounted(element);
+});
+external_CoreHome_["Matomo"].on('Dashboard.Dashboard.unmounted', function (_ref2) {
+  var element = _ref2.element;
+  TrackDashboard.unmounted(element);
 });
 // CONCATENATED MODULE: ./plugins/AnonymousPiwikUsageMeasurement/vue/src/TrackDashboard/TrackDashboardAction.ts
 /*!
@@ -315,6 +224,91 @@ var TrackDashboardAction = {
 /* harmony default export */ var TrackDashboard_TrackDashboardAction = (TrackDashboardAction);
 external_CoreHome_["Matomo"].on('Dashboard.DashboardSettings.mounted', function (element) {
   TrackDashboardAction.mounted(element);
+});
+// CONCATENATED MODULE: ./plugins/AnonymousPiwikUsageMeasurement/vue/src/TrackEmailReports/TrackEmailReports.ts
+/*!
+ * Matomo - free/libre analytics platform
+ *
+ * @link https://matomo.org
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
+ */
+
+/* eslint-disable no-underscore-dangle */
+
+
+var TrackEmailReports_window = window,
+    TrackEmailReports_$ = TrackEmailReports_window.$;
+var TrackEmailReports = {
+  mounted: function mounted(el) {
+    TrackEmailReports_$(el).on('click', '[name=linkDownloadReport]', function onClick() {
+      var id = parseInt(TrackEmailReports_$(this).attr('id'), 10);
+      var url = TrackEmailReports_$(this).closest('td').children('form').attr('action');
+      var format = external_CoreHome_["MatomoUrl"].parse(url.split('?')[1] || '').format || 'xml'; // avoid tracking large ids to make sure nobody can identify a specific Piwik instance based
+      // on that
+
+      id = id % 20; // eslint-disable-line operator-assignment
+
+      var domain = window.piwikUsageTracking.trackingDomain;
+      var sourceUrl = "".concat(domain, "/scheduledreports/emailreport").concat(id, ".").concat(format);
+      var linkType = 'download';
+
+      window._paq.push(['trackLink', sourceUrl, linkType]);
+    });
+  }
+};
+/* harmony default export */ var TrackEmailReports_TrackEmailReports = (TrackEmailReports);
+external_CoreHome_["Matomo"].on('ScheduledReports.ManageScheduledReport.mounted', function (_ref) {
+  var element = _ref.element;
+  TrackEmailReports.mounted(element);
+});
+// EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
+var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
+
+// CONCATENATED MODULE: ./plugins/AnonymousPiwikUsageMeasurement/vue/src/TrackMarketplace/TrackMarketplace.ts
+/*!
+ * Matomo - free/libre analytics platform
+ *
+ * @link https://matomo.org
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
+ */
+
+/* eslint-disable no-underscore-dangle */
+
+
+
+var TrackMarketplace_window = window,
+    TrackMarketplace_$ = TrackMarketplace_window.$;
+
+function makeContentBlock($element, pluginName, contentPiece, target) {
+  $element.attr('data-track-content', '');
+  $element.attr('data-content-name', pluginName);
+  $element.attr('data-content-piece', contentPiece);
+  $element.attr('data-content-target', target);
+}
+
+var TrackMarketplace = {
+  mounted: function mounted() {
+    Object(external_commonjs_vue_commonjs2_vue_root_Vue_["nextTick"])(function () {
+      TrackMarketplace_$('.marketplace').find('.plugin').each(function (index, plugin) {
+        var $plugin = TrackMarketplace_$(plugin);
+        var pluginName = $plugin.find('[matomo-plugin-name]').attr('matomo-plugin-name') || '';
+        var header = $plugin.find('.card-title');
+        makeContentBlock(header, pluginName, 'Headline', 'popover');
+        var body = $plugin.find('.description');
+        makeContentBlock(body, pluginName, 'Body', 'popover');
+        var footer = $plugin.find('.footer');
+        makeContentBlock(footer, pluginName, 'Install', 'self');
+      });
+      var checkOnScroll = true;
+      var timeInterval = 0; // disable for better performance
+
+      window._paq.push(['trackVisibleContentImpressions', checkOnScroll, timeInterval]);
+    });
+  }
+};
+/* harmony default export */ var TrackMarketplace_TrackMarketplace = (TrackMarketplace);
+external_CoreHome_["Matomo"].on('Marketplace.Marketplace.mounted', function () {
+  TrackMarketplace.mounted();
 });
 // CONCATENATED MODULE: ./plugins/AnonymousPiwikUsageMeasurement/vue/src/TrackMultiSites/TrackMultiSites.ts
 /*!
@@ -389,8 +383,6 @@ external_CoreHome_["Matomo"].on('piwikSegmentationInited', function () {
  * @link https://matomo.org
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
-
-
 
 
 

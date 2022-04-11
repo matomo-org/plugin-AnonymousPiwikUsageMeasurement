@@ -7,6 +7,8 @@
 
 /* eslint-disable no-underscore-dangle */
 
+import { nextTick } from 'vue';
+import { Matomo } from 'CoreHome';
 import '../types';
 
 const { $ } = window;
@@ -23,24 +25,32 @@ function makeContentBlock(
   $element.attr('data-content-target', target);
 }
 
-export default {
-  mounted(el: HTMLElement): void {
-    $(el).find('.plugin').each((index, plugin) => {
-      const $plugin = $(plugin);
-      const pluginName = $plugin.find('[piwik-plugin-name]').attr('piwik-plugin-name') || '';
+const TrackMarketplace = {
+  mounted(): void {
+    nextTick(() => {
+      $('.marketplace').find('.plugin').each((index, plugin) => {
+        const $plugin = $(plugin);
+        const pluginName = $plugin.find('[matomo-plugin-name]').attr('matomo-plugin-name') || '';
 
-      const header = $plugin.find('.card-title');
-      makeContentBlock(header, pluginName, 'Headline', 'popover');
+        const header = $plugin.find('.card-title');
+        makeContentBlock(header, pluginName, 'Headline', 'popover');
 
-      const body = $plugin.find('.description');
-      makeContentBlock(body, pluginName, 'Body', 'popover');
+        const body = $plugin.find('.description');
+        makeContentBlock(body, pluginName, 'Body', 'popover');
 
-      const footer = $plugin.find('.footer');
-      makeContentBlock(footer, pluginName, 'Install', 'self');
+        const footer = $plugin.find('.footer');
+        makeContentBlock(footer, pluginName, 'Install', 'self');
+      });
+
+      const checkOnScroll = true;
+      const timeInterval = 0; // disable for better performance
+      window._paq.push(['trackVisibleContentImpressions', checkOnScroll, timeInterval]);
     });
-
-    const checkOnScroll = true;
-    const timeInterval = 0; // disable for better performance
-    window._paq.push(['trackVisibleContentImpressions', checkOnScroll, timeInterval]);
   },
 };
+
+export default TrackMarketplace;
+
+Matomo.on('Marketplace.Marketplace.mounted', () => {
+  TrackMarketplace.mounted();
+});
