@@ -34,5 +34,5 @@ const TrackSegment = {
 export default TrackSegment;
 
 Matomo.on('piwikSegmentationInited', () => {
-  TrackSegment.mounted($('.segmentListContainer .segmentEditorPanel')[0]);
+  TrackSegment.mounted($('.segmentListContainer')[0]);
 });
