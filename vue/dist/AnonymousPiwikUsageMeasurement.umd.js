@@ -374,7 +374,7 @@ var TrackSegment = {
 };
 /* harmony default export */ var TrackSegment_TrackSegment = (TrackSegment);
 external_CoreHome_["Matomo"].on('piwikSegmentationInited', function () {
-  TrackSegment.mounted(TrackSegment_$('.segmentListContainer .segmentEditorPanel')[0]);
+  TrackSegment.mounted(TrackSegment_$('.segmentListContainer')[0]);
 });
 // CONCATENATED MODULE: ./plugins/AnonymousPiwikUsageMeasurement/vue/src/index.ts
 /*!
