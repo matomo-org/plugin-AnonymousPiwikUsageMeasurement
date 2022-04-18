@@ -1,5 +1,6 @@
 ## Changelog
 
+* 5.0.0 Migrating from AngularJS to Vue
 * 4.0.2 Compatibility with Matomo 4
 * 4.0.1 Compatibility with Matomo 4
 * 4.0.0 Compatibility with Matomo 4
