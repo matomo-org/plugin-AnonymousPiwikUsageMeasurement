@@ -27,20 +27,20 @@ function onClick(this: HTMLElement) {
 }
 
 const TrackDashboard = {
-  mounted(el: HTMLElement): void {
+  mounted(): void {
     $('body').on('click', '.widget #close,#minimise,#maximise,#refresh', onClick);
   },
-  unmounted(el: HTMLElement): void {
+  unmounted(): void {
     $('body').off('click', '.widget #close,#minimise,#maximise,#refresh', onClick);
   },
 };
 
 export default TrackDashboard;
 
-Matomo.on('Dashboard.Dashboard.mounted', ({ element }: { element: HTMLElement }) => {
-  TrackDashboard.mounted(element);
+Matomo.on('Dashboard.Dashboard.mounted', () => {
+  TrackDashboard.mounted();
 });
 
-Matomo.on('Dashboard.Dashboard.unmounted', ({ element }: { element: HTMLElement }) => {
-  TrackDashboard.unmounted(element);
+Matomo.on('Dashboard.Dashboard.unmounted', () => {
+  TrackDashboard.unmounted();
 });

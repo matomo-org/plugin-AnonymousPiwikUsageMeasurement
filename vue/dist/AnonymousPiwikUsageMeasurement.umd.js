@@ -181,21 +181,19 @@ function TrackDashboard_onClick() {
 }
 
 var TrackDashboard = {
-  mounted: function mounted(el) {
+  mounted: function mounted() {
     $('body').on('click', '.widget #close,#minimise,#maximise,#refresh', TrackDashboard_onClick);
   },
-  unmounted: function unmounted(el) {
+  unmounted: function unmounted() {
     $('body').off('click', '.widget #close,#minimise,#maximise,#refresh', TrackDashboard_onClick);
   }
 };
 /* harmony default export */ var TrackDashboard_TrackDashboard = (TrackDashboard);
-external_CoreHome_["Matomo"].on('Dashboard.Dashboard.mounted', function (_ref) {
-  var element = _ref.element;
-  TrackDashboard.mounted(element);
+external_CoreHome_["Matomo"].on('Dashboard.Dashboard.mounted', function () {
+  TrackDashboard.mounted();
 });
-external_CoreHome_["Matomo"].on('Dashboard.Dashboard.unmounted', function (_ref2) {
-  var element = _ref2.element;
-  TrackDashboard.unmounted(element);
+external_CoreHome_["Matomo"].on('Dashboard.Dashboard.unmounted', function () {
+  TrackDashboard.unmounted();
 });
 // CONCATENATED MODULE: ./plugins/AnonymousPiwikUsageMeasurement/vue/src/TrackDashboard/TrackDashboardAction.ts
 /*!
