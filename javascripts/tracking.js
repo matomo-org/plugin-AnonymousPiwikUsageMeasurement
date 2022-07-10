@@ -169,7 +169,7 @@ var _paq = {
     }
 };
 
-$(function () {
+window.addEventListener('DOMContentLoaded', function () {
     if (piwikUsageTracking && piwikUsageTracking.createTrackersIfNeeded) {
         piwikUsageTracking.createTrackersIfNeeded();
     }
