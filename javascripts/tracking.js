@@ -130,22 +130,9 @@ piwikUsageTracking.createTrackersIfNeeded = function ()
     }
 
     $(function () {
-        $(broadcast).on('locationChangeSuccess', function () {
+        window.CoreHome.Matomo.on('piwikPageChange', function () {
             trackPageView();
         });
-
-        var watch = window.Vue.watch;
-        var MatomoUrl = window.CoreHome.MatomoUrl;
-        watch(
-          function () { return MatomoUrl.url; },
-          function (newUrl, oldUrl) {
-            var urlAnonymizer = createUrlAnonymizer();
-
-            if (urlAnonymizer.isPiwik3ReportingUrl() && newUrl !== oldUrl) {
-              trackPageView();
-            }
-          },
-        );
     });
 };
 
