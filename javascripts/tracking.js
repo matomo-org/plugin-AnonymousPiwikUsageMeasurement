@@ -130,7 +130,7 @@ piwikUsageTracking.createTrackersIfNeeded = function ()
     }
 
     $(function () {
-        window.CoreHome.Matomo.on('piwikPageChange', function () {
+        window.CoreHome.Matomo.on('matomoPageChange', function () {
             trackPageView();
         });
     });
