@@ -119,8 +119,8 @@ piwikUsageTracking.createTrackersIfNeeded = function ()
         var urlAnonymizer = createUrlAnonymizer();
         var popover = urlAnonymizer.getPopoverNameFromUrl();
 
-        angular.forEach(piwikUsageTracking.trackers, anonymizeTitle);
-        angular.forEach(piwikUsageTracking.trackers, anonymizeUrl);
+        (piwikUsageTracking.trackers || []).forEach(anonymizeTitle);
+        (piwikUsageTracking.trackers || []).forEach(anonymizeUrl);
 
         if (popover) {
             _paq.push(['setCustomVariable', 1, 'popover', popover, 'page']);
@@ -130,18 +130,8 @@ piwikUsageTracking.createTrackersIfNeeded = function ()
     }
 
     $(function () {
-        var $rootScope = angular.element(document).injector().get('$rootScope');
-
-        $(broadcast).on('locationChangeSuccess', function () {
+        window.CoreHome.Matomo.on('matomoPageChange', function () {
             trackPageView();
-        });
-
-        $rootScope.$on('$locationChangeSuccess', function (event, newUrl, oldUrl) {
-            var urlAnonymizer = createUrlAnonymizer();
-
-            if (urlAnonymizer.isPiwik3ReportingUrl() && newUrl !== oldUrl) {
-                trackPageView();
-            }
         });
     });
 };
@@ -156,9 +146,9 @@ var _paq = {
 
             $.each(piwikUsageTracking.trackers, function (index, tracker) {
                 // the users piwik might not support a method yet, only execute if it exists
-                if (angular.isString(method) && tracker[method]) {
+                if (typeof method === 'string' && tracker[method]) {
                     tracker[method].apply(tracker, parameterArray);
-                } else if (angular.isFunction(method)) {
+                } else if (typeof method === 'function') {
                     method.apply(tracker, parameterArray);
                 }
             });
@@ -166,7 +156,7 @@ var _paq = {
     }
 };
 
-$(function () {
+window.addEventListener('DOMContentLoaded', function () {
     if (piwikUsageTracking && piwikUsageTracking.createTrackersIfNeeded) {
         piwikUsageTracking.createTrackersIfNeeded();
     }
