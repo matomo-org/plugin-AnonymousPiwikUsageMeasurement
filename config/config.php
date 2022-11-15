@@ -1,5 +1,7 @@
 <?php
 
+use Matomo\Dependencies\DI;
+
 return array(
     'AnonymousPiwikUsageMeasurement.piwikVersion' => \Piwik\Version::VERSION,
     'AnonymousPiwikUsageMeasurement.phpVersion' => phpversion(),
