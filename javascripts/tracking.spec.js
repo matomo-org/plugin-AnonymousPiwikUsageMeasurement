@@ -16,6 +16,10 @@
         initTrackers(false);
     }
 
+    // avoid angular emit as that causes problems in tests
+    // @todo remove with Matomo 5
+    piwik.postEvent = piwik.postEventNoEmit;
+
     function initTrackers(anonymize) {
         "use strict";
 
@@ -31,7 +35,7 @@
 
     beforeEach(initAnonymizedTrackers);
 
-    describe('AnonymousPiwikUsageMeasurementUrl', function() {
+    describe('AnonymousPiwikUsageMeasurementTracking', function() {
         var anonymousDomain = 'http://anonymous.piwikdomain.org';
         var trackingDomain = piwikUsageTracking.trackingDomain;
 
