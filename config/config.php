@@ -3,7 +3,7 @@
 return array(
     'AnonymousPiwikUsageMeasurement.piwikVersion' => \Piwik\Version::VERSION,
     'AnonymousPiwikUsageMeasurement.phpVersion' => phpversion(),
-    'Piwik\View\SecurityPolicy' => DI\decorate(function ($previous) {
+    'Piwik\View\SecurityPolicy' => Piwik\DI::decorate(function ($previous) {
         /** @var \Piwik\View\SecurityPolicy $previous */
 
         if (!\Piwik\SettingsPiwik::isMatomoInstalled()) {

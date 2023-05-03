@@ -3,7 +3,7 @@
 return array(
     'AnonymousPiwikUsageMeasurement.piwikVersion' => '2.14.3',
     'AnonymousPiwikUsageMeasurement.phpVersion' => '5.5.27',
-    'Piwik\Plugins\AnonymousPiwikUsageMeasurement\SystemSettings' => DI\factory(function () {
+    'Piwik\Plugins\AnonymousPiwikUsageMeasurement\SystemSettings' => Piwik\DI::factory(function () {
         // we cannot decorate here as we need to create an instance of settings as super user, the permissions
         // for writing / reading are detected on settings creation, not each time it is executed
 
