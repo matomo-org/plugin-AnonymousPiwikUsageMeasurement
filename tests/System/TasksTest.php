@@ -12,6 +12,7 @@ use Piwik\DataTable;
 use Piwik\Piwik;
 use Piwik\Plugins\AnonymousPiwikUsageMeasurement\tests\Fixtures\SendSystemReportTaskFixture;
 use Piwik\Tests\Framework\TestCase\SystemTestCase;
+use Piwik\Version;
 
 /**
  * @group AnonymousPiwikUsageMeasurement
@@ -69,32 +70,35 @@ class TasksTest extends SystemTestCase
 
     public function getApiForTesting()
     {
-        $api = array(
+        $apis = [
             'API.get',
             'Actions.getPageUrls',
             'Actions.getPageTitles',
             'Events',
             'Referrers.getReferrerType',
             'CustomVariables',
-        );
+        ];
 
-        $apiToTest   = array();
-        $apiToTest[] = array($api,
-            array(
-                'idSite'     => 1,
-                'date'       => 'today',
-                'periods'    => array('year'),
-                'testSuffix' => '',
+        $apiToTest   = [];
+        foreach ($apis as $api) {
+            $apiToTest[] = [
+                $api,
+                [
+                    'idSite'     => 1,
+                    'date'       => 'today',
+                    'periods'    => ['year'],
+                    'testSuffix' => ($api === 'API.get' && version_compare(Version::VERSION, '4.14.2', '<')) ? 'old' : '',
 
-                'otherRequestParameters' => array(
-                      'hideColumns' => 'sum_bandwidth,nb_hits_with_bandwidth,min_bandwidth,max_bandwidth,avg_bandwidth,nb_total_overall_bandwidth,nb_total_pageview_bandwidth,nb_total_download_bandwidth',
-                ),
+                    'otherRequestParameters' => [
+                        'hideColumns' => 'sum_bandwidth,nb_hits_with_bandwidth,min_bandwidth,max_bandwidth,avg_bandwidth,nb_total_overall_bandwidth,nb_total_pageview_bandwidth,nb_total_download_bandwidth',
+                    ],
 
-                // when calling CustomVariables.getUsagesOfSlots, new archives are created until 'today',
-                // which increments idsubdatatable, but we need to have deterministic idsubdatatable
-                'apiNotToCall' => array('CustomVariables.getUsagesOfSlots'),
-            )
-        );
+                    // when calling CustomVariables.getUsagesOfSlots, new archives are created until 'today',
+                    // which increments idsubdatatable, but we need to have deterministic idsubdatatable
+                    'apiNotToCall' => ['CustomVariables.getUsagesOfSlots'],
+                ]
+            ];
+        }
 
         return $apiToTest;
     }
