@@ -5,6 +5,7 @@
 	<max_actions>39</max_actions>
 	<bounce_count>0</bounce_count>
 	<sum_visit_length>1</sum_visit_length>
+	<nb_profilable>1</nb_profilable>
 	<nb_visits_new>1</nb_visits_new>
 	<nb_actions_new>39</nb_actions_new>
 	<max_actions_new>39</max_actions_new>
