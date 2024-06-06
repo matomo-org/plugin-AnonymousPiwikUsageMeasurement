@@ -87,8 +87,6 @@ class TasksTest extends SystemTestCase
                     'idSite'     => 1,
                     'date'       => 'today',
                     'periods'    => ['year'],
-                    'testSuffix' => ($api === 'API.get' && version_compare(Version::VERSION, '4.14.2', '<')) ? 'old' : '',
-
                     'otherRequestParameters' => [
                         'hideColumns' => 'sum_bandwidth,nb_hits_with_bandwidth,min_bandwidth,max_bandwidth,avg_bandwidth,nb_total_overall_bandwidth,nb_total_pageview_bandwidth,nb_total_download_bandwidth',
                     ],
