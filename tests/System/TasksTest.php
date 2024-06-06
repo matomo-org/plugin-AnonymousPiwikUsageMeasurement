@@ -88,7 +88,7 @@ class TasksTest extends SystemTestCase
                     'date'       => 'today',
                     'periods'    => ['year'],
                     'otherRequestParameters' => [
-                        'hideColumns' => 'sum_bandwidth,nb_hits_with_bandwidth,min_bandwidth,max_bandwidth,avg_bandwidth,nb_total_overall_bandwidth,nb_total_pageview_bandwidth,nb_total_download_bandwidth',
+                        'hideColumns' => 'sum_visit_length,entry_sum_visit_length,avg_time_on_site_new,sum_bandwidth,nb_hits_with_bandwidth,min_bandwidth,max_bandwidth,avg_bandwidth,nb_total_overall_bandwidth,nb_total_pageview_bandwidth,nb_total_download_bandwidth',
                     ],
 
                     // when calling CustomVariables.getUsagesOfSlots, new archives are created until 'today',
