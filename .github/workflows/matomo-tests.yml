@@ -55,6 +55,7 @@ jobs:
           matomo-test-branch: ${{ matrix.target }}
           artifacts-pass: ${{ secrets.ARTIFACTS_PASS }}
           upload-artifacts: ${{ matrix.php == '7.2' && matrix.target == 'maximum_supported_matomo' }}
+          mysql-engine: 'Tidb'
   Client:
     runs-on: ubuntu-20.04
     timeout-minutes: 15
@@ -75,6 +76,7 @@ jobs:
           test-type: 'Client'
           node-version: '16'
           mysql-service: false
+          mysql-engine: 'Tidb'
   UI:
     runs-on: ubuntu-20.04
     steps:
@@ -92,3 +94,4 @@ jobs:
           node-version: '16'
           artifacts-pass: ${{ secrets.ARTIFACTS_PASS }}
           upload-artifacts: true
+          mysql-engine: 'Tidb'
