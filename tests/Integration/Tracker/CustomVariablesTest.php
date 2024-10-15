@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Matomo - free/libre analytics platform
  *
@@ -135,5 +136,4 @@ class CustomVariablesTest extends IntegrationTestCase
             'Piwik\Access' => new FakeAccess()
         );
     }
-
 }

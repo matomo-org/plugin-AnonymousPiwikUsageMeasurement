@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Matomo - free/libre analytics platform
  *
@@ -12,7 +13,6 @@ use Piwik\DataTable;
 use Piwik\Piwik;
 use Piwik\Plugins\AnonymousPiwikUsageMeasurement\tests\Fixtures\SendSystemReportTaskFixture;
 use Piwik\Tests\Framework\TestCase\SystemTestCase;
-use Piwik\Version;
 
 /**
  * @group AnonymousPiwikUsageMeasurement
@@ -110,7 +110,6 @@ class TasksTest extends SystemTestCase
     {
         return dirname(__FILE__);
     }
-
 }
 
 TasksTest::$fixture = new SendSystemReportTaskFixture();

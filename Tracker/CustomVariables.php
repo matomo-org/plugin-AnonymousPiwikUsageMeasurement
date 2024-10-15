@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Matomo - free/libre analytics platform
  *
@@ -92,6 +93,4 @@ class CustomVariables
             )
         );
     }
-
-
 }

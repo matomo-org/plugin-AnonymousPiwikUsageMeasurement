@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Matomo - free/libre analytics platform
  *
@@ -141,5 +142,4 @@ class AnonymousPiwikUsageMeasurementTest extends IntegrationTestCase
             'Piwik\Access' => new FakeAccess()
         );
     }
-
 }

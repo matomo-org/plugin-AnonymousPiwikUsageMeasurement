@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Matomo - free/libre analytics platform
  *
@@ -41,5 +42,4 @@ class Tracker extends \MatomoTracker
 
         return parent::getBaseUrl();
     }
-
 }

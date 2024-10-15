@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Matomo - free/libre analytics platform
  *
@@ -128,5 +129,4 @@ class TargetsTest extends IntegrationTestCase
 
         $this->assertSame($expectedTargets, $targets->getTargets());
     }
-
 }

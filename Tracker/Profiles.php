@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Matomo - free/libre analytics platform
  *
@@ -58,5 +59,4 @@ class Profiles
     {
         Db::dropTables(array($this->tableNamePrefixed));
     }
-
 }
