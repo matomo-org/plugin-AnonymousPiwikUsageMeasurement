@@ -1,10 +1,12 @@
 <?php
+
 /**
  * Matomo - free/libre analytics platform
  *
  * @link    https://matomo.org
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
+
 namespace Piwik\Plugins\AnonymousPiwikUsageMeasurement\tests\Fixtures;
 
 use Piwik\API\Request;
@@ -66,7 +68,5 @@ class SendSystemReportTaskFixture extends Fixture
 
         $date = Date::factory('today')->toString();
         Request::processRequest('CoreAdminHome.invalidateArchivedReports', array('idSites' => '1', 'period' => 'year', 'dates' => $date, 'cascadeDown' => '1'));
-
     }
-
 }

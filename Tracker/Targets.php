@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Matomo - free/libre analytics platform
  *
@@ -63,5 +64,4 @@ class Targets
 
         return $targets;
     }
-
 }

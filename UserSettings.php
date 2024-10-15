@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Matomo - free/libre analytics platform
  *
@@ -48,5 +49,4 @@ class UserSettings extends \Piwik\Settings\Plugin\UserSettings
             $field->description = 'If enabled, anonymous usage data will be tracked. For example which pages are viewed and which reports are used most often. For more information contact your system administrator.';
         });
     }
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Matomo - free/libre analytics platform
  *
@@ -13,8 +14,8 @@ use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\Trackers;
 use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker;
 use Piwik\Tests\Framework\TestCase\IntegrationTestCase;
 
-class TestTargets extends Tracker\Targets {
-
+class TestTargets extends Tracker\Targets
+{
     private $targets = array();
 
     public function __construct($targets)
@@ -26,7 +27,6 @@ class TestTargets extends Tracker\Targets {
     {
         return $this->targets;
     }
-
 }
 
 /**
@@ -84,7 +84,5 @@ class TrackersTest extends IntegrationTestCase
 
         $this->assertStringStartsWith('http://apache.piwik/piwik/piwik.php?idsite=101&rec=1', $trackers[1]->getUrlTrackPageView());
         $this->assertStringEndsWith('url=https%3A%2F%2Fdemo-anonymous.matomo.org&urlref=', $trackers[1]->getUrlTrackPageView());
-
     }
-
 }

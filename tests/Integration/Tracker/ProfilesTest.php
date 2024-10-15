@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Matomo - free/libre analytics platform
  *
@@ -135,6 +136,4 @@ class ProfilesTest extends IntegrationTestCase
     {
         $this->profiles->pushProfile($creationDate, $category, $name, $action, $count, $wallTime);
     }
-
-
 }

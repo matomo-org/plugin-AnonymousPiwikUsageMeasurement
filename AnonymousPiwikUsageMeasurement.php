@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Matomo - free/libre analytics platform
  *
@@ -16,8 +17,8 @@ use Piwik\Plugins\AnonymousPiwikUsageMeasurement\Tracker\Profiles;
 
 class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
 {
-    const TRACKING_DOMAIN = 'https://demo-anonymous.matomo.org';
-    const EXAMPLE_DOMAIN = 'http://example.com';
+    public const TRACKING_DOMAIN = 'https://demo-anonymous.matomo.org';
+    public const EXAMPLE_DOMAIN = 'http://example.com';
 
     private $profilingStack = array();
 
@@ -79,11 +80,9 @@ class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
 
             // we need to make sure the call was actually for this method to not send wrong data.
             if ($method === $call['method']) {
-
                 $neededTimeInMs = ceil(($endTime - $call['time']) * 1000);
                 break;
             }
-
         } while (!empty($this->profilingStack));
 
         if (empty($neededTimeInMs)) {
@@ -118,9 +117,11 @@ class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
             'userId' => Piwik::getCurrentUserLogin()
         );
 
-        if (Piwik::isUserIsAnonymous()
+        if (
+            Piwik::isUserIsAnonymous()
             || !$settings->canUserOptOut->getValue()
-            || $userSettings->userTrackingEnabled->getValue()) {
+            || $userSettings->userTrackingEnabled->getValue()
+        ) {
             // an anonymous user is currently always tracked, an anonymous user would not have permission to read
             // this user setting. The `isUserIsAnonymous()` check is not needed but there to improve performance
             // in case user is anonymous. Then we avoid checking whether user has access to any sites which can be slow
@@ -135,5 +136,4 @@ class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
 
         $out .= "\nvar piwikUsageTracking = " . json_encode($config) . ";\n";
     }
-
 }

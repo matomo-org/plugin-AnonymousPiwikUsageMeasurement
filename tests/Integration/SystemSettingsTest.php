@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Matomo - free/libre analytics platform
  *
@@ -20,7 +21,6 @@ use Piwik\Tests\Framework\TestCase\IntegrationTestCase;
  */
 class SystemSettingsTest extends IntegrationTestCase
 {
-
     private $idSite = 1;
 
     /**
@@ -135,5 +135,4 @@ class SystemSettingsTest extends IntegrationTestCase
         $this->expectDeprecationMessage("Site Id 'MyTest0' should be a number");
         $this->settings->customPiwikSiteId->setValue('MyTest0');
     }
-
 }

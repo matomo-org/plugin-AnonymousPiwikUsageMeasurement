@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Matomo - free/libre analytics platform
  *
@@ -22,7 +23,6 @@ use Piwik\Tests\Framework\TestCase\IntegrationTestCase;
  */
 class UserSettingsTest extends IntegrationTestCase
 {
-
     private $idSite = 1;
 
     /**
@@ -61,5 +61,4 @@ class UserSettingsTest extends IntegrationTestCase
         $system->canUserOptOut->setValue($optOut);
         return new UserSettings($system);
     }
-
 }
