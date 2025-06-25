@@ -43,7 +43,7 @@
                 expect(url).to.eql(trackingDomain + '/CoreHome/default/?idSite=3&date=today&period=day');
             });
 
-            it('should correctly change a piwik 3 url', function() {
+            it('should correctly change a matomo 3 url', function() {
                 var url = urlAnonymizer.makeUrlHierarchical(anonymousDomain + '/index.php?idSite=1&period=day#?idSite=1&period=day&date=yesterday&category=General_Actions&subcategory=Events_Events')
                 expect(url).to.eql(trackingDomain + '/Actions/Events/?idSite=1&period=day');
             });
