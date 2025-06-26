@@ -1,5 +1,6 @@
 ## Changelog
 
+* 5.0.2 - 2025-07-07 - Textual changes
 * 5.0.1 Added plugin category for Marketplace
 * 5.0.0 Compatibility with Matomo 5
 * 4.1.0 Migrating from AngularJS to Vue
