@@ -82,7 +82,7 @@ class TasksTest extends SystemTestCase
 
         $xmlFieldsToRemove = [];
 
-        if (version_compare(Version::VERSION, '5.4.0-b5', '<')) {
+        if (version_compare(Version::VERSION, '5.5.0-b1', '<')) {
             $xmlFieldsToRemove = ['Referrers_visitorsFromAIAssistants', 'Referrers_distinctAIAssistants', 'Referrers_visitorsFromAIAssistants_percent'];
         }
 
