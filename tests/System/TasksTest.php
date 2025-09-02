@@ -13,6 +13,7 @@ use Piwik\DataTable;
 use Piwik\Piwik;
 use Piwik\Plugins\AnonymousPiwikUsageMeasurement\tests\Fixtures\SendSystemReportTaskFixture;
 use Piwik\Tests\Framework\TestCase\SystemTestCase;
+use Piwik\Version;
 
 /**
  * @group AnonymousPiwikUsageMeasurement
@@ -79,6 +80,12 @@ class TasksTest extends SystemTestCase
             'CustomVariables',
         ];
 
+        $xmlFieldsToRemove = [];
+
+        if (version_compare(Version::VERSION, '5.5.0-b1', '<')) {
+            $xmlFieldsToRemove = ['Referrers_visitorsFromAIAssistants', 'Referrers_distinctAIAssistants', 'Referrers_visitorsFromAIAssistants_percent'];
+        }
+
         $apiToTest   = [];
         foreach ($apis as $api) {
             $apiToTest[] = [
@@ -94,6 +101,7 @@ class TasksTest extends SystemTestCase
                     // when calling CustomVariables.getUsagesOfSlots, new archives are created until 'today',
                     // which increments idsubdatatable, but we need to have deterministic idsubdatatable
                     'apiNotToCall' => ['CustomVariables.getUsagesOfSlots'],
+                    'xmlFieldsToRemove' => $xmlFieldsToRemove,
                 ]
             ];
         }
