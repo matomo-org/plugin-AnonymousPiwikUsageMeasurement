@@ -108,6 +108,17 @@ class TasksTest extends SystemTestCase
             ]);
         }
 
+        if (version_compare(Version::VERSION, '5.7.0-b1', '<')) {
+            $xmlFieldsToRemove = array_merge($xmlFieldsToRemove, [
+                'BotTracking_AIAssistantsRequests',
+                'BotTracking_AIAssistantsAcquiredVisits',
+                'BotTracking_AIAssistantsNotFoundRequests',
+                'BotTracking_AIAssistantsUniqueAssistants',
+                'BotTracking_AIAssistantsServerErrorRequests',
+                'BotTracking_AIAssistantsClickThroughRate',
+            ]);
+        }
+
         $apiToTest   = [];
         foreach ($apis as $api) {
             $apiToTest[] = [
