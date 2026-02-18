@@ -110,12 +110,12 @@ class TasksTest extends SystemTestCase
 
         if (version_compare(Version::VERSION, '5.7.0-b1', '<')) {
             $xmlFieldsToRemove = array_merge($xmlFieldsToRemove, [
-                'BotTracking_AIAssistantsRequests',
-                'BotTracking_AIAssistantsAcquiredVisits',
-                'BotTracking_AIAssistantsNotFoundRequests',
-                'BotTracking_AIAssistantsUniqueAssistants',
-                'BotTracking_AIAssistantsServerErrorRequests',
-                'BotTracking_AIAssistantsClickThroughRate',
+                'BotTracking_AIChatbotsRequests',
+                'BotTracking_AIChatbotsAcquiredVisits',
+                'BotTracking_AIChatbotsNotFoundRequests',
+                'BotTracking_AIChatbotsUniqueChatbots',
+                'BotTracking_AIChatbotsServerErrorRequests',
+                'BotTracking_AIChatbotsClickThroughRate',
             ]);
         }
 
