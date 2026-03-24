@@ -51,7 +51,7 @@ class AnonymousPiwikUsageMeasurement extends \Piwik\Plugin
     /**
      * Register the new tables, so Matomo knows about them.
      *
-     * @param array $allTablesInstalled
+     * @param int $allTablesInstalled
      */
     public function getTablesInstalled(&$allTablesInstalled)
     {
