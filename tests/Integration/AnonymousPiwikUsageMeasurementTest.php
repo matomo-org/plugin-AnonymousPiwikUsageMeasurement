@@ -28,7 +28,6 @@ class AnonymousPiwikUsageMeasurementTest extends IntegrationTestCase
     public function test_shouldTrackApiCall()
     {
         Request::processRequest('API.getPiwikVersion');
-        Request::processRequest('API.getSettings');
         Request::processRequest('UsersManager.getUsers');
         Request::processRequest('API.getPiwikVersion');
 
@@ -49,12 +48,6 @@ class AnonymousPiwikUsageMeasurementTest extends IntegrationTestCase
                 'name' => 'API',
                 'action' => 'API.getPiwikVersion',
                 'count' => '2',
-            ),
-            array (
-                'category' => 'API',
-                'name' => 'API',
-                'action' => 'API.getSettings',
-                'count' => '1',
             ),
             array (
                 'category' => 'API',
