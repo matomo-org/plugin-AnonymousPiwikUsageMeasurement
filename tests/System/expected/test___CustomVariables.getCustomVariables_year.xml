@@ -3,8 +3,8 @@
 	<row>
 		<label>Matomo Version</label>
 		<nb_visits>1</nb_visits>
-		<nb_actions>39</nb_actions>
-		<max_actions>39</max_actions>
+		<nb_actions>37</nb_actions>
+		<max_actions>37</max_actions>
 		<bounce_count>0</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
@@ -20,8 +20,8 @@
 			<row>
 				<label>2.14.3</label>
 				<nb_visits>1</nb_visits>
-				<nb_actions>39</nb_actions>
-				<max_actions>39</max_actions>
+				<nb_actions>37</nb_actions>
+				<max_actions>37</max_actions>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
 				<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
@@ -32,8 +32,8 @@
 	<row>
 		<label>Num Segments</label>
 		<nb_visits>1</nb_visits>
-		<nb_actions>39</nb_actions>
-		<max_actions>39</max_actions>
+		<nb_actions>37</nb_actions>
+		<max_actions>37</max_actions>
 		<bounce_count>0</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
@@ -49,8 +49,8 @@
 			<row>
 				<label>0</label>
 				<nb_visits>1</nb_visits>
-				<nb_actions>39</nb_actions>
-				<max_actions>39</max_actions>
+				<nb_actions>37</nb_actions>
+				<max_actions>37</max_actions>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
 				<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
@@ -61,8 +61,8 @@
 	<row>
 		<label>Num Users</label>
 		<nb_visits>1</nb_visits>
-		<nb_actions>39</nb_actions>
-		<max_actions>39</max_actions>
+		<nb_actions>37</nb_actions>
+		<max_actions>37</max_actions>
 		<bounce_count>0</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
@@ -78,8 +78,8 @@
 			<row>
 				<label>1</label>
 				<nb_visits>1</nb_visits>
-				<nb_actions>39</nb_actions>
-				<max_actions>39</max_actions>
+				<nb_actions>37</nb_actions>
+				<max_actions>37</max_actions>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
 				<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
@@ -90,8 +90,8 @@
 	<row>
 		<label>Num Websites</label>
 		<nb_visits>1</nb_visits>
-		<nb_actions>39</nb_actions>
-		<max_actions>39</max_actions>
+		<nb_actions>37</nb_actions>
+		<max_actions>37</max_actions>
 		<bounce_count>0</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
@@ -107,8 +107,8 @@
 			<row>
 				<label>1</label>
 				<nb_visits>1</nb_visits>
-				<nb_actions>39</nb_actions>
-				<max_actions>39</max_actions>
+				<nb_actions>37</nb_actions>
+				<max_actions>37</max_actions>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
 				<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
@@ -119,8 +119,8 @@
 	<row>
 		<label>PHP Version</label>
 		<nb_visits>1</nb_visits>
-		<nb_actions>39</nb_actions>
-		<max_actions>39</max_actions>
+		<nb_actions>37</nb_actions>
+		<max_actions>37</max_actions>
 		<bounce_count>0</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
@@ -136,8 +136,8 @@
 			<row>
 				<label>5.5.27</label>
 				<nb_visits>1</nb_visits>
-				<nb_actions>39</nb_actions>
-				<max_actions>39</max_actions>
+				<nb_actions>37</nb_actions>
+				<max_actions>37</max_actions>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
 				<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
