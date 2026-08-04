@@ -58,7 +58,7 @@ class Targets
 
         if (defined('PIWIK_TEST_MODE') && PIWIK_TEST_MODE && Common::isPhpCliMode()) {
             foreach ($targets as &$target) {
-                $target['token_auth'] = Fixture::getTokenAuth();
+                $target['token_auth'] = Fixture::getTokenAuth() ?: null;
             }
         }
 

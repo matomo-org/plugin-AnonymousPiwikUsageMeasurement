@@ -34,7 +34,7 @@ class Tracker extends \MatomoTracker
     /**
      * Returns the base URL for the piwik server.
      */
-    protected function getBaseUrl()
+    protected function getBaseUrl(): string
     {
         if (!empty($this->baseApiUrl)) {
             return $this->baseApiUrl;
