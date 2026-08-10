@@ -61,7 +61,6 @@ class SendSystemReportTaskFixture extends Fixture
     private function executeSomeApiMethods()
     {
         Request::processRequest('API.getPiwikVersion');
-        Request::processRequest('API.getSettings');
         Request::processRequest('UsersManager.getUsers');
         Request::processRequest('API.getPiwikVersion');
         Request::processRequest('VisitsSummary.get', array('idSite' => 1, 'period' => 'year', 'date' => 'today'));

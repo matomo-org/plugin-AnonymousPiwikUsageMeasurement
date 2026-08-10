@@ -205,78 +205,6 @@
 		</subtable>
 	</row>
 	<row>
-		<label>API (count)</label>
-		<nb_visits>2</nb_visits>
-		<nb_events>2</nb_events>
-		<nb_events_with_value>2</nb_events_with_value>
-		<sum_event_value>2</sum_event_value>
-		<min_event_value>2</min_event_value>
-		<max_event_value>2</max_event_value>
-		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
-		<avg_event_value>2</avg_event_value>
-		<segment>eventName==API+%28count%29</segment>
-		<subtable>
-			<row>
-				<label>API.getPiwikVersion (count)</label>
-				<nb_visits>1</nb_visits>
-				<nb_events>1</nb_events>
-				<nb_events_with_value>1</nb_events_with_value>
-				<sum_event_value>2</sum_event_value>
-				<min_event_value>2</min_event_value>
-				<max_event_value>2</max_event_value>
-				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
-				<avg_event_value>2</avg_event_value>
-			</row>
-			<row>
-				<label>API.getSettings (count)</label>
-				<nb_visits>1</nb_visits>
-				<nb_events>1</nb_events>
-				<nb_events_with_value>1</nb_events_with_value>
-				<sum_event_value>2</sum_event_value>
-				<min_event_value>2</min_event_value>
-				<max_event_value>2</max_event_value>
-				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
-				<avg_event_value>2</avg_event_value>
-			</row>
-		</subtable>
-	</row>
-	<row>
-		<label>API (speed)</label>
-		<nb_visits>2</nb_visits>
-		<nb_events>2</nb_events>
-		<nb_events_with_value>2</nb_events_with_value>
-		<sum_event_value>2</sum_event_value>
-		<min_event_value>2</min_event_value>
-		<max_event_value>2</max_event_value>
-		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
-		<avg_event_value>2</avg_event_value>
-		<segment>eventName==API+%28speed%29</segment>
-		<subtable>
-			<row>
-				<label>API.getPiwikVersion (speed)</label>
-				<nb_visits>1</nb_visits>
-				<nb_events>1</nb_events>
-				<nb_events_with_value>1</nb_events_with_value>
-				<sum_event_value>2</sum_event_value>
-				<min_event_value>2</min_event_value>
-				<max_event_value>2</max_event_value>
-				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
-				<avg_event_value>2</avg_event_value>
-			</row>
-			<row>
-				<label>API.getSettings (speed)</label>
-				<nb_visits>1</nb_visits>
-				<nb_events>1</nb_events>
-				<nb_events_with_value>1</nb_events_with_value>
-				<sum_event_value>2</sum_event_value>
-				<min_event_value>2</min_event_value>
-				<max_event_value>2</max_event_value>
-				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
-				<avg_event_value>2</avg_event_value>
-			</row>
-		</subtable>
-	</row>
-	<row>
 		<label>SitesManager (count)</label>
 		<nb_visits>2</nb_visits>
 		<nb_events>2</nb_events>
@@ -337,6 +265,56 @@
 			</row>
 			<row>
 				<label>SitesManager.getSiteFromId (speed)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>2</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+		</subtable>
+	</row>
+	<row>
+		<label>API (count)</label>
+		<nb_visits>1</nb_visits>
+		<nb_events>1</nb_events>
+		<nb_events_with_value>1</nb_events_with_value>
+		<sum_event_value>2</sum_event_value>
+		<min_event_value>2</min_event_value>
+		<max_event_value>2</max_event_value>
+		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+		<avg_event_value>2</avg_event_value>
+		<segment>eventName==API+%28count%29</segment>
+		<subtable>
+			<row>
+				<label>API.getPiwikVersion (count)</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>2</sum_event_value>
+				<min_event_value>2</min_event_value>
+				<max_event_value>2</max_event_value>
+				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+				<avg_event_value>2</avg_event_value>
+			</row>
+		</subtable>
+	</row>
+	<row>
+		<label>API (speed)</label>
+		<nb_visits>1</nb_visits>
+		<nb_events>1</nb_events>
+		<nb_events_with_value>1</nb_events_with_value>
+		<sum_event_value>2</sum_event_value>
+		<min_event_value>2</min_event_value>
+		<max_event_value>2</max_event_value>
+		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+		<avg_event_value>2</avg_event_value>
+		<segment>eventName==API+%28speed%29</segment>
+		<subtable>
+			<row>
+				<label>API.getPiwikVersion (speed)</label>
 				<nb_visits>1</nb_visits>
 				<nb_events>1</nb_events>
 				<nb_events_with_value>1</nb_events_with_value>
