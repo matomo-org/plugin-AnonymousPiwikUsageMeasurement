@@ -10,6 +10,7 @@
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
+		<nb_visits_percent_of_total>22.2%</nb_visits_percent_of_total>
 		<segment>eventName==TagManager+%28count%29</segment>
 		<subtable>
 			<row>
@@ -22,6 +23,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 			<row>
 				<label>TagManager.addContainerTag (count)</label>
@@ -33,6 +35,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 			<row>
 				<label>TagManager.addContainerTrigger (count)</label>
@@ -44,6 +47,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 			<row>
 				<label>TagManager.addContainerVariable (count)</label>
@@ -55,6 +59,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 			<row>
 				<label>TagManager.createContainerVersion (count)</label>
@@ -66,6 +71,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 			<row>
 				<label>TagManager.createDefaultContainerForSite (count)</label>
@@ -77,6 +83,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 			<row>
 				<label>TagManager.getAvailableEnvironments (count)</label>
@@ -88,6 +95,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 			<row>
 				<label>TagManager.publishContainerVersion (count)</label>
@@ -99,6 +107,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 		</subtable>
 	</row>
@@ -112,6 +121,7 @@
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
+		<nb_visits_percent_of_total>22.2%</nb_visits_percent_of_total>
 		<segment>eventName==TagManager+%28speed%29</segment>
 		<subtable>
 			<row>
@@ -124,6 +134,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 			<row>
 				<label>TagManager.addContainerTag (speed)</label>
@@ -135,6 +146,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 			<row>
 				<label>TagManager.addContainerTrigger (speed)</label>
@@ -146,6 +158,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 			<row>
 				<label>TagManager.addContainerVariable (speed)</label>
@@ -157,6 +170,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 			<row>
 				<label>TagManager.createContainerVersion (speed)</label>
@@ -168,6 +182,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 			<row>
 				<label>TagManager.createDefaultContainerForSite (speed)</label>
@@ -179,6 +194,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 			<row>
 				<label>TagManager.getAvailableEnvironments (speed)</label>
@@ -190,6 +206,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 			<row>
 				<label>TagManager.publishContainerVersion (speed)</label>
@@ -201,6 +218,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 		</subtable>
 	</row>
@@ -214,6 +232,7 @@
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
+		<nb_visits_percent_of_total>5.6%</nb_visits_percent_of_total>
 		<segment>eventName==SitesManager+%28count%29</segment>
 		<subtable>
 			<row>
@@ -226,6 +245,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 			<row>
 				<label>SitesManager.getSiteFromId (count)</label>
@@ -237,6 +257,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 		</subtable>
 	</row>
@@ -250,6 +271,7 @@
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
+		<nb_visits_percent_of_total>5.6%</nb_visits_percent_of_total>
 		<segment>eventName==SitesManager+%28speed%29</segment>
 		<subtable>
 			<row>
@@ -262,6 +284,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 			<row>
 				<label>SitesManager.getSiteFromId (speed)</label>
@@ -273,6 +296,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 		</subtable>
 	</row>
@@ -286,6 +310,7 @@
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
+		<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 		<segment>eventName==API+%28count%29</segment>
 		<subtable>
 			<row>
@@ -298,6 +323,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 		</subtable>
 	</row>
@@ -311,6 +337,7 @@
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
+		<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 		<segment>eventName==API+%28speed%29</segment>
 		<subtable>
 			<row>
@@ -323,6 +350,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 		</subtable>
 	</row>
@@ -336,6 +364,7 @@
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
+		<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 		<segment>eventName==CoreAdminHome+%28count%29</segment>
 		<subtable>
 			<row>
@@ -348,6 +377,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 		</subtable>
 	</row>
@@ -361,6 +391,7 @@
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
+		<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 		<segment>eventName==CoreAdminHome+%28speed%29</segment>
 		<subtable>
 			<row>
@@ -373,6 +404,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 		</subtable>
 	</row>
@@ -386,6 +418,7 @@
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
+		<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 		<segment>eventName==CustomDimensions+%28count%29</segment>
 		<subtable>
 			<row>
@@ -398,6 +431,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 		</subtable>
 	</row>
@@ -411,6 +445,7 @@
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
+		<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 		<segment>eventName==CustomDimensions+%28speed%29</segment>
 		<subtable>
 			<row>
@@ -423,6 +458,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 		</subtable>
 	</row>
@@ -436,6 +472,7 @@
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
+		<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 		<segment>eventName==Dashboard+%28count%29</segment>
 		<subtable>
 			<row>
@@ -448,6 +485,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 		</subtable>
 	</row>
@@ -461,6 +499,7 @@
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
+		<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 		<segment>eventName==Dashboard+%28speed%29</segment>
 		<subtable>
 			<row>
@@ -473,6 +512,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 		</subtable>
 	</row>
@@ -486,6 +526,7 @@
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
+		<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 		<segment>eventName==Goals+%28count%29</segment>
 		<subtable>
 			<row>
@@ -498,6 +539,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 		</subtable>
 	</row>
@@ -511,6 +553,7 @@
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
+		<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 		<segment>eventName==Goals+%28speed%29</segment>
 		<subtable>
 			<row>
@@ -523,6 +566,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 		</subtable>
 	</row>
@@ -536,6 +580,7 @@
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
+		<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 		<segment>eventName==LanguagesManager+%28count%29</segment>
 		<subtable>
 			<row>
@@ -548,6 +593,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 		</subtable>
 	</row>
@@ -561,6 +607,7 @@
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
+		<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 		<segment>eventName==LanguagesManager+%28speed%29</segment>
 		<subtable>
 			<row>
@@ -573,6 +620,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 		</subtable>
 	</row>
@@ -586,6 +634,7 @@
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
+		<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 		<segment>eventName==UsersManager+%28count%29</segment>
 		<subtable>
 			<row>
@@ -598,6 +647,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 		</subtable>
 	</row>
@@ -611,6 +661,7 @@
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
+		<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 		<segment>eventName==UsersManager+%28speed%29</segment>
 		<subtable>
 			<row>
@@ -623,6 +674,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 		</subtable>
 	</row>
@@ -636,6 +688,7 @@
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
+		<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 		<segment>eventName==VisitsSummary+%28count%29</segment>
 		<subtable>
 			<row>
@@ -648,6 +701,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 		</subtable>
 	</row>
@@ -661,6 +715,7 @@
 		<max_event_value>2</max_event_value>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<avg_event_value>2</avg_event_value>
+		<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 		<segment>eventName==VisitsSummary+%28speed%29</segment>
 		<subtable>
 			<row>
@@ -673,6 +728,7 @@
 				<max_event_value>2</max_event_value>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 				<avg_event_value>2</avg_event_value>
+				<nb_visits_percent_of_total>2.8%</nb_visits_percent_of_total>
 			</row>
 		</subtable>
 	</row>
