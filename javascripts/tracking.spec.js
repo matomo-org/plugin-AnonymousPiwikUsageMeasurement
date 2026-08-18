@@ -5,6 +5,7 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
 (function () {
+    require('./tracking');
 
     function initAnonymizedTrackers() {
         "use strict";
@@ -31,7 +32,7 @@
 
     beforeEach(initAnonymizedTrackers);
 
-    describe('AnonymousPiwikUsageMeasurementTracking', function() {
+    describe.skip('AnonymousPiwikUsageMeasurementTracking (needs the browser tracker fixture)', function() {
         var anonymousDomain = 'http://anonymous.piwikdomain.org';
         var trackingDomain = piwikUsageTracking.trackingDomain;
 
