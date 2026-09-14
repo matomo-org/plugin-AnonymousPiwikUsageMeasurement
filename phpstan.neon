@@ -12,11 +12,12 @@ parameters:
             - github-action-tests/*
     ignoreErrors:
         # scanDirectories pulls in core's tests/PHPUnit/bootstrap.php, which does
-        # define('PIWIK_TEST_MODE', true), so the constant reads as always true here. In
-        # production it is undefined and the guard is load-bearing.
+        # define('PIWIK_TEST_MODE', true), so the constant reads as always true here. In production
+        # it is undefined and the guard is load-bearing.
         -
-            message: '#Right side of && is always true#'
+            identifier: booleanAnd.rightAlwaysTrue
             path: Tracker/Targets.php
+            count: 1
     bootstrapFiles:
         - ../../bootstrap-phpstan.php
     universalObjectCratesClasses:
