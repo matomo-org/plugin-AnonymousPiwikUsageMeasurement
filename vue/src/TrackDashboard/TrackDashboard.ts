@@ -12,8 +12,18 @@ import '../types';
 
 const { $ } = window;
 
-function onClick(this: HTMLElement) {
-  const $widget = $(this);
+// The widget controls are rendered by CoreHome.ReportHeader, which bridges each intent as a
+// bubbling `widgetcontrol:*` event instead of the former #close/#minimise/#maximise/#refresh
+// elements.
+const CONTROL_EVENTS = [
+  'widgetcontrol:close',
+  'widgetcontrol:minimise',
+  'widgetcontrol:maximise',
+  'widgetcontrol:refresh',
+].join(' ');
+
+function onWidgetControl(event: { type: string; target: unknown }) {
+  const $widget = $(event.target as HTMLElement);
 
   if (!$widget.parents('.sortable').length) {
     return;
@@ -21,17 +31,17 @@ function onClick(this: HTMLElement) {
 
   const category = 'Dashboard';
   const name = 'Widget';
-  const action = $(this).attr('id');
+  const action = event.type.replace('widgetcontrol:', '');
 
   window._paq.push(['trackEvent', category, action, name]);
 }
 
 const TrackDashboard = {
   mounted(): void {
-    $('body').on('click', '.widget #close,#minimise,#maximise,#refresh', onClick);
+    $('body').on(CONTROL_EVENTS, onWidgetControl);
   },
   unmounted(): void {
-    $('body').off('click', '.widget #close,#minimise,#maximise,#refresh', onClick);
+    $('body').off(CONTROL_EVENTS, onWidgetControl);
   },
 };
 
