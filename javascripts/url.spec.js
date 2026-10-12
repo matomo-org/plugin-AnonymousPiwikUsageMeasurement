@@ -5,6 +5,11 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
 (function () {
+    require('./tracking');
+    require('./url');
+
+    piwikUsageTracking.trackingDomain = 'http://tracking.piwikdomain.org';
+
     describe('AnonymousPiwikUsageMeasurementUrl', function() {
         var anonymousDomain = 'http://anonymous.piwikdomain.org';
         var trackingDomain = piwikUsageTracking.trackingDomain;

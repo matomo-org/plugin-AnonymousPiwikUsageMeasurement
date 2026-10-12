@@ -322,3 +322,5 @@ var UrlAnonymizer = function (absoluteUrl) {
         anonymizePopoverName: anonymizePopoverName
     };
 };
+
+window.UrlAnonymizer = UrlAnonymizer;
