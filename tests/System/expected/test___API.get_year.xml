@@ -66,6 +66,7 @@
 	<BotTracking_AIChatbotsNotFoundRequests>0</BotTracking_AIChatbotsNotFoundRequests>
 	<BotTracking_AIChatbotsUniqueChatbots>0</BotTracking_AIChatbotsUniqueChatbots>
 	<BotTracking_AIChatbotsServerErrorRequests>0</BotTracking_AIChatbotsServerErrorRequests>
+	<BotTracking_AIChatbotsTrafficRatio>0</BotTracking_AIChatbotsTrafficRatio>
 	<nb_pageviews>1</nb_pageviews>
 	<nb_uniq_pageviews>1</nb_uniq_pageviews>
 	<nb_downloads>0</nb_downloads>
