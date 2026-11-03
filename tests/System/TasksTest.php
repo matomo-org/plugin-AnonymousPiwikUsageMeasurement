@@ -119,6 +119,14 @@ class TasksTest extends SystemTestCase
             ]);
         }
 
+        if (version_compare(Version::VERSION, '6.1.0-alpha', '<')) {
+            // In Matomo 6.1 the AI chatbot traffic ratio had been added, along with the page views it is computed from
+            $xmlFieldsToRemove = array_merge($xmlFieldsToRemove, [
+                'Actions_nb_pageviews',
+                'BotTracking_AIChatbotsTrafficRatio',
+            ]);
+        }
+
         $apiToTest   = [];
         foreach ($apis as $api) {
             $apiToTest[] = [
