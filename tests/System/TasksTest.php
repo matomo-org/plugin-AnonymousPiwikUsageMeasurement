@@ -80,10 +80,11 @@ class TasksTest extends SystemTestCase
             'CustomVariables',
         ];
 
-        $xmlFieldsToRemove = [];
+        // time spent depends on how long the fixture takes to track its visits
+        $xmlFieldsToRemove = ['avg_time_on_site', 'avg_time_on_site_human', 'sum_time_spent', 'avg_time_on_page'];
 
         if (version_compare(Version::VERSION, '5.5.0-b1', '<')) {
-            $xmlFieldsToRemove = ['Referrers_visitorsFromAIAssistants', 'Referrers_distinctAIAssistants', 'Referrers_visitorsFromAIAssistants_percent'];
+            $xmlFieldsToRemove = array_merge($xmlFieldsToRemove, ['Referrers_visitorsFromAIAssistants', 'Referrers_distinctAIAssistants', 'Referrers_visitorsFromAIAssistants_percent']);
         }
 
         if (version_compare(Version::VERSION, '5.6.0-alpha', '<')) {
