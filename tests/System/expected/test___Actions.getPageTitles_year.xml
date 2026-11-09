@@ -4,7 +4,6 @@
 		<label> System-Report</label>
 		<nb_visits>1</nb_visits>
 		<nb_hits>1</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
 		<entry_nb_visits>1</entry_nb_visits>
 		<entry_nb_actions>37</entry_nb_actions>
 		<entry_bounce_count>0</entry_bounce_count>
@@ -19,7 +18,6 @@
 		<entry_nb_visits_percent_of_total>100%</entry_nb_visits_percent_of_total>
 		<entry_nb_actions_percent_of_total>100%</entry_nb_actions_percent_of_total>
 		<exit_nb_visits_percent_of_total>100%</exit_nb_visits_percent_of_total>
-		<avg_time_on_page>0</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>pageTitle==System-Report</segment>
